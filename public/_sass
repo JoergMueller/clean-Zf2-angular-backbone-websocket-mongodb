@@ -1,0 +1,8 @@
+#!/bin/sh
+
+
+sass --trace css/sass/custom.scss css/custom.css --style compressed
+sass --trace css/sass/edit.scss css/edit.css --style compressed
+sass --trace css/sass/app.scss css/app.css --style compressed
+sass --trace css/sass/definition.scss css/definition.css --style compressed
+

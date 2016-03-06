@@ -1,0 +1,185 @@
+.w1000 {
+    width: 1000px !important;
+}
+
+.h990 {
+    height: 990px !important;
+}
+
+a.btn.btn-primary {
+    color: rgb(255, 255, 255) !important;
+}
+
+
+/* --------------------------------------------------------------- */
+
+.widget li.active,
+.widget li.active a {
+    background-color: lighten(#1867AB, 20%);
+}
+
+
+/* --------------------------------------------------------------- */
+
+article:after:not(.cards) {
+    height: 1px;
+    background: rgb(209, 209, 209);
+    background: -moz-linear-gradient(right, rgba(0, 0, 0, 0.18) 0, rgba(0, 0, 0, 0.12) 35%, rgba(0, 0, 0, 0.05) 70%, rgba(0, 0, 0, 0) 100%);
+    background: -webkit-gradient(linear, right top, left top, color-stop(0, rgba(0, 0, 0, 0.18)), color-stop(35%, rgba(0, 0, 0, 0.12)), color-stop(70%, rgba(0, 0, 0, 0.05)), color-stop(100%, rgba(0, 0, 0, 0)));
+    background: -webkit-linear-gradient(right, rgba(0, 0, 0, 0.18) 0, rgba(0, 0, 0, 0.12) 35%, rgba(0, 0, 0, 0.05) 70%, rgba(0, 0, 0, 0) 100%);
+    background: -o-linear-gradient(right, rgba(0, 0, 0, 0.18) 0, rgba(0, 0, 0, 0.12) 35%, rgba(0, 0, 0, 0.05) 70%, rgba(0, 0, 0, 0) 100%);
+    background: -ms-linear-gradient(right, rgba(0, 0, 0, 0.18) 0, rgba(0, 0, 0, 0.12) 35%, rgba(0, 0, 0, 0.05) 70%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.18) 0, rgba(0, 0, 0, 0.12) 35%, rgba(0, 0, 0, 0.05) 70%, rgba(0, 0, 0, 0) 100%);
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    content: "";
+    width: 100%;
+}
+
+
+/* --------------------------------------------------------------- */
+
+.relatedbox img {
+    max-width: 100%;
+}
+
+.relatedbox .overlay-link {
+    position: absolute !important;
+}
+
+.overlay-link i {
+    position: absolute !important;
+}
+
+
+/* --------------------------------------------------------------- */
+
+.equipmentItem {
+
+    .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td,
+    .table tbody {
+        border-top: 0 transparent !important;
+    }
+
+    .panel-bb .panel-title {
+        position: relative;
+        background-color: #f6f6f6;
+        padding: 5px 62px 5px 20px;
+    }
+    .panel-bb .panel-title:after {
+        position: absolute;
+        content: "";
+        display: block;
+        width: 52px;
+        height: 100%;
+        background-color: #e6e6e6;
+        background-image: url('/img/accordion-closed.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        right: 0;
+        top: 0;
+        -webkit-transition: all 0.2s ease 0s;
+        -moz-transition: all 0.2s ease 0s;
+        -o-transition: all 0.2s ease 0s;
+        -ms-transition: all 0.2s ease 0s;
+        transition: all 0.2s ease 0s;
+    }
+    .panel-bb .panel-title.active:after {
+        content: "\f068";
+        font-family: 'FontAwesome';
+        font-size: 15px;
+        position: absolute;
+        display: block;
+    }
+    .panel-bb .panel-title a {
+        padding: 10px 0;
+        display: block;
+    }
+    .panel-group {
+        box-shadow: none;
+        border-top: none !important;
+        border-right: none !important;
+        border-left: none !important;
+        border-bottom: none !important;
+        border-radius: 0 !important;
+        .panel {
+            border-radius: 0;
+            border-top: none !important;
+            border-right: none !important;
+            border-left: none !important;
+            border-bottom: none !important;
+            border-radius: 0 !important;
+            .panel-body {
+                border-radius: 0;
+                border-top: none !important;
+                border-right: none !important;
+                border-left: none !important;
+                border-bottom: none !important;
+                border-radius: 0 !important;
+            }
+        }
+    }
+    .headline {}
+    .description {
+        min-height: 200px;
+    }
+    .panel-body {
+        border-top: none !important;
+        border-right: none !important;
+        border-left: none !important;
+        border-bottom: none !important;
+        border-radius: 0 !important;
+    }
+    .panel-heading {
+        padding: 0 !important;
+        width: 100%;
+        background-color: #f6f6f6;
+        margin-bottom: 10px;
+        position: relative;
+        padding: 0 !important;
+        float: left;
+        border-top: 0 !important;
+        border-right: 0 !important;
+        border-left: 0 !important;
+        border-bottom: 0 !important;
+        border-radius: 0 !important;
+        .panel-title {
+            position: relative;
+            background-color: #f6f6f6;
+            padding: 5px 62px 5px 20px;
+            &:hover {
+                :after {
+                    background-color: #e73416;
+                }
+            }
+        }
+        .panel-title:after {
+            position: absolute;
+            content: "";
+            display: block;
+            width: 52px;
+            height: 100%;
+            background-color: #e6e6e6;
+            background-image: url('/img/accordion-closed.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            right: 0;
+            top: 0;
+            -webkit-transition: all 0.2s ease 0s;
+            -moz-transition: all 0.2s ease 0s;
+            -o-transition: all 0.2s ease 0s;
+            -ms-transition: all 0.2s ease 0s;
+            transition: all 0.2s ease 0s;
+        }
+    }
+    .panel-heading.active {
+        .panel-title:after {
+            background-color: #e73416;
+            background-image: url('/img/accordion-closed.png');
+        }
+    }
+    .panel-title a {
+        display: block;
+    }
+}

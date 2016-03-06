@@ -1,0 +1,272 @@
+$family: 'Roboto Condensed', 'Roboto', Arial, sans-serif;
+$fcolor: #337ab7;
+$tbackground: #1867AB;
+
+/* mixin
+/* --------------------------------------------------------------- */
+
+@mixin aspect-ratio($ratio-or-width, $height: null) {
+    $padding: if($height, percentage($height/$ratio-or-width), percentage(1/$ratio-or-width));
+    &:before {
+        content: '';
+        float: left;
+        padding-bottom: $padding;
+    }
+    &:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+
+/* los gehts
+/* --------------------------------------------------------------- */
+
+html,
+body,
+.wrapper {
+    height: 100%;
+}
+
+html {
+    font-family: $family;
+    font-size: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: $family;
+    font-size: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    height: 100%;
+}
+
+h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 1.6em;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+h4 {
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+a,
+a:link,
+a:visited a:hover,
+a:active,
+a:focus,
+a:target {
+    text-decoration: none !important;
+}
+
+.absolute {
+    position: absolute !important;
+}
+
+.inline {
+    display: inline !important;
+}
+
+.inline-block {
+    display: inline-block !important;
+}
+
+.block {
+    display: block !important;
+}
+
+.row {
+    margin: 0;
+}
+
+
+/*-----------------------------------------------------------------*/
+
+.row-fluid,
+.wrapper:before,
+.form-group:before {
+    clear: both;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: table;
+    content: " ";
+}
+
+.row-fluid,
+.wrapper:after,
+.form-group:after {
+    clear: both;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: table;
+    content: " ";
+}
+
+.inverse {
+    padding: 15px;
+    color: #eee;
+    background-color: #333;
+    border-left: 8px solid #aaa;
+    font-weight: 500;
+    font-size: .9em;
+}
+
+
+/* overwrites
+/* --------------------------------------------------------------- */
+
+.interactivetabs li>a,
+.backcolor,
+.backcolorhover:hover,
+.categorieslist ul li:hover,
+.categorieslist ul li.active,
+.ui-datepicker-header,
+.ui-datepicker-calendar .ui-state-active,
+.ui-datepicker-calendar .ui-state-hover,
+.nav-tabs > li.active > a,
+.nav-tabs > li > a:hover,
+.nav-tabs > li.active > a:focus,
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+    background-color: #1867AB !important;
+}
+
+li.active,
+li.active>a {
+    background-color: lighten(#1867AB, 10%);
+    color: rgb(233, 233, 233);
+}
+
+.bordercolor-top {
+    border-top: 5px solid #1867AB !important;
+}
+
+.categorieslist li>a {
+    color: rgb(233, 233, 233);
+}
+
+.logobar {
+    padding: 0;
+}
+
+.bloglist .media > .pull-left {
+    margin: 0;
+}
+
+.media-left,
+.media>.pull-left {
+    padding: 0;
+}
+
+.fancybox-skin .tab-content,
+.fancybox-skin .nav-tabs > li.active > a,
+.fancybox-skin .nav-tabs > li.active > a:hover,
+.fancybox-skin .nav-tabs > li.active,
+.fancybox-skin .nav-tabs > li:hover {
+    background-color: #fff !important;
+}
+
+.fancybox-skin .tab-content {
+    padding: 10px;
+}
+
+.fancybox .nav-tabs > li > a:hover {
+    background-color: #eee !important;
+}
+
+body.editor .fancybox-skin .nav-tabs > li > a {
+    background-color: #ddd !important;
+    &:hover {
+        background-color: #eee !important;
+    }
+}
+
+body.editor .fancybox-skin .nav-tabs > li.active > a {
+    background-color: #fff !important;
+}
+
+body.editor .fancybox-skin .nav-tabs > li > a {
+    background-color: #ddd !important;
+}
+
+body.editor .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.dropdown-menu>li>a {
+    padding: 7px 25px;
+}
+
+
+/* --------------------------------------------------------------- */
+
+ul#holder_0 {
+    overflow: hidden;
+}
+
+.editor a.structname {
+    display: block;
+    left: 21px;
+    right: 0;
+    position: absolute;
+    text-align: left;
+}
+
+
+/* --------------------------------------------------------------- */
+
+.custom-container {
+    width: 86%;
+    margin: 0 auto;
+}
+
+.ang-custom-container {
+    width: 86%;
+    margin: -30px auto;
+}
+
+
+/* --------------------------------------------------------------- */
+
+.master-slider {
+    font-family: Raleway !important;
+}
+
+.ms-view {
+    background-color: rgb(255, 255, 255) !important;
+}
+
+.popover-title {
+    font-weight: 600;
+    color: rgb(255, 255, 255) !important;
+}
+
+
+/* --------------------------------------------------------------- */
+
+@import '_widgets';
+
+/* --------------------------------------------------------------- */
+
+@import '_responsive';

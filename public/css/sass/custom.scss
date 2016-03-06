@@ -1,0 +1,138 @@
+@import 'mixin';
+.fade {
+    opacity: 0;
+    @include transition(all .5s easin .2s);
+}
+
+.fade.in {
+    opacity: 1;
+}
+
+.dropdown-menu {
+    border-width: 1px !important;
+}
+
+.tree .dropdown-menu,
+.inlineAction .dropdown-menu {
+    color: rgb(33, 33, 33) !important;
+    background-color: rgb(255, 255, 255) !important;
+    a {
+        color: rgb(33, 33, 33) !important;
+        &:hover {
+            color: rgb(33, 33, 33) !important;
+        }
+    }
+    li {
+        padding: 0;
+    }
+}
+
+.btn {
+    padding: 5px 10px !important;
+}
+
+.fancybox-skin .btn,
+.fancybox-skin button,
+.fancybox-skin input[type='button'],
+.fancybox-skin input[type='submit'] {
+    font-size: 14px;
+}
+
+.btn-lang {
+    margin: 0 !important;
+    padding: 9px 18px !important;
+}
+
+.inlineAction .btn {
+    margin: 0;
+    padding: 1px 7px !important;
+}
+.inlineAction .btn.btn-primary,
+.fancybox-skin .btn.btn-primary,
+.modal .btn.btn-primary {
+    color: rgb(255, 255, 255);
+    background-color: rgb(51, 122, 183) !important;
+    border-color: rgb(46, 109, 164) !important;
+}
+.inlineAction .btn.btn-success,
+.fancybox-skin .btn.btn-success,
+.modal .btn.btn-success {
+    color: rgb(255, 255, 255) !important;
+    background-color: rgb(92, 184, 92) !important;
+    border-color: rgb(76, 174, 76) !important;
+}
+.inlineAction .btn.btn-warning,
+.fancybox-skin .btn.btn-warning,
+.modal .btn.btn-warning {
+    color: rgb(255, 255, 255) !important;
+    background-color: rgb(240, 173, 78) !important;
+    border-color: rgb(238, 162, 54) !important;
+}
+.inlineAction .btn.btn-default,
+.fancybox-skin .btn.btn-default,
+.modal .btn.btn-default {
+    color: rgb(51, 51, 51) !important;
+    background-color: rgb(255, 255, 255) !important;
+    border-color: rgb(204, 204, 204) !important;
+}
+
+.fancybox-skin ul li,
+.fancybox-skin ol li,
+.modal ol li {
+    padding-bottom: 0;
+}
+
+.fancybox-skin .btn,
+.modal .btn {
+    text-transform: initial;
+    font-weight: 400;
+    position: inherit;
+    overflow: hidden;
+    display: inline-block;
+    backface-visibility: hidden;
+    float: none;
+}
+
+.navbar-fixed-top,
+.navbar-fixed-bottom {
+    z-index: 999;
+}
+
+#zend-developer-toolbar p,
+#zend-developer-toolbar a,
+#zend-developer-toolbar span {
+    color: rgb(255,255,255) !important;
+}
+
+.editor a.structname {
+    left: 30px !important;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.btn-group-vertical>.btn, .btn-group>.btn {
+    float: left !important;
+}
+
+/* ============================================================================================= */
+
+.modal-backdrop {
+    background-color: rgba(0,0,0, .6);
+}
+
+.modal-dialog {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: block;
+    top: 20%;
+
+    .modal-content {
+        max-width: 800px;
+        margin: auto;
+    }
+}
+
+.holder {
+    list-style: none;
+}

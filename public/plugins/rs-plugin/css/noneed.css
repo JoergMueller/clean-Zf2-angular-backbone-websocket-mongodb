@@ -1,0 +1,76 @@
+
+
+/**********************************************************
+***********************************************************
+***********************************************************
+***********************************************************
+***********************************************************
+***********************************************************
+***********************************************************
+***********************************************************
+***********************************************************
+
+
+
+
+      YOU DONT NEED THIS CSS FILE FOR YOUR ENDPRODUCT !
+
+	USED ONLY FOR THE DEMOS AND TOOLS HERE IN THIS FOLDER
+
+				TO SHOW THE EXAMPLES.
+
+
+
+
+
+
+
+/**********************************************************
+					-	RESET	-
+***********************************************************/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent;
+        -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+ * {
+/*	 -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -o-user-select: none;
+*/
+}
+
+.toolpad * {
+	 -moz-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -o-user-select: none;
+}
+
+.clearfix {   
+    clear:both; 
+    width:100%;
+    display: block;
+}
+
+/***********************
+	-	BASICS 	-
+***********************/
+
+html {   
+    font-family: "Open Sans",sans-serif;
+}
+
+body {
+    color: #6f7c82;
+    font-weight: 400;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    line-height: 26px;
+}
+.content {  
+    max-width:1600px; 
+    margin:auto;     
+}

@@ -1,0 +1,83 @@
+<div id="login-overlay" class="modal-dialog" ng-controller="UserCtrl">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title" id="myModalLabel">{{'Register to' | translate}} <span class="text-success f-bold">bb-baumaschinen.de</span></h4>
+        </div>
+        <div class="modal-body">
+            <form id="loginForm" novalidate="novalidate" onsubmit="register()">
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div class="well">
+
+                            <div class="form-group">
+                                <label class="block">{{'Nickname' | translate}}
+                                    <input class="form-control" type="password" name="nickname" value="" ng-model="userData.nickname"></label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="block">{{'E-Mail' | translate}}
+                                    <input class="form-control" type="email" name="email" value="" ng-model="userData.email"></label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="block">{{'E-Mail verify' | translate}}
+                                    <input class="form-control" type="email" name="emailV" value="" ng-model="userData.emailV"></label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="block">{{'Password' | translate}}<br>
+                                    <input class="form-control" type="password" name="password" value="" ng-model="userData.password"></label>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="block">{{'Password verify' | translate}}<br>
+                                    <input class="form-control" type="password" name="passwordV" value="" ng-model="userData.passwordV"></label>
+                            </div>
+
+                            <div class="clearfix"><!-- --></div>
+                        </div>
+                    </div>
+                    <div class="col-xs-7">
+                        <div class="form-group">
+                            <label class="block">
+                                <select class="form-control" name="" ng-options="gender.name | translate for gender in genders track by $index" ng-model="userData.sheet.gender">
+                                </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="block">{{'Firstname' | translate}}
+                                <input class="form-control" type="text" name="firstname" value="" ng-model="userData.sheet.firstname"></label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="block">{{'Name' | translate}}
+                                <input class="form-control" type="text" name="name" value="" ng-model="userData.sheet.name"></label>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="block">{{'StreetNr' | translate}}<br>
+                                <input class="form-control" type="text" name="streetnr" value="" ng-model="userData.sheet.streetnr"></label>
+                        </div>
+                        <div class="form-group">
+                            <label class="block">{{'City' | translate}}<br>
+                                <input class="form-control" type="text" name="city" value="" ng-model="userData.sheet.city"></label>
+                        </div>
+                        <div class="form-group">
+                            <label class="block">{{'Zipcode' | translate}}<br>
+                                <input class="form-control" type="text" name="zipcode" value="" ng-model="userData.sheet.zipcode"></label>
+                        </div>
+                    </div>
+                </div>
+                
+                <hr>
+
+                <button class="pull-right btn btn-xs btn-success">{{'Register' | translate}}</button>
+                <button class="pull-right btn btn-xs btn-success margin-right-10" ng-click="$hide()">{{'Cancel' | translate}}</button>
+
+            </form>
+            
+            <div class="clearfix"><!-- --></div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,70 @@
+
+<div class="page-content">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="container editor" ng-if="hasWriteAccess">
+		
+		<p class="pull-right">
+
+			<button class="btn btn-success btn-xs margin-right-5" ng-click="showForm()">{{'New' | translate}}</button>
+			<button class="btn btn-warning btn-xs margin-right-5" ng-click="showForm()">{{'Edit' | translate}}</button>
+			<button class="btn btn-danger btn-xs margin-right-5">{{'Remove' | translate}}</button>
+			<button class="btn btn-danger btn-xs margin-right-15" ng-click="logout()">{{'Logout' | translate}}</button>
+
+		</p>
+
+		<p class="clearfix"><!-- --></p>
+
+		<hr>
+	</div>
+
+	<div class="container editor" ng-if="!hasWriteAccess">
+		
+		<p class="pull-right">
+
+			<button class="btn btn-success btn-xs margin-right-5" ng-click="showLogin()">Login</button>
+
+		</p>
+
+		<p class="clearfix"><!-- --></p>
+
+		<hr>
+	</div>
+
+	<div class="container equipmentItem">
+
+		<h3 class="headline" ng-bind-html="selectedEquipmentItem.headline.de | unsafe"></h3>
+		
+		<div class="description mh-200" ng-bind-html="selectedEquipmentItem.description.de | unsafe"></div>
+
+		<p><!-- --></p>
+
+		<ng-include src="'/application/modules/equipment/views/data_tables.html'"></ng-include>
+
+
+		<p><!-- --></p>
+
+
+	</div>
+
+
+
+</div>
+

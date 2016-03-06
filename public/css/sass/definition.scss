@@ -1,0 +1,239 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.f-bold { font-weight: 900; }
+.f-bold-i { font-weight: 900 !important; }
+
+.f-normal { font-weight: 100; }
+.f-normal-i { font-weight: 100 !important; }
+
+.ohidden {
+    overflow: hidden !important;
+}
+
+.inline {
+    display: inline !important;
+}
+
+.inline-block {
+    display: inline-block !important;
+}
+
+.block {
+    display: block !important;
+}
+
+.absolute {
+    position: absolute !important;
+}
+
+.relative {
+    position: relative !important;
+}
+
+@for $i from 0 through 1500 {
+    .h-#{$i} {
+        height: $i * 1px;
+    }
+    .h-#{$i}-i {
+        height: $i * 1px !important;
+    }
+    .h#{$i} {
+        height: $i * 1px !important;
+    }
+    .mr-#{$i} {
+        margin-right: $i * 1px;
+    }
+    .mr-#{$i}-i {
+        margin-right: $i * 1px !important;
+    }
+    .pr-#{$i} {
+        padding-right: $i * 1px;
+    }
+    .pr-#{$i}-i {
+        padding-right: $i * 1px !important;
+    }
+    .ml-#{$i} {
+        margin-left: $i * 1px;
+    }
+    .ml-#{$i}-i {
+        margin-left: $i * 1px !important;
+    }
+    .pl-#{$i} {
+        padding-left: $i * 1px;
+    }
+    .pl-#{$i}-i {
+        padding-left: $i * 1px !important;
+    }
+    .mt-#{$i} {
+        margin-top: $i * 1px;
+    }
+    .mt-#{$i}-i {
+        margin-top: $i * 1px !important;
+    }
+    .pt-#{$i} {
+        padding-top: $i * 1px;
+    }
+    .pt-#{$i}-i {
+        padding-top: $i * 1px !important;
+    }
+    .mb-#{$i} {
+        margin-bottom: $i * 1px;
+    }
+    .mb-#{$i}-i {
+        margin-bottom: $i * 1px !important;
+    }
+    .pb-#{$i} {
+        padding-bottom: $i * 1px;
+    }
+    .pb-#{$i}-i {
+        padding-bottom: $i * 1px !important;
+    }
+    .mh#{$i} {
+        min-height: $i * 1px;
+    }
+    .mh#{$i}-i {
+        min-height: $i * 1px !important;
+    }
+    .hp#{$i} {
+        height: $i * 1%;
+    }
+    .hp#{$i}-i {
+        height: $i * 1% !important;
+    }
+    .w#{$i} {
+        width: $i * 1px;
+    }
+    .w#{$i}-i {
+        width: $i * 1px !important;
+    }
+    .mw#{$i} {
+        min-width: $i * 1px;
+    }
+    .mw#{$i}-i {
+        min-width: $i * 1px !important;
+    }
+    .wp#{$i} {
+        width: $i * 1%;
+    }
+    .wp#{$i}-i {
+        width: $i * 1% !important;
+    }
+    .rt-#{$i} {
+        right: $i * 1px;
+        top: $i * 1px;
+    }
+    .lt-#{$i} {
+        left: $i * 1px;
+        top: $i * 1px;
+    }
+    .rb-#{$i} {
+        right: $i * 1px;
+        bottom: $i * 1px;
+    }
+    .lb-#{$i} {
+        left: $i * 1px;
+        bottom: $i * 1px;
+    }
+    .t-#{$i} {
+        top: $i * 1px;
+    }
+    .r-#{$i} {
+        right: $i * 1px;
+    }
+    .b-#{$i} {
+        bottom: $i * 1px;
+    }
+    .l-#{$i} {
+        left: $i * 1px;
+    }
+}
+
+@for $i from 0 through 600 {
+    .margin-#{$i} {
+        margin: $i * 1px;
+    }
+    .margin-#{$i}-i {
+        margin: $i * 1px !important;
+    }
+    .margin-top-#{$i} {
+        margin-top: $i * 1px;
+    }
+    .margin-top-#{$i}-i {
+        margin-top: $i * 1px !important;
+    }
+    .margin-right-#{$i} {
+        margin-right: $i * 1px;
+    }
+    .margin-right-#{$i}-i {
+        margin-right: $i * 1px !important;
+    }
+    .margin-bottom-#{$i} {
+        margin-bottom: $i * 1px;
+    }
+    .margin-bottom-#{$i}-i {
+        margin-bottom: $i * 1px !important;
+    }
+    .margin-left-#{$i} {
+        margin-left: $i * 1px;
+    }
+    .margin-left-#{$i}-i {
+        margin-left: $i * 1px !important;
+    }
+    .padding-#{$i} {
+        padding: $i * 1px;
+    }
+    .padding-#{$i}-i {
+        padding: $i * 1px !important;
+    }
+    .padding-top-#{$i} {
+        padding-top: $i * 1px;
+    }
+    .padding-top-#{$i}-i {
+        padding-top: $i * 1px !important;
+    }
+    .padding-right-#{$i} {
+        padding-right: $i * 1px;
+    }
+    .padding-right-#{$i}-i {
+        padding-right: $i * 1px !important;
+    }
+    .padding-bottom-#{$i} {
+        padding-bottom: $i * 1px;
+    }
+    .padding-bottom-#{$i}-i {
+        padding-bottom: $i * 1px !important;
+    }
+    .padding-left-#{$i} {
+        padding-left: $i * 1px;
+    }
+    .padding-left-#{$i}-i {
+        padding-left: $i * 1px !important;
+    }
+}
+
+@for $i from 0 through 300 {
+    .fs-#{$i} {
+        font-size: ($i/100)em;
+    }
+    .fs-#{$i}-i {
+        font-size: ($i/100)em !important;
+    }
+}
+
+@for $i from 1 through 9 {
+    .fw-#{$i} {
+        font-weight: ($i*100);
+    }
+    .fw-#{$i}-i {
+        font-weight: ($i*100) !important;
+    }
+}
+
+@for $i from 0 through 9999 {
+    .zi#{$i} {
+        z-index: $i;
+    }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "backbone_query",
+  "homepage": "https://github.com/davidgtonge/backbone_query",
+  "_release": "9042c7495e",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "9042c7495edcb57c7dc6ff51d86f849f89f123fd"
+  },
+  "_source": "git://github.com/davidgtonge/backbone_query.git",
+  "_target": "*",
+  "_originalSource": "backbone_query",
+  "_direct": true
+}

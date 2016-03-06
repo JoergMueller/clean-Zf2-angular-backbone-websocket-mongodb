@@ -1,0 +1,52 @@
+{
+  "name": "www.bb-baumaschinen.de",
+  "version": "0.0.1",
+  "description": "bb-baumaschinen.de",
+  "main": "application/application.js",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node"
+  ],
+  "authors": [
+    "joerg.mueller"
+  ],
+  "license": "MIT",
+  "homepage": "bb-baumaschinen.de",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.0",
+    "angular-md5": "^0.1.10",
+    "angular-translate": "^2.10.0",
+    "angular-local-storage": "^0.2.5",
+    "ng-amd": "angular-amd#^0.8.5",
+    "domready": "^1.0.8",
+    "moment": "^2.11.2",
+    "angular-moment": "^0.10.3",
+    "summernote": "^0.8.1",
+    "noty": "^2.3.8",
+    "angular-ui-bootstrap": "^1.2.1",
+    "angular-ui-router": "^0.2.18",
+    "angular-ui-router.stateHelper": "angular-ui-router.statehelper#^1.3.1",
+    "ng-load": "^1.0.2",
+    "ng-cookies": "^1.1.1",
+    "angular-strap": "^2.3.7",
+    "backbone": "^1.2.3",
+    "backbone_query": "*",
+    "requirejs": "^2.1.22",
+    "waypoints": "^4.0.0",
+    "bLazy": "blazy#^1.5.2",
+    "domReady": "requirejs-domready#^2.0.1",
+    "angularAMD": "^0.2.1",
+    "angular-translate-loader-static-files": "^2.10.0",
+    "angular-bootstrap": "^1.2.1",
+    "bootstrap": "^3.3.6"
+  }
+}
