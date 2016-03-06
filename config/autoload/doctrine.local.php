@@ -4,11 +4,11 @@ return [
 	'doctrine' => [
 		'connection' => [
 			'odm_default' => [
-				'server' => '127.0.0.1',
+				'server' => 'server',
 				'port' => 27017,
-				'dbname' => 'prod_bobcat',
-				'user' => 'prod_bobcat',
-				'password' => 'prod_bobcat',
+				'dbname' => 'database',
+				'user' => '',
+				'password' => '',
 				'options' => ['socketTimeoutMS' => 600, 'connectTimeoutMS' => 22000],
 			],
 		],
@@ -22,7 +22,7 @@ return [
 				'generate_hydrators' => true,
 				'hydrator_dir' => getcwd() . '/data/DoctrineMongoODMModule/Hydrator',
 				'hydrator_namespace' => 'DoctrineMongoODMModule\Hydrator',
-				'default_db' => 'prod_bobcat',
+				'default_db' => 'database',
 				'retryConnect' => 3,
 				'filters' => [],
 			],
