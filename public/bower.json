@@ -47,6 +47,7 @@
     "angularAMD": "^0.2.1",
     "angular-translate-loader-static-files": "^2.10.0",
     "angular-bootstrap": "^1.2.1",
-    "bootstrap": "^3.3.6"
+    "bootstrap": "^3.3.6",
+    "ng-flow": "^2.7.1"
   }
 }

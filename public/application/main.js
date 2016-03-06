@@ -25,7 +25,8 @@ require.config({
         'uiBootstrap': '../plugins/angular-bootstrap/ui-bootstrap.min',
         'uiRouter': '../plugins/angular-ui-router/release/angular-ui-router.min',
         'stateHelper': '../plugins/angular-ui-router.statehelper/statehelper',
-        'ngLoad': '../plugins/ng-load/ng-load'
+        'ngLoad': '../plugins/ng-load/ng-load',
+        'ngFlow': '../plugins/ng-flow/dist/ng-flow.min'
     },
     shim: {
         'underscore': {
@@ -47,6 +48,7 @@ require.config({
         'uiRouter': ['angular'],
         'stateHelper': ['uiRouter', 'angular'],
         'angularMoment': ['angular'],
+        'ngFlow': ['angular'],
         'angularAMD': ['angular', 'uiBootstrap', 'angularTranslate', 'ngLoad', 'LocalStorageModule', 'ngStrap', 'angularMoment', 'ngMd5']
     },
     deps: ['application']

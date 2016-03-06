@@ -1,61 +1,28 @@
-## domReady
+# text
 
-It's easy. Works like this:
+An AMD loader plugin for detecting DOM ready. 
 
-``` js
-domready(function () {
-  // dom is loaded!
-})
-```
+Known to work in RequireJS, but should work in other
+AMD loaders that support the same loader plugin API.
 
--------------------------
-## Deprecation Notice
+## Docs
 
-Compatibility with `IE6`, `IE7`, and `IE8` has been fully dropped. If your application requires this level of support, please use the [`0.3.0`](https://github.com/ded/domready/tree/v0.3.0) release.
+See the [RequireJS API text section](http://requirejs.org/docs/api.html#pageload).
 
--------------------------
+## Latest release
 
+The latest release will be available from the "latest" tag.
 
-### Browser support
+## License
 
-  * IE9+
-  * Firefox 4+
-  * Safari 3+
-  * Chrome *
-  * Opera *
+Dual-licensed -- new BSD or MIT.
 
-### Building
+## Where are the tests?
 
-``` sh
-npm install
-make
-open tests/test.html
-```
+They are in the [requirejs](https://github.com/jrburke/requirejs) and
+[r.js](https://github.com/jrburke/r.js) repos.
 
-### Including with Ender
+## History
 
-Don't already have [Ender](http://enderjs.com)? Install it like this:
-
-``` sh
-npm install ender -g
-```
-
-Include domready in your package:
-
-``` sh
-ender add domready
-```
-
-Then use it like this
-
-``` js
-require('domready')(function () {
-  $('body').html('<p>boosh</p>')
-})
-
-// or
-
-$(document).ready(function () {
-  $('body').html('<p>boosh</p>')
-})
-```
+This plugin was in the [requirejs repo](https://github.com/jrburke/requirejs)
+up until the requirejs 2.0 release.

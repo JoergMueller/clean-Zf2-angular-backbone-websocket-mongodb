@@ -41,15 +41,16 @@ require([
 	'jqBrowser',
 	'smoothScroll',
 	'jqMPopup',
+	'ngFlow',
 	'services/service-loader',
 	'modules/controller-loader',
 ], function(angularAMD, controllers) {
 
 	console.debug("inside application", Date());
 
-	app = angular.module("mcApp", ['LocalStorageModule', 'ui.router', 'ui.router.stateHelper', 'pascalprecht.translate', 'mgcrea.ngStrap', 'angularMoment', 'ngMd5']);
+	app = angular.module("mcApp", ['LocalStorageModule', 'ui.router', 'ui.router.stateHelper', 'pascalprecht.translate', 'mgcrea.ngStrap', 'angularMoment', 'ngMd5', 'ngFlow']);
 	angular.module("mcApp");
-	app.config(function(localStorageServiceProvider, $urlRouterProvider, stateHelperProvider, $translateProvider, $modalProvider, $httpProvider, $locationProvider) {
+	app.config(function(localStorageServiceProvider, $urlRouterProvider, stateHelperProvider, $translateProvider, $modalProvider, $httpProvider, $locationProvider, flowFactoryProvider) {
 
 
 			$locationProvider.html5Mode({
@@ -201,10 +202,22 @@ require([
 			$httpProvider.defaults.useXDomain = true;
 			delete $httpProvider.defaults.headers.common['X-Requested-With'];
 			// $httpProvider.interceptors.push('APIInterceptor');
+			// 
+			flowFactoryProvider.defaults = {
+				permanentErrors:[404, 500, 501],
+				minFileSize: 0,
+				maxChunkRetries: 1,
+				chunkRetryInterval: 5000,
+				simultaneousUploads: 4,
+				singleFile: true
+			}; // You can also set default events:
+			flowFactoryProvider.on('catchAll', function (event) {
+				console.log('catchAll', arguments);
+			});
 
 		})
-		.run(function($rootScope, $window, localStorageService, amMoment, $modal, md5, $templateCache,
-						UserService, EventService, PageService) {
+		.run(function($rootScope, $window, localStorageService, amMoment, $modal, md5, $templateCache
+						,UserService, EventService, PageService) {
 
 
 			window.UserService = UserService;
