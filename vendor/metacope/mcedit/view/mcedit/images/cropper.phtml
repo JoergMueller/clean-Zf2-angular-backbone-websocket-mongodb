@@ -1,0 +1,421 @@
+<script src="/plugins/cropper/cropper.min.js">
+
+</script>
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="img-container">
+            <img id="cropperImage" src="/assetimage_<?=$image->getId()?>_900w500.jpg" data-image="<?=$image->getId()?>">
+        </div>
+    </div>
+
+    <div class="row docs-actions">
+        <div class="col-md-7">
+
+            <p>
+                <!-- -->
+            </p>
+
+            <div class="docs-preview clearfix">
+                <div class="img-preview ohidden" style="width:100%;height:300px;"></div>
+            </div>
+
+            <p>
+                <!-- -->
+            </p>
+
+            <div class="clearfix">
+                <!-- -->
+            </div>
+
+            <p>
+                <!-- -->
+            </p>
+
+            <div class="docs-data hidden">
+                <div class="input-group input-group-sm">
+                    <label class="input-group-addon" for="dataX">X</label>
+                    <input type="text" class="form-control" id="dataX" placeholder="x">
+                    <span class="input-group-addon">px</span>
+                </div>
+                <div class="input-group input-group-sm">
+                    <label class="input-group-addon" for="dataY">Y</label>
+                    <input type="text" class="form-control" id="dataY" placeholder="y">
+                    <span class="input-group-addon">px</span>
+                </div>
+                <div class="input-group input-group-sm">
+                    <label class="input-group-addon" for="dataWidth">Width</label>
+                    <input type="text" class="form-control" id="dataWidth" placeholder="width">
+                    <span class="input-group-addon">px</span>
+                </div>
+                <div class="input-group input-group-sm">
+                    <label class="input-group-addon" for="dataHeight">Height</label>
+                    <input type="text" class="form-control" id="dataHeight" placeholder="height">
+                    <span class="input-group-addon">px</span>
+                </div>
+                <div class="input-group input-group-sm">
+                    <label class="input-group-addon" for="dataRotate">Rotate</label>
+                    <input type="text" class="form-control" id="dataRotate" placeholder="rotate">
+                    <span class="input-group-addon">deg</span>
+                </div>
+                <div class="input-group input-group-sm">
+                    <label class="input-group-addon" for="dataScaleX">ScaleX</label>
+                    <input type="text" class="form-control" id="dataScaleX" placeholder="scaleX">
+                </div>
+                <div class="input-group input-group-sm">
+                    <label class="input-group-addon" for="dataScaleY">ScaleY</label>
+                    <input type="text" class="form-control" id="dataScaleY" placeholder="scaleY">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-5 padding-0 docs-buttons text-right">
+
+            <p>
+                <!-- -->
+            </p>
+
+            <div class="btn-group inline-block">
+                <button type="button" class="btn btn-primary" data-method="zoom" data-option="0.1" title="Zoom In">
+                    <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;zoom&quot;, 0.1)">
+                  <span class="fa fa-search-plus"></span>
+                    </span>
+                </button>
+                <button type="button" class="btn btn-primary" data-method="zoom" data-option="-0.1" title="Zoom Out">
+                    <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;zoom&quot;, -0.1)">
+                  <span class="fa fa-search-minus"></span>
+                    </span>
+                </button>
+            </div>
+
+            <div class="btn-group inline-block margin-left-3">
+                <button type="button" class="btn btn-primary active" data-method="crop" title="Crop">
+                    <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;crop&quot;)">
+                  <span class="fa fa-check"></span>
+                    </span>
+                </button>
+                <button type="button" class="btn btn-primary" data-method="clear" title="Clear">
+                    <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;clear&quot;)">
+                  <span class="fa fa-remove"></span>
+                    </span>
+                </button>
+            </div>
+
+            <div class="btn-group inline-block margin-left-3">
+                <button type="button" class="btn btn-primary" data-method="disable" title="Disable">
+                    <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;disable&quot;)">
+                  <span class="fa fa-lock"></span>
+                    </span>
+                </button>
+                <button type="button" class="btn btn-primary" data-method="enable" title="Enable">
+                    <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;enable&quot;)">
+                  <span class="fa fa-unlock"></span>
+                    </span>
+                </button>
+            </div>
+            <div class="btn-group inline-block margin-left-3">
+                <button type="button" class="btn btn-primary" data-method="reset" title="Reset">
+                    <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;reset&quot;)">
+                      <span class="fa fa-refresh"></span>
+                    </span>
+                </button>
+                <label class="btn btn-primary btn-upload" for="inputImage" title="Upload image file">
+                    <input type="file" class="sr-only" id="inputImage" name="file" accept="image/*">
+                    <span class="docs-tooltip" data-toggle="tooltip" title="Import image with Blob URLs">
+                      <span class="fa fa-upload"></span>
+                    </span>
+                </label>
+            </div>
+
+            <p>
+                <!-- -->
+            </p>
+
+            <div class="btn-group btn-group-justified text-" data-toggle="buttons">
+                <label class="btn btn-primary active" data-method="setAspectRatio" data-option="1.7777777777777777" title="Set Aspect Ratio">
+                    <input type="radio" class="sr-only" id="aspestRatio1" name="aspestRatio" value="1.7777777777777777">
+                    <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;setAspectRatio&quot;, 16 / 9)">
+                  16:9
+                </span>
+                </label>
+                <label class="btn btn-primary" data-method="setAspectRatio" data-option="1.3333333333333333" title="Set Aspect Ratio">
+                    <input type="radio" class="sr-only" id="aspestRatio2" name="aspestRatio" value="1.3333333333333333">
+                    <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;setAspectRatio&quot;, 4 / 3)">
+                  4:3
+                </span>
+                </label>
+                <label class="btn btn-primary" data-method="setAspectRatio" data-option="1" title="Set Aspect Ratio">
+                    <input type="radio" class="sr-only" id="aspestRatio3" name="aspestRatio" value="1">
+                    <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;setAspectRatio&quot;, 1 / 1)">
+                  1:1
+                </span>
+                </label>
+                <label class="btn btn-primary" data-method="setAspectRatio" data-option="0.6666666666666666" title="Set Aspect Ratio">
+                    <input type="radio" class="sr-only" id="aspestRatio4" name="aspestRatio" value="0.6666666666666666">
+                    <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;setAspectRatio&quot;, 2 / 3)">
+                  2:3
+                </span>
+                </label>
+                <label class="btn btn-primary" data-method="setAspectRatio" data-option="NaN" title="Set Aspect Ratio">
+                    <input type="radio" class="sr-only" id="aspestRatio5" name="aspestRatio" value="NaN">
+                    <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;setAspectRatio&quot;, NaN)">
+                  Free
+                </span>
+                </label>
+            </div>
+
+            <p>
+                <!-- -->
+            </p>
+            
+            <div class="input-group input-group-md pull-right margin-top-60">
+                <button type="button" class="btn btn-primary inline-block" data-method="getData" data-option data-target="#putData">
+                    <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;getData&quot;)">
+                    Get Data
+                  </span>
+                </button>
+                <button type="button" class="btn btn-primary inline-block margin-left-3" data-method="getImageData" data-option data-target="#putData">
+                    <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;getImageData&quot;)">
+                    Get Image Data
+                  </span>
+                </button>
+                <button type="button" class="btn btn-primary inline-block margin-left-3" data-method="getCroppedCanvas" data-option data-target="#putData">
+                    <span class="docs-tooltip" data-toggle="tooltip" title="$().cropper(&quot;getCroppedCanvas&quot;)">
+                    Download
+                  </span>
+                </button>
+            </div>
+
+            <div class="clearfix">
+                <!-- -->
+            </div>
+
+        </div>
+
+        <div class="clearfix">
+            <!-- -->
+        </div>
+
+        <div>
+            <input type="text" class="form-control" id="putData" placeholder="Get data to here or set data with this value">
+        </div>
+    </div>
+</div>
+
+<!-- Show the cropped image in modal -->
+<div class="modal fade docs-cropped" id="getCroppedCanvasModal" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" role="dialog" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="getCroppedCanvasTitle">Cropped</h4>
+            </div>
+            <div class="modal-body ohidden"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <a class="btn btn-primary" id="download" download="<?=$image->getName()?>-<?=$image->getToken()?>-cropped.png" href="javascript:void(0);">Download</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /.modal -->
+
+<script>
+var console = window.console || {
+    log: function() {}
+};
+var $body = $('body'),
+    $cropperOptions, $cropperImage;
+(function() {
+    $cropperImage = $('#cropperImage');
+    var $download = $('#download');
+    var $dataX = $('#dataX');
+    var $dataY = $('#dataY');
+    var $dataHeight = $('#dataHeight');
+    var $dataWidth = $('#dataWidth');
+    var $dataRotate = $('#dataRotate');
+    var $dataScaleX = $('#dataScaleX');
+    var $dataScaleY = $('#dataScaleY');
+    var $actions = $('.docs-actions');
+    $cropperOptions = {
+        aspectRatio: 16 / 9,
+        preview: '.img-preview',
+        crop: function(e) {
+            $dataX.val(Math.round(e.x));
+            $dataY.val(Math.round(e.y));
+            $dataHeight.val(Math.round(e.height));
+            $dataWidth.val(Math.round(e.width));
+            $dataRotate.val(e.rotate);
+            $dataScaleX.val(e.scaleX);
+            $dataScaleY.val(e.scaleY);
+        }
+    };
+    $cropperImage.on({
+        'build.cropper': function(e) {
+            console.log(e.type);
+        },
+        'built.cropper': function(e) {
+            console.log(e.type);
+        },
+        'cropstart.cropper': function(e) {
+            console.log(e.type, e.action);
+        },
+        'cropmove.cropper': function(e) {
+            console.log(e.type, e.action);
+        },
+        'cropend.cropper': function(e) {
+            console.log(e.type, e.action);
+        },
+        'crop.cropper': function(e) {
+            console.log(e.type, e.x, e.y, e.width, e.height, e.rotate, e.scaleX, e.scaleY);
+        },
+        'zoom.cropper': function(e) {
+            console.log(e.type, e.ratio);
+        }
+    }).cropper($cropperOptions);
+    // Buttons
+    if (!$.isFunction(document.createElement('canvas').getContext)) {
+        $('button[data-method="getCroppedCanvas"]').prop('disabled', true);
+    }
+    if (typeof document.createElement('cropper').style.transition === 'undefined') {
+        $('button[data-method="rotate"]').prop('disabled', true);
+        $('button[data-method="scale"]').prop('disabled', true);
+    }
+    // Download
+    if (typeof $download[0].download === 'undefined') {
+        $download.addClass('disabled');
+    }
+    // Options
+    $actions.on('change', ':checkbox', function() {
+        var $this = $(this);
+        var cropBoxData;
+        var canvasData;
+        if (!$cropperImage.data('cropper')) {
+            return;
+        }
+        $cropperOptions[$this.val()] = $this.prop('checked');
+        cropBoxData = $cropperImage.cropper('getCropBoxData');
+        canvasData = $cropperImage.cropper('getCanvasData');
+        $cropperOptions.built = function() {
+            $cropperImage.cropper('setCropBoxData', cropBoxData);
+            $cropperImage.cropper('setCanvasData', canvasData);
+        };
+        $cropperImage.cropper('destroy').cropper($cropperOptions);
+    });
+    // Methods
+    $actions.on('click', '[data-method]', function() {
+        var $this = $(this);
+        var data = $this.data();
+        var $target;
+        var result;
+        if ($this.prop('disabled') || $this.hasClass('disabled')) {
+            return;
+        }
+
+        $this.parent().find('.active').removeClass('active');
+        $this.addClass('active');
+
+        if ($cropperImage.data('cropper') && data.method) {
+            data = $.extend({}, data); // Clone a new one
+            if (typeof data.target !== 'undefined') {
+                $target = $(data.target);
+                if (typeof data.option === 'undefined') {
+                    try {
+                        data.option = JSON.parse($target.val());
+                    } catch (e) {
+                        console.log(e.message);
+                    }
+                }
+            }
+            window.res = result = $cropperImage.cropper(data.method, data.option, data.secondOption);
+            console.log(result)
+            if (data.flip === 'horizontal') {
+                $(this).data('option', -data.option);
+            }
+            if (data.flip === 'vertical') {
+                $(this).data('secondOption', -data.secondOption);
+            }
+            if (data.method === 'getCroppedCanvas' && result) {
+                $('#getCroppedCanvasModal').modal().find('.modal-body').html(result);
+                if (!$download.hasClass('disabled')) {
+                    $download.attr('href', result.toDataURL());
+                }
+            }
+
+            if ($.isPlainObject(result) && $target) {
+                try {
+                    $target.val(JSON.stringify(result));
+                } catch (e) {
+                    console.log(e.message);
+                }
+            }
+        }
+    });
+    // Keyboard
+    $body.on('keydown', function(e) {
+        if (!$cropperImage.data('cropper') || this.scrollTop > 300) {
+            return;
+        }
+        switch (e.which) {
+            case 37:
+                e.preventDefault();
+                $cropperImage.cropper('move', -1, 0);
+                break;
+            case 38:
+                e.preventDefault();
+                $cropperImage.cropper('move', 0, -1);
+                break;
+            case 39:
+                e.preventDefault();
+                $cropperImage.cropper('move', 1, 0);
+                break;
+            case 40:
+                e.preventDefault();
+                $cropperImage.cropper('move', 0, 1);
+                break;
+        }
+    });
+    // Import image
+    var $inputImage = $('#inputImage');
+    var URL = window.URL || window.webkitURL;
+    var blobURL;
+    if (URL) {
+        $inputImage.change(function() {
+            var files = this.files;
+            var file;
+            if (!$cropperImage.data('cropper')) {
+                return;
+            }
+            if (files && files.length) {
+                file = files[0];
+                if (/^image\/\w+$/.test(file.type)) {
+                    blobURL = URL.createObjectURL(file);
+                    $cropperImage.one('built.cropper', function() {
+                        URL.revokeObjectURL(blobURL); // Revoke when load complete
+                        sendFile(file);
+                    }).cropper('reset').cropper('replace', blobURL);
+                    $inputImage.val('');
+                } else {
+                    $body.tooltip('Please choose an image file.', 'warning');
+                }
+            }
+        });
+    } else {
+        $inputImage.prop('disabled', true).parent().addClass('disabled');
+    }
+}());
+function sendFile(file) {
+    var uri = "/mc/images/upload";
+    var xhr = new XMLHttpRequest();
+    var fd = new FormData();
+
+    xhr.open("POST", uri, true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+        }
+    };
+    fd.append('file', file);
+    // Initiate a multipart/form-data upload
+    xhr.send(fd);
+}
+</script>

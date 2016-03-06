@@ -1,0 +1,20 @@
+
+<?php
+
+$escaper = new Zend\Escaper\Escaper('utf-8');
+
+$attributes = $widget->getAttributes();
+$searchtags = isset($attributes['searchtags'])
+			? $attributes['searchtags']
+			: array();
+?>
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('Anker')?>: <small>--</small>
+		<input class="form-control" type="text" name="attributes[searchpath]" value="<?=isset($attributes['searchpath'][$this->lang])?$attributes['searchpath'][$this->lang]:''?>" placeholder="Anker des Dokuments ab dem nach Artikel gesucht werden soll" /></label>
+</div>
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('Tags')?>: <small>Artikel die auf diese Tags matchen</small>
+		<input id="" class="form-control" type="text" name="attributes[searchtags]" value="<?=implode(',', $searchtags)?>" placeholder="" data-role="tagsinput"></label>
+</div>

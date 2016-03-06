@@ -1,0 +1,47 @@
+
+<section
+	id="featured-blog-<?=$widgetId?>"
+	class="widget"
+	data-type="featured_blog"
+	data-id="<?=$widget->getId()?>"
+	data-token="<?=$widget->getToken()?>"
+	data-document="<?=$document->getId()?>"
+	data-path="<?=$widget->getId()?>"
+	>
+<div class="custom-heading">
+	<h2><?=$widget->hasAttribute('headline', $this->lang, 'Aktuelles')?></h2>
+</div><!-- .custom-heading end -->
+
+<ul class="pi-latest-posts03">
+	<li>
+		<div class="post-media">
+			<i class="fa fa-calendar"></i>
+		</div><!-- .post-media end -->
+
+		<div class="post-details">
+			<div class="post-date">
+				<p>
+					15 Dezember, 2015
+				</p>
+			</div>
+
+			<a href="#">
+				<h4>
+					Erfolgreiche Tiefbau-Live für Doosan &amp; Bobcat
+				</h4>
+			</a>
+
+			<p>
+				Bei bestem Wetter lockte das praxisorientierte Messedoppel aus Tiefbau-Live und Recycling-Aktiv im Juni wieder zahlreiche Fachbesucher auf das großzügige Messegelände in Baden-Baden. Der Tiefbau-Live Stand von Doosan und Bobcat erwies sich dabei für die Messebesucher als besonders attraktiv.
+			</p>
+
+			<a href="#" class="read-more">
+				<span>
+					Weiterlesen
+					<i class="fa fa-chevron-right"></i>
+				</span>
+			</a>
+		</div><!-- .post-details end -->
+	</li>
+</ul><!-- .pi-latest-posts end -->
+</section>

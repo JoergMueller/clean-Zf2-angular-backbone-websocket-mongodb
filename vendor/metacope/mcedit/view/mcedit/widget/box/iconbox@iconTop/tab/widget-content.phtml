@@ -1,0 +1,43 @@
+
+<?php
+
+$escaper = new Zend\Escaper\Escaper('utf-8');
+
+?>
+
+
+<div class="form-group">
+	<label for="" class="block">
+		<i class="fa fa-info-circle mr-10"
+			data-toggle="popover"
+			data-placement="right"
+			data-trigger="hover"
+			data-content="<?=$this->bbcode($this->translate('iconbox_icon_content'))?>"
+			data-original-title="Hilfe"></i>Icon:<br>
+		<input type="text" class="form-control" name="attributes[icon]" value="<?=$widget->hasAttribute('icon')?>" placeholder="icon:fa fa-home"></label>
+</div>
+<div class="form-group">
+	<label for="" class="block">
+		<i class="fa fa-info-circle mr-10"
+			data-toggle="popover"
+			data-placement="right"
+			data-trigger="hover"
+			data-content="<?=$this->bbcode($this->translate('iconbox_link_content'))?>"
+			data-original-title="Hilfe"></i>Link:<br>
+		<input type="text" class="form-control" name="attributes[link]" value="<?=$widget->hasAttribute('link')?>" placeholder="Link zu einer Zielseite setzen"></label>
+</div>
+<div class="form-group">
+	<label for="" class="block">
+		<i class="fa fa-info-circle mr-10"
+			data-toggle="popover"
+			data-placement="right"
+			data-trigger="hover"
+			data-content="<?=$this->bbcode($this->translate('iconbox_headline_content'))?>"
+			data-original-title="Hilfe"></i>Headline:<br>
+		<input type="text" class="form-control" name="attributes[headline][<?=$this->lang?>]" value="<?=$widget->hasAttribute('headline', $this->lang);?>" placeholder="Headline"></label>
+</div>
+<div class="form-group">
+	<label for="" class="block">Content:<br>
+		<textarea class="form-control wysihtm h340" name="attributes[content][<?=$this->lang?>]"><?=$widget->hasAttribute('content', $this->lang);?></textarea></label>
+</div>
+

@@ -1,0 +1,16 @@
+
+<?php
+$escaper = new Zend\Escaper\Escaper('utf-8');
+$widgettags = $widget->hasAttribute('widgettags', $this->lang);
+if(!is_array($widgettags)) $widgettags = [];
+?>
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('Tags')?>: <small></small>
+		<input class="form-control" type="text" name="widgettags" value="<?=implode(',', $widgettags)?>" placeholder="<?=$this->translate('Tags')?>" data-role="tagsinput" /></label>
+</div>
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('Limit')?>: <small>( Anzahl der anzuzeigenden Element )</small>
+		<input class="form-control" type="text" name="attributes[limit]" value="<?=$widget->hasAttribute('limit', $this->lang)?>" placeholder="<?=$this->translate('Limit')?>" /></label>
+</div>

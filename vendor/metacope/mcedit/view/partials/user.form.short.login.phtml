@@ -1,0 +1,43 @@
+
+<!-- header top dropdowns start -->
+<!-- ================ -->
+<div class="header-top-dropdown text-right">
+	<?if($this->identity && $this->identity->getId()):?>
+	<div class="btn-group">
+		<a href="/logout" class="log-btn"><i class="fa fa-user pr-10"></i> <?=$identity->getNickname()?></a>
+	</div>
+	<?else:?>
+	<div class="btn-group dropdown">
+		<button type="button" class="log-btn" data-toggle="dropdown"><i class="fa fa-lock pr-10"></i> Login</button>
+		<ul class="dropdown-menu dropdown-menu-right dropdown-animation">
+			<li>
+				<form id="loginFormShort" class="login-form margin-clear jqform" method="post" action="/login">
+					<div class="form-group has-feedback">
+						<label class="control-label">Username</label>
+						<input type="text" class="form-control validate[required]" name="login" placeholder="">
+						<i class="fa fa-user form-control-feedback"></i>
+					</div>
+					<div class="form-group has-feedback">
+						<label class="control-label">Password</label>
+						<input type="password" name="password" class="form-control validate[required] margin-bottom-10" placeholder="">
+						<i class="fa fa-lock form-control-feedback"></i>
+					</div>
+					<button type="submit" class="btn btn-gray btn-sm"> <i class="fa fa-lock pr-10" data-spinner="replace"></i> Log In</button>
+					<span class="pl-5 pr-5">or</span>
+					<button type="submit" class="btn btn-default btn-sm">{{'Sing Up' | translate}}</button>
+					<ul>
+						<li><a href="#" disabled>{{'Forgot your password' | translate}}?</a></li>
+					</ul>
+					<span class="text-center">Login with</span>
+					<ul class="social-links circle small colored clearfix">
+						<li class="facebook"><a target="_blank" href="http://www.facebook.com"><i class="fa fa-facebook"></i></a></li>
+						<li class="twitter"><a target="_blank" href="http://www.twitter.com"><i class="fa fa-twitter"></i></a></li>
+						<li class="googleplus"><a target="_blank" href="http://plus.google.com"><i class="fa fa-google-plus"></i></a></li>
+					</ul>
+				</form>
+			</li>
+		</ul>
+	</div>
+	<?endif?>
+</div>
+<!--  header top dropdowns end -->

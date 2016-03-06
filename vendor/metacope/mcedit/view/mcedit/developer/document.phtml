@@ -1,0 +1,50 @@
+<h1>metacope:mcedit:developer:document</h1>
+
+
+<?
+$this->documentForm->setAttribute('action', '/mc/developer/document?create=true');
+$this->documentForm->prepare();
+?>
+
+
+<?=$this->form()->openTag($this->documentForm);?>
+<?=$this->formCollection($this->documentForm);?>
+<?=$this->form()->closeTag()?>
+
+
+<script>
+
+(function(){
+
+	var jqform_options = {
+			'selector': 'form.jqform',
+			'precall': function(elem, opt) {
+				_.map($('[data-spinner]').toArray(),App.spinner.bind('start'));
+				return true;
+			},
+			'callback': function(response) {
+				_.map($('.spinner').toArray(),App.spinner.bind('done'));
+				js_scope=angular.element(document.getElementById('_rootWrap')).scope();
+				$('#documentForm .tab-pane.active').fadeTo(100);
+				if(response.document != undefined) {
+					$('#btn_' + response.document.id).empty().append(response.document.structname['<?=$this->lang?>']);
+					if(response.document.visible == 0) {
+						$('#btn_' + response.document.id).removeClass('btn-success').addClass('btn-warning');
+					}
+					else
+						$('#btn_' + response.document.id).removeClass('btn-warning').addClass('btn-success');
+					delete response.document;
+				}
+				EvM.notify('mc.jsonresponse', response);
+				if(response.hasShowModal != undefined) {
+					$(response.hasShowModal.selector+'Label').empty().append(response.hasShowModal.label);
+					$(response.hasShowModal.selector+'Content').empty().append(response.hasShowModal.content);
+					showModal(response.hasShowModal.selector);
+                }
+			}
+		}
+	EvM.notify('mc.jqform', jqform_options);
+
+})()
+
+</script>

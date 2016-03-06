@@ -1,0 +1,57 @@
+
+<?
+$slides = $widget->hasAttribute('slides');
+?>
+
+		<!-- Masterslider -->
+		<div
+			id="master_<?=$widget->getId()?>"
+			class="widget master-slider ms-skin-default"
+			data-token="<?=$widget->getToken()?>"
+			data-type="slider_fullwidth"
+			data-id="<?=$widget->getId()?>"
+			data-document="<?=$document->getId()?>"
+			data-path="<?=$widget->getAnker()?>"
+			data-title="<?=$widget->hasAttribute('headline', $this->lang)?>"
+			>
+
+			<?foreach($slides as $slide):?>
+
+			<!-- slide  start -->
+			<div class="ms-slide" data-delay="6">
+				<!-- slide background -->
+				<img src="/theme/masterslider/blank.gif" data-src="<?=$slide['image']?>" alt="_"/> 
+
+				 <?=$slide['text']?>
+
+			</div><!-- .ms-slide end -->
+
+			<?endforeach?>
+
+		</div><!-- #masterslider end -->
+
+
+<script>
+	/* <![CDATA[ */
+	jQuery(document).ready(function ($) {
+		'use strict';
+
+		// MASTER SLIDER START
+		var slider = new MasterSlider();
+		slider.setup('master_<?=$widget->getId()?>', {
+			width: 1140, // slider standard width
+			height: 854, // slider standard height
+			space: 0,
+			speed: 10,
+			layout: "fullwidth",
+			centerControls: false,
+			loop: true,
+		  autoplay: true
+					// more slider options goes here...
+					// check slider options section in documentation for more options.
+		});
+		// adds Arrows navigation control to the slider.
+		slider.control('arrows');
+	});
+	/* ]]> */
+</script>

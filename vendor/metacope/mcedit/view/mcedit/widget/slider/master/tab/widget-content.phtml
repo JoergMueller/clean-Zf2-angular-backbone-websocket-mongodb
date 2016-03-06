@@ -1,0 +1,101 @@
+
+<?
+$attributes = $widget->getAttributes();
+$slides = $attributes->offsetExists('slides') ? $attributes->offsetGet('slides') : array();
+
+?>
+
+<div id="sliderSlides" class="sliderSlides hp100">
+	<a class="btn btn-default btn-xs pull-right addSlide" href="javascript:;"><i class="fa fa-plus-square"></i> <?=$this->translate('add slide')?></a>
+	<a id="btnShowHtml" class="btn btn-default btn-xs pull-right" href="javascript:;"><i class="fa fa-plus-square"></i> <?=$this->translate('show wysiwyg')?></a>
+
+	<div class="clearfix"><!-- --></div>
+	<p>&nbsp;</p>
+	<div class="clearfix"><!-- --></div>
+
+
+	<?if(isset($attributes['slides']) && sizeof($attributes['slides'])>0):?>
+	<?foreach($attributes['slides'] as $index => $slide):?>
+	<div class="inner">
+		<div id="oneSlide<?=$index?>" class="oneSlide">
+			<div id="si_<?=$index?>" class="form-group">
+				<label class="block"><?=$this->translate('Image URL or Database-ID')?>:<br>
+					<div class="input-group">
+						<span class="input-group-btn">
+				        	<button class="btn btn-default remove" type="button" data-parent="#oneSlide<?=$index?>"><i class="fa fa-trash-o"></i></button>
+				      	</span>
+						<input id="timage<?=$slide['image']?>" class="form-control validate[required] imgInput" type="text" name="attributes[slides][<?=$index?>][image]" value="<?=$slide['image']?>" placeholder="<?=$this->translate('Image URL or Database-ID')?>" />
+						<span class="input-group-btn">
+				        	<button class="btn btn-default imgSeeker" type="button" data-target="timage<?=$slide['image']?>"><i class="fa fa-image"></i></button>
+				      	</span>
+				    </div></label>
+			</div>
+			<div class="form-group">
+				<label class="block"><?=$this->translate('Description')?>:<br>
+					<textarea class="form-control wysihtm h200qw" name="attributes[slides][<?=$index?>][text]" placeholder="<?=$this->translate('Description')?>"><?=$slide['text']?></textarea></label>
+			</div>
+		</div>
+	</div>
+	<?endforeach?>
+	<?endif?>
+
+	<div class="clearfix"><!-- --></div>
+
+</div>
+
+<script type="text/html" id="tmpl_slideentry">
+<div class="inner">
+	<div id="oneSlide<%=id%>" class="oneSlide">
+		<div id="sie_<%=id%>" class="form-group">
+			<label class="block"><?=$this->translate('Image URL or Database-ID')?>:<br>
+				<div class="input-group">
+					<span class="input-group-btn">
+			        	<button class="btn btn-default remove" type="button"><i class="fa fa-trash-o"></i></button>
+			      	</span>
+					<input id="<%=id%>" class="form-control validate[required]" type="text" name="attributes[slides][<%=id%>][image]" value="" placeholder="<?=$this->translate('Image URL or Database-ID')?>" />
+					<span class="input-group-btn">
+			        	<button class="btn btn-default imgSeeker" type="button" data-target="<%=id%>"><i class="fa fa-image"></i></button>
+			      	</span>
+			    </div></label>
+		</div>
+		<div class="form-group">
+			<label class="block"><?=$this->translate('Description')?>:<br>
+				<textarea class="form-control wysihtm h200" name="attributes[slides][<%=id%>][text]" placeholder="<?=$this->translate('Description')?>"></textarea></label>
+		</div>
+	</div>
+</div>
+</script>
+
+<script>
+
+(function(){
+	// $('.imgInput').each(function(){
+	// 	var id=App.getId();
+	// 	$(this).attr('id', id).parent('#sliderSlides').find('button').attr('data-target', id);
+	// });
+
+	$('#sliderSlides').on("click", 'button.remove', function(){
+		if(confirm('<?=$this->translate("Sind Sie sich sicher ?")?>') == true)
+		$($(this).data('parent')).remove();
+	});
+
+	$('#sliderSlides').on("click", 'a.addSlide', function(){
+		var currentId=App.getId();
+		$('#sliderSlides').append(tmpl('tmpl_slideentry',{'id':currentId}));
+		$.fancybox.reposition()
+	});
+	$('#sliderSlides').on("click", '.imgSeeker', function(e){
+		if('button' == this.nodeName.toLowerCase()) {}
+		$('#seekerLabel').html('Suchen Sie sich ein Bild aus');
+		$('#seekerContent').load('/mc/images/seeker?targetId=' + $(this).data('target'));
+		showModal('#seeker');
+	});
+
+	$('#btnShowHtml').on('click', function(){
+		EvM.notify('mc.wysihtml', {'selector':'.wysihtm', 'wysihtml5ParserRules':wysihtml5ParserRules,'cleanWysihtml5':1});
+		$(this).remove();
+	})
+
+})();
+
+</script>

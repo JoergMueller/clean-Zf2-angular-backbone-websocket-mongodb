@@ -1,0 +1,14 @@
+
+<?php
+$escaper = new Zend\Escaper\Escaper('utf-8');
+?>
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('Headline')?>: <small>( maxlength: 20 )</small>
+		<input class="form-control" type="text" name="attributes[headline]" value="<?=$widget->hasAttribute('headline', $this->lang)?>" placeholder="<?=$this->translate('headline')?>" /></label>
+</div>
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('Content')?>: <small></small>
+		<textarea class="form-control h580" name="attributes[content]" placeholder="<?=$this->translate('Content')?>"><?=$widget->hasAttribute('content', $this->lang)?></textarea></label>
+</div>

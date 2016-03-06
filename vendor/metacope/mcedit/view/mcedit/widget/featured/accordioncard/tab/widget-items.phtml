@@ -1,0 +1,86 @@
+
+<?php
+$escaper = new Zend\Escaper\Escaper('utf-8');
+
+?>
+
+<div id="accordionItems" class="sliderSlides hp100">
+	<a class="btn btn-default btn-xs pull-right addSlide" href="javascript:;"><i class="fa fa-plus-square"></i> <?=$this->translate('add item')?></a>
+
+	<div class="clearfix"><!-- --></div>
+	<p>&nbsp;</p>
+	<div class="clearfix"><!-- --></div>
+
+	<?if(isset($attributes['items']) && sizeof($attributes['items'])>0):?>
+	<?foreach($attributes['items'] as $index => $item):
+    if (isset($item['image'][$this->lang]) && strlen($item['image'][$this->lang]) === 24 && preg_match("/^[a-z0-9]{24}$/", $item['image'][$this->lang])) {
+        $item['image'] = "/assetimage_{$item['image'][$this->lang]}_450w300.png";
+    }
+	?>
+	<div class="inner">
+		<div id="oneSlide<?=$index?>" class="oneSlide">
+			<div id="si_<?=$index?>" class="form-group">
+				<label class="block"><?=$this->translate('Image URL or Database-ID')?>:<br>
+					<div class="input-group">
+						<span class="input-group-btn">
+				        	<button class="btn btn-default remove" type="button" data-parent="#oneSlide<?=$index?>"><i class="fa fa-trash-o"></i></button>
+				      	</span>
+						<input id="timage<?=$index?>" class="form-control validate[required] imgInput" type="text" name="items[<?=$index?>][image]" value="<?=$item['image']?>" placeholder="<?=$this->translate('Image URL or Database-ID')?>" />
+						<span class="input-group-btn">
+				        	<button class="btn btn-default bs-image" type="button" data-seeker-target="timage<?=$index?>"><i class="fa fa-image"></i></button>
+				      	</span>
+				    </div></label>
+			</div>
+			<div class="form-group">
+				<label class="block"><?=$this->translate('Headline')?>:<br>
+					<input class="form-control" type="text" name="items[<?=$index?>][headline]" placeholder="<?=$this->translate('Headline')?>" value="<?=$item['headline'][$this->lang]?>"></label>
+			</div>
+			<div class="form-group">
+				<label class="block"><?=$this->translate('Subline')?>:<br>
+					<input class="form-control" type="text" name="items[<?=$index?>][subline]" placeholder="<?=$this->translate('Subline')?>" value="<?=$item['subline'][$this->lang]?>"></label>
+			</div>
+			<div class="form-group">
+				<label class="block"><?=$this->translate('Target URL')?>:<br>
+					<input class="form-control" type="text" name="items[<?=$index?>][target]" placeholder="<?=$this->translate('Target URL')?>" value="<?=$item['target'][$this->lang]?>"></label>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<?endforeach?>
+	<?endif?>
+
+	<div class="clearfix"></div>
+</div>
+
+
+<script type="text/html" id="tmpl_itementry">
+<div class="inner">
+	<div id="oneSlide<%=id%>" class="oneSlide">
+		<div id="sie_<%=id%>" class="form-group">
+			<label class="block"><?=$this->translate('Image URL or Database-ID')?>:<br>
+				<div class="input-group">
+					<span class="input-group-btn">
+			        	<button class="btn btn-default remove" type="button"><i class="fa fa-trash-o"></i></button>
+			      	</span>
+					<input id="timage<%=id%>" class="form-control validate[required]" type="text" name="items[<%=id%>][image]" value="" placeholder="<?=$this->translate('Image URL or Database-ID')?>" />
+					<span class="input-group-btn">
+			        	<button class="btn btn-default bs-image" type="button" data-seeker-target="timage<%=id%>"><i class="fa fa-image"></i></button>
+			      	</span>
+			    </div></label>
+		</div>
+			<div class="form-group">
+				<label class="block"><?=$this->translate('Headline')?>:<br>
+					<input class="form-control" name="items[<%=id%>][headline]" placeholder="<?=$this->translate('Headline')?>"></label>
+			</div>
+			<div class="form-group">
+				<label class="block"><?=$this->translate('Subline')?>:<br>
+					<input class="form-control" name="items[<%=id%>][subline]" placeholder="<?=$this->translate('Subline')?>"></label>
+			</div>
+			<div class="form-group">
+				<label class="block"><?=$this->translate('Target URL')?>:<br>
+					<input class="form-control" name="items[<%=id%>][target]" placeholder="<?=$this->translate('Target URL')?>"></label>
+			</div>
+	</div>
+</div>
+<hr>
+</script>

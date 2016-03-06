@@ -1,0 +1,84 @@
+
+<?php
+$dm = $this->dm ? $this->dm : $this->ObjectHelper()->getDocumentManager();
+
+if(!$this->document) {
+	$this->document = $widget->getParent();
+}
+
+
+$attributes = $widget->getAttributes();
+$datestart = $widget->getDatestart();
+$datestop = $widget->getDatestop();
+$datestart = $datestart instanceof \DateTime ? $datestart->format('d.m.Y') : null;
+$datestop = $datestop instanceof \DateTime ? $datestop->format('d.m.Y') : null;
+
+$token = $widget->getToken();
+
+$action = $token && strlen($token)>0
+		? 'id/'.$this->document->getId() . '/token/' . $widget->getToken()
+		: 'create/1/id/' . $this->document->getId();
+?>
+
+<div class="row editorOverlay w1200 padding-20 hp90">
+
+	<form id="widgetForm" class="jqform" method="post" action="/mc/widget/set/<?=$action?>"
+		data-widget="<?=$widget->getId()?>"
+		data-type="<?=$widget->getType()?>"
+		data-path="<?=$widget->getAnker()?>">
+
+	<input type="hidden" name="id" value="<?=$this->document->getId()?>" />
+
+	<ul class="nav nav-tabs" id="article-tab">
+		<li class="active"><a href="#widget-content" data-toggle="tab"><?=$this->translate('Content'); ?></a></li>
+		<li><a href="#widget-meta" data-toggle="tab"><?=$this->translate('Settings'); ?></a></li>
+		<li><a href="#widget-geo" data-toggle="tab"><?=$this->translate('GEO-Coords'); ?></a></li>
+	</ul>
+
+	<div class="tab-content margin-bottom-10 margin-top-10 h770 oyscroll">
+
+		<div class="tab-pane active" id="widget-content">
+		<?php include 'tab/widget-content.phtml'; ?>
+		</div>
+		<div class="tab-pane" id="widget-meta">
+		<?php include 'tab/widget-meta.phtml'; ?>
+		</div>
+		<div class="tab-pane" id="widget-geo">
+		<?php include 'tab/widget-geo.phtml'; ?>
+		</div>
+
+	</div>
+
+	<div class="clearfix"><!--  --></div>
+
+	<button class="btn btn-default margin-right-8 pull-right">
+		<i class="fa fa-check" data-spinner="replace"></i> <?=$this->translate("Save")?></button>
+
+
+	</form>
+
+</div>
+
+<script>
+
+(function(){
+
+	$('a[data-toggle="tab"]').on('shown.bs.tab', function() {
+		$.fancybox.reposition();
+		EvM.notify('mc.scroll',{'selector':'.tab-content.oyscroll'});
+		$('[data-toggle="popover"]').popover({'html':true});
+	});
+	$('a[data-toggle="tab"]:first').trigger('click');
+
+    $('a.bs-image').unbind();
+    $('a.bs-image').on('click', function(){
+        $('#seekerLabel').html('Suchen Sie sich ein Bild aus');
+        $('#seekerContent').addClass('h770 oyscroll').load('/mc/images/seeker?t=' + $(this).closest('label').find('textarea').data('seeker-target'));
+        showModal('#seeker',{});
+    });
+    $('[data-role="tagsinput"]').tagsinput();
+    EvM.notify('mc.jqform', jqform_options);
+
+})();
+
+</script>

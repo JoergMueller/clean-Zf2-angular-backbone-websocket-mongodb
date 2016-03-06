@@ -1,0 +1,98 @@
+
+<?php
+use Metacope\Mcedit\Model\Image;
+
+$folders = $dm->createQueryBuilder('Metacope\Mcedit\Model\Image')
+				->distinct('folder')
+				->getQuery()
+				->execute();
+?>
+
+<scrip src="//cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.js"></scrip>
+<link href="//cdnjs.cloudflare.com/ajax/libs/jquery-jcrop/0.9.12/css/jquery.Jcrop.min.css" rel="stylesheet" type="text/css" />
+<link href="//cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" rel="stylesheet" type="text/css" />
+
+
+<div class="row-fluid wp100">
+	<div class="input-group wp100">
+		<span class="input-group-btn">
+			<button class="btn btn-default" type="button" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-folder-open-o"></i> <span class="caret"></span></button>
+			<ul id="folder-list" class="dropdown-menu" role="menu">
+				<?php foreach($folders as $folder): ?>
+				<li><a href="#"><i class="fa fa-folder-open-o"></i> <?=$folder?></a></li>
+				<?php endforeach; ?>
+			</ul>
+
+
+		</span>
+		<input id="folder" type="text" class="form-control" name="folder" value="<?=isset($image)?$image->getFolder():false;?>" placeholder="Folder ...">
+	</div><!-- /input-group -->
+</div>
+
+<br>
+
+<div class="row-fluid wp100">
+
+	<p>
+		<i class="fa  fa-info-circle"></i> <?=$this->translate("select or create a folder first")?>
+	</p>
+
+	<div id="dropzone" class="dropzone"></div>
+</div>
+
+<br>
+
+<div id="dzPreview" style="display:none" class="dz-preview dz-file-preview">
+  <div class="dz-details">
+    <div class="dz-filename"><span data-dz-name></span></div>
+    <div class="dz-size" data-dz-size></div>
+    <img data-dz-thumbnail />
+  </div>
+  <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
+  <div class="dz-success-mark"><span>✔</span></div>
+  <div class="dz-error-mark"><span>✘</span></div>
+  <div class="dz-error-message"><span data-dz-errormessage></span></div>
+</div>
+
+<script>
+
+var $dropzone;
+(function(){
+	$dropzone = new Dropzone("div#dropzone", {
+		'url':'/mc/images/uploado',
+		paramName: "file", // The name that will be used to transfer the file
+		maxFilesize: 20, // MB
+		parallelUploads: 10,
+		previewTemplate: $('#dzPreview').html(),
+		uploadMultiple: true,
+		acceptedFiles: 'image/*',
+		accept: function(file, done) {
+			done();
+		},
+		sending: function(file, xhr, fd){
+			$folder = $('#folder').val() ? $('#folder').val() : 'Default';
+			fd.append('folder', $folder);
+		}
+	});
+	$dropzone.on("complete", function(file) {
+		var response = jQuery.parseJSON(file.xhr.response);
+		$('#dropzone').append($('<input>', {'type':'hidden','name':'images[]'}).attr('value', response.id));
+		file.previewElement.setAttribute('data-id', response.id);
+		file.previewElement.setAttribute('data-toggle', 'addedFile');
+
+		$('[data-toggle="addedFile"]').each(function(){
+			$(this).unbind("click");
+			$(this).on("click", function(){
+				$.get('/mc/images/meta?lang=<?=$this->lang?>', $(this).data(), function(data){
+					EvM.notify("mc.jsonresponse", data);
+				}, 'json');
+			});
+		});
+	});
+	$('#folder-list a').on('click', function(e) {
+		e.preventDefault();
+		$('#folder').val(App.stripTags($(this).html()).replace(/^\s+|\s+$/,''));
+	});
+})();
+
+</script>

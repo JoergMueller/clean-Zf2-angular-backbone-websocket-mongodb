@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="<?=$this->lang?>">
+
+<?
+$dm = !isset($dm) && $this->dm
+	? $this->dm
+	: ( !$this->dm ? $this->ObjectHelper()->getDocumentManager() : $this->dm );
+
+$identity = $this->identity();
+
+$token = 'public';
+if(isset($this->document) && ($this->document instanceof \Metacope\Mcedit\Model\DocumentModel)) {
+	$token = $this->document->getToken();
+}
+?>
+<head>
+<meta charset="utf-8">
+<base href="/">
+<link rel="alternate" hreflang="de">
+		<?=$this->headTitle($this->config['page']['title'])->setSeparator(' - ')->setAutoEscape(false)?>
+
+		<!-- dublin-core -->
+		<?=$this->partial('dublincore', get_object_vars($this))?>
+
+		<!-- Mobile Meta -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- Favicon -->
+		<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+		<!-- Web Fonts -->
+		<link href='/css/font/robo.css' type='text/css'>
+		<link rel="stylesheet" href='/css/font/robo_latin.css' type='text/css'>
+
+		<!-- Bootstrap core CSS -->
+		<link href="/css/normalize.css" rel="stylesheet">
+		<link href="/css/bootstrap.css" rel="stylesheet">
+
+		<!-- Font Awesome CSS -->
+		<link href="/fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+		<!-- Font CSS -->
+		<link href="/fonts/elegant_font/html_css/style.css" rel="stylesheet">
+
+		<!-- Plugins -->
+		<link href="/plugins/fancybox/source/jquery.fancybox.css" rel="stylesheet">
+		<link href="/plugins/magnific-popup/magnific-popup.css" rel="stylesheet">
+		<link href="/css/animations.css" rel="stylesheet">
+		<link href="/plugins/hover/hover-min.css" rel="stylesheet">
+		<link href="/plugins/cropper/cropper.min.css" rel="stylesheet">
+		<link href="/plugins/bootstrap-tagsinput.css" rel="stylesheet">
+		<link href="/plugins/jstree/dist/themes/default-dark/style.min.css" rel="stylesheet" />
+
+		<!-- the project core CSS file -->
+		<link rel='stylesheet' href='/theme/owl-carousel/owl.carousel.css'/><!-- Client carousel -->
+		<link rel="stylesheet" href="/theme/masterslider/style/masterslider.css" /><!-- Master slider css -->
+		<link rel="stylesheet" href="/theme/masterslider/skins/default/style.css" /><!-- Master slider default skin -->
+		<link rel="stylesheet" href="/theme/css/style.css"/><!-- template styles -->        
+		<link rel="stylesheet" href="/theme/css/color-default.css"/><!-- template main color -->
+		<link rel="stylesheet" href="/theme/css/retina.css"/><!-- retina ready styles -->
+		<link rel="stylesheet" href="/theme/css/responsive.css"/><!-- responsive styles -->
+
+		<!-- Custom css -->
+		<link href="/css/app.css" rel="stylesheet">
+		<link href="/css/custom.css" rel="stylesheet">
+		<link href="/css/definition.css" rel="stylesheet">
+		
+		<?if($this->document && $this->document->getClient()):?>
+		<style><?=$this->document->getClient()->getStylesheet()?></style>
+		<?endif?>
+
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+		<script type="text/javascript" src="/plugins/underscore/underscore-min.js"></script>
+		<script type="text/javascript" src="/plugins/modernizr.js"></script>
+		<script type="text/javascript" src="/js/jquery.js"></script>
+		<script type="text/javascript" src="/js/bootstrap.js"></script>
+
+		<script src="/plugins/moment/min/moment-with-locales.min.js"></script>
+		<script src="/theme/js/jquery.isotope.min.js"></script>
+
+		<script>
+		var Models = App = SessionUser = _.create({},{});
+		var Data={}, current_lang = '<?=$this->lang?>',
+		$spinner = $('<i/>', {'class':'fa fa-refresh fa-spin fa-3x spinner','style':'position:absolute;top:20px;left:50%'}),
+		backgrounds=false, overlay=false, dummy_locale = current_lang + '-' + current_lang.toUpperCase();
+		Data.Roles=<?=ROLES?>;
+		</script>
+		<script src="/js/socket.io.min.js"></script>
+		<script>
+		var c = 0;
+		while (c < 10 && typeof io == 'undefined') {
+			c++;
+			setTimeout(function() {}, 300);
+		}
+		Socket = window.socket = io.connect('//' + location.hostname + ':8080');
+		</script>
+		<script src="/plugins/backbone/backbone-min.js"></script>
+		<script src="/plugins/backbone_query/backbone-query.min.js"></script>
+		<script src="/application/modules/backbone/backbone.iosync.min.js"></script>
+		<script src="/application/modules/backbone/backbone.iobind.min.js"></script>
+
+		<?if($identity && $this->rbac->getRole($identity->getRole())->hasPermission('editor')):?>
+		<?endif?>
+
+		<script src="/plugins/requirejs/require.js" data-main="/application/main.js"></script>
+	</head>
+
+	<body class="">
+		
+		<div class="header-wrapper header-transparent">
+			<?include PARTIAL . '/page/header.phtml'?>
+		</div>
+
+		<? if(isset($this->document)): ?>
+		<?=$this->content?>
+		<? endif; ?>
+
+		<? if(!isset($this->document) || preg_match("#\/(gebraucht|bau)maschinen#i", $this->document->getPath())): ?>
+		<? include getcwd() . '/elements/widgets/slider/master.phtml'?>
+		<div ui-view="f"></div>
+		<? endif; ?>
+
+		<?include PARTIAL . '/page/footer.phtml'?>
+
+		<?include PARTIAL . '/modalhelper.phtml'?>
+
+
+		<!-- JavaScript files placed at the end of the document so the pages load faster -->
+		<!-- ================================================== -->
+
+		<!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+		<script src="/js/google.map.config.js"></script> -->
+
+		<script type="text/javascript" src="/js/mc.app.js"></script>
+		<script type="text/javascript" src="/js/mcedit.app.js"></script>
+
+		<!-- Javascript Theme files -->
+		<script src="/plugins/waypoints/jquery.waypoints.min.js"></script>
+		<script src="/theme/js/jquery.srcipts.min.js"></script><!-- modernizr, retina, stellar for parallax   -->
+		<script src="/theme/owl-carousel/owl.carousel.min.js"></script><!-- Carousels script -->
+		<script src="/theme/masterslider/masterslider.min.js"></script><!-- Master slider main js -->
+		<script src="/theme/js/jquery.dlmenu.min.js"></script><!-- for responsive menu -->
+		<script src="/theme/js/include.js"></script><!-- custom js functions -->
+
+
+<script>
+var jqform_options, wysihtml5ParserRules,$grid,$image, EditorData;
+(function(){
+
+
+	window.setTimeout(function() {
+
+		EditorData=<?=json_encode($this->EditorData['data'])?>;
+		Editor.init(EditorData);
+	}, 600);
+
+
+
+	jqform_options = {
+		'selector': '.jqform',
+		'precall': function(elem, opt) {
+			_.map($('[data-spinner]').toArray(),App.spinner.bind('start'));
+			return true;
+		},
+		'callback': function(response) {
+			_.map($('.spinner').toArray(),App.spinner.bind('done'));
+			EvM.notify('mc.jsonresponse', response);
+			if(!_.isUndefined(response.hasShowModal)) {
+				$(response.hasShowModal.selector+'Label').empty().append(response.hasShowModal.label);
+				$(response.hasShowModal.selector+'Content').empty().append(response.hasShowModal.content);
+				showModal(response.hasShowModal.selector, {'listener':{
+					'hidden.bs.modal': function(){ window.location.reload() }
+				}});
+			}
+		}
+	}
+
+	EvM.notify("mc.jqform", jqform_options);
+	EvM.notify('mc.scroll',{'selector':'.oyscroll'});
+	EvM.notify('mc.postDispatch');
+	postDispatch();
+
+
+})();
+</script>
+
+
+</body>
+</html>

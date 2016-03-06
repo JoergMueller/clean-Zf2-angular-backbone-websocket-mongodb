@@ -1,0 +1,143 @@
+
+<?php
+$dm = $this->dm ? $this->dm : $this->ObjectHelper()->getDocumentManager();
+
+if(!$this->document) {
+	$this->document = $widget->getParent();
+}
+
+
+$attributes = $widget->getAttributes();
+$datestart = $widget->getDatestart();
+$datestop = $widget->getDatestop();
+$datestart = $datestart instanceof \DateTime ? $datestart->format('d.m.Y') : null;
+$datestop = $datestop instanceof \DateTime ? $datestop->format('d.m.Y') : null;
+
+$imagecount = 0;
+
+$token = $widget->getToken();
+
+$action = $token && strlen($token)>0
+		? 'id/'.$widget->getId() . '/token/' . $widget->getToken()
+		: 'create/1/id/' . $this->document->getId();
+?>
+
+<div id="wC" class="row-fluid editorOverlay hp90 w1200">
+
+	<form id="widgetForm" class="jqform" method="post" action="/mc/widget/set/<?=$action?>"
+		data-widget="<?=$widget->getId()?>"
+		data-type="<?=$widget->getType()?>"
+		data-path="<?=$widget->getAnker()?>"
+		data-token="<?=$token?>"
+		data-document="<?=$this->document->getId()?>">
+
+	<input type="hidden" name="id" value="<?=$this->document->getId()?>" />
+
+	<ul class="nav nav-tabs" id="article-tab">
+		<li><a href="#widget-content" data-toggle="tab"><?=$this->translate('Content'); ?></a></li>
+		<li><a href="#widget-meta" data-toggle="tab"><?=$this->translate('Settings'); ?></a></li>
+		<li><a href="#widget-geo" data-toggle="tab"><?=$this->translate('GEO-Coords'); ?></a></li>
+	</ul>
+
+	<div class="tab-content margin-bottom-10 margin-top-10 h770 oyscroll">
+		<div class="btn-group margin-bottom-10" data-toggle="buttons">
+			<?php foreach(array_keys($this->config['locales']['list']) as $_lang):
+			$active = $_lang == $this->lang ? ' active' : false;
+			?>
+			<label data-lang="<?=$_lang?>" class="btn btn-default btn-lang<?=$active?>">
+				<input class="check_lang" type="radio" name="check_lang" value="<?=$_lang?>" <?=$active?'checked':false?>> <?=strtoupper($_lang)?></label>
+			<?php endforeach; ?>
+		</div>
+
+		<div class="tab-pane" id="widget-content">
+		<?php include 'tab/widget-content.phtml'; ?>
+		</div>
+		<div class="tab-pane" id="widget-meta">
+		<?php include 'tab/widget-meta.phtml'; ?>
+		</div>
+		<div class="tab-pane" id="widget-geo">
+		<?php include 'tab/widget-geo.phtml'; ?>
+		</div>
+
+	</div>
+
+	<div class="clearfix"><!--  --></div>
+
+	<button class="btn btn-default margin-right-8 pull-right"> <i class="fa fa-check" data-spinner="replace"></i> <?=$this->translate("Save")?></button>
+
+
+	</form>
+
+</div>
+
+<script>
+
+var LangSwitch;
+LangSwitch=(function(){
+
+	function init() {
+
+		$('.btn-lang').on("click", function(){
+			var c=$(this)
+			var p=$(this).closest('.tab-content');
+			var f=$(this).closest('form');
+			var t=p.find('.tab-pane.active');
+			$('#wC').load(f.attr('action')+"?lang="+c.data('lang')+' #widgetForm', function(){
+				EvM.notify('mc.jqform', jqform_options);
+				LangSwitch.init();
+				F.prepare();
+			});
+		})
+	}
+
+	return {
+		'init': init
+	}
+})();
+LangSwitch.init();
+
+var F=(function(){
+
+	function prepare() {
+		EvM.notify('mc.wysihtml', {'selector':'form#widgetForm textarea.whtml','wysihtml5ParserRules':wysihtml5ParserRules});
+
+		$('a[data-toggle="tab"]').on('shown.bs.tab', function() {
+			$.fancybox.reposition();
+			EvM.notify('mc.scroll',{'selector':'.tab-content.oyscroll'});
+			$('[data-toggle="popover"]').popover({'html':true});
+		});
+		$('a[data-toggle="tab"]:first').trigger('click');
+		EvM.notify("mc.jqform", {'selector':'#widgetForm',
+			'precall': function(elem, opt) {
+				_.map($('[data-spinner]').toArray(),App.spinner.bind('start'));
+				return true;
+			},
+			'callback': function(response) {
+				_.map($('.spinner').toArray(),App.spinner.bind('done'));
+				if($('form#widgetForm').attr('ng-controller')) {
+					var c = $('form#widgetForm').attr('ng-controller');
+					var js_scope = angular.element(c).scope();
+				}
+				EvM.notify('mc.jsonresponse', response);
+				if(response.hasShowModal != undefined) {
+					$(response.hasShowModal.selector+'Label').empty().append(response.hasShowModal.label);
+					$(response.hasShowModal.selector+'Content').empty().append(response.hasShowModal.content);
+					showModal(response.hasShowModal.selector);
+	            }
+			}});
+	    $('#bgImageInput').unbind();
+		$('#bgImageInput').on('focus', function(){
+	        $('#seekerLabel').html('Suchen Sie sich ein Bild aus');
+	        $('#seekerContent').addClass('h770 oyscroll').load('/mc/images/seeker?targetId=' + $('#bgImageInput').data('seekerTarget'));
+			showModal('#seeker');
+		});
+	    $('[data-role="tagsinput"]').tagsinput();
+	}
+
+	return {
+		'prepare': prepare
+	}
+})();
+F.prepare();
+
+</script>

@@ -1,0 +1,136 @@
+<?
+$widgetId = isset($widget) ? $widget->getId() : 't' . md5(time());
+$widgetToken = isset($widget) ? $widget->getToken() : $widgetId;
+$widgetAnker = isset($widget) ? $widget->getAnker() : '~';
+$widgetHeadline = isset($widget) ? $widget->hasAttribute('headline', $this->lang) : '~';
+?>
+
+		<!-- Masterslider -->
+		<div
+			id="master_<?=$widgetId?>"
+			class="widget master-slider ms-skin-default"
+			data-token="<?=$widgetToken?>"
+			data-type="slider_master"
+			data-id="<?=$widgetId?>"
+			data-document="<?=$document->getId()?>"
+			data-path="<?=$widgetAnker?>"
+			data-title="<?=$widgetHeadline?>"
+			>
+
+			<!-- slide  start -->
+			<div class="ms-slide" data-delay="6">
+				<!-- slide background -->
+				<img src="/theme/img/slider/slide01.jpg" alt="_"/> 
+				
+				 <h2 class="ms-layer pi-doosan" 
+					style="left: 0px; bottom: 100px;"
+					data-type="text" 
+					data-effect="left(short)" 
+					data-duration="300"
+					data-hide-effect="fade" 
+					data-delay="300" 
+					>
+					<a class="hero-white" href="bagger-ab-14-tonnen.html"> Harte Maschinen für harte Einsätze  </a>
+				</h2>
+
+				<p class="ms-layer pi-text"
+				   style="left: 0px; bottom: 63px;"
+				   data-type="text" 
+				   data-effect="bottom(short)" 
+				   data-duration="300"
+				   data-hide-effect="fade" 
+				   data-delay="800"	  
+				   >
+				   Bagger ab 14 Tonnen
+				</p>
+				
+		
+				
+			</div><!-- .ms-slide end -->
+
+			<!-- slide start -->
+			<div class="ms-slide" data-delay="6">
+				<!-- slide background -->
+				<img src="/theme/masterslider/blank.gif" data-src="/theme/img/slider/slide03.jpg" alt=""/> 
+				
+				 <h2 class="ms-layer pi-bobcat" 
+					style="left: 0px; bottom: 100px;"
+					data-type="text" 
+					data-effect="left(short)" 
+					data-duration="300"
+					data-hide-effect="fade" 
+					data-delay="200" 
+					>
+					<a class="hero-white" href="bagger-ab-14-tonnen.html">Einer der Könige des GALABaus</a>
+				</h2>
+
+				<p class="ms-layer pi-text"
+					style="left: 0px; bottom: 63px;"
+				   data-type="text" 
+				   data-effect="bottom(short)" 
+				   data-duration="300"
+				   data-hide-effect="fade" 
+				   data-delay="800"	  
+				   >
+					Kompaktlader & Kompaktraupen
+				</p>
+			</div><!-- .ms-slide end -->
+
+			<!-- slide start -->
+			<div class="ms-slide" data-delay="6">
+				<!-- slide background -->
+				<img src="/theme/img/slider/slide04.jpg" alt=""/> 
+
+				 <h2 class="ms-layer pi-radlader" 
+					style="left: 0px; bottom: 100px;"
+					data-type="text" 
+					data-effect="left(short)" 
+					data-duration="300"
+					data-hide-effect="fade" 
+					data-delay="300" 
+					>
+					<a class="hero-red" href="bagger-ab-14-tonnen.html">Kraftpakete mit bis zu 5.700 Litern</a>
+				</h2>
+
+				<p class="ms-layer pi-text-radlader"
+					style="left: 0px; bottom: 63px;"
+				   data-type="text" 
+				   data-effect="bottom(short)" 
+				   data-duration="300"
+				   data-hide-effect="fade" 
+				   data-delay="800"	  
+				   >
+					Unsere Allradlader
+				</p>
+			</div><!-- .ms-slide end -->
+
+
+			<!-- slide -->
+			<div class="ms-slide" data-delay="6">
+				<!-- slide background -->
+				<img src="/theme/masterslider/blank.gif" data-src="/theme/img/slider/slide02.jpg" alt=""/>  
+
+				<h2 class="ms-layer pi-bomag" 
+					style="left: 0px; bottom: 100px;"
+					data-type="text" 
+					data-effect="left(short)" 
+					data-duration="300"
+					data-hide-effect="fade" 
+					data-delay="300" 
+					>
+					<a class="hero-black" href="bagger-ab-14-tonnen.html">Der Dichter unter den Verdichtern</a>
+				</h2>
+				
+				 <p class="ms-layer pi-text"
+					style="left: 0px; bottom: 63px;"
+				   data-type="text" 
+				   data-effect="bottom(short)" 
+				   data-duration="300"
+				   data-hide-effect="fade" 
+				   data-delay="800"	  
+				   >
+					BOMAG macht alles platt
+				</p>
+
+			</div><!-- .ms-slide end -->
+		</div><!-- #masterslider end -->

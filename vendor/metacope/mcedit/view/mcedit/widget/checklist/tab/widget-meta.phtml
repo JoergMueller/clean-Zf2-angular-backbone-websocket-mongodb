@@ -1,0 +1,71 @@
+
+<?php
+$supportedLanguages = array_keys($config['locales']['list']);
+$inlanguage = $widget && $widget->getInlanguage() ? $widget->getInlanguage() : $supportedLanguages;
+?>
+<div class="form-group">
+
+	<label><?=$this->translate('Widget supported Languages')?>:</label><br>
+	<?php foreach($supportedLanguages as $supportedLang):
+	$checked = in_array($supportedLang, $inlanguage) ? ' checked="checked"' : false;
+	?>
+	<label class="margin-right-20">
+		<input type="checkbox" name="inlanguage" value="<?=$supportedLang?>"<?=$checked?> /> <?=$config['locales']['list'][$supportedLang]['name']?></label>
+	<?php endforeach; ?>
+
+</div>
+
+<hr>
+
+<?
+$tags = $widget->getTags();
+?>
+<div class="form-group">
+	<label class="block"> <i class="fa fa-info-circle fa-fw"
+					data-toggle="popover"
+					data-trigger="hover"
+					title="<?=$this->bbcode($this->translate('Help'))?>"
+					data-original-title="<?=$this->bbcode($this->translate('Help'))?>"
+					data-content="<?=$this->bbcode($this->translate('tags_popover_content'))?>"></i> <?=$this->translate("widget_tags")?>:<br>
+	<input id="" class="form-control" type="text" name="tags" value="<?=implode(',', $tags)?>" placeholder="" data-role="tagsinput"></label>
+</div>
+
+<hr>
+
+<?
+$currentDate = new \DateTime();
+$datestart = $widget->getDatestart() ? $widget->getDatestart()->format('Y-m-d') : $currentDate->format("Y-m-d");
+$datestop  = $widget->getDatestop() ? $widget->getDatestop()->format('Y-m-d') : null;
+?>
+<div class="row-fluid padding-0">
+
+	<div class="wp49 pull-left form-group margin-0">
+		<label class="block"> <i class="fa fa-info-circle fa-fw"
+					data-toggle="popover"
+					data-trigger="hover"
+					title="<?=$this->bbcode($this->translate('Help'))?>"
+					data-original-title="<?=$this->bbcode($this->translate('Help'))?>"
+					data-content="<?=$this->bbcode($this->translate('publishstart_popover_content'))?>"></i> <?=$this->translate('Datestart')?>:
+			<input id="" class="form-control" type="date" name="datestart" value="<?=$datestart?>" placeholder=""></label>
+	</div>
+	<div class="wp49 pull-right formg-roup margin-0">
+		<label class="block"> <i class="fa fa-info-circle fa-fw"
+					data-toggle="popover"
+					data-trigger="hover"
+					title="<?=$this->bbcode($this->translate('Help'))?>"
+					data-original-title="<?=$this->bbcode($this->translate('Help'))?>"
+					data-content="<?=$this->bbcode($this->translate('publishend_popover_content'))?>"></i> <?=$this->translate('Datestop')?>:
+			<input id="" class="form-control" type="date" name="datestop" value="<?=$datestop?>" placeholder=""></label>
+	</div>
+
+</div>
+
+<hr>
+
+<?php
+$checked = isset($attributes['hassocialmedia']) && $attributes['hassocialmedia']==1 ? ' checked="checked"' : false;
+?>
+<div class="form-group">
+	<label class="block">
+		<input type="checkbox" name="hassocialmedia" value="1"<?=$checked?> /> <?=$this->translate('Has Socialmedia')?></label>
+</div>

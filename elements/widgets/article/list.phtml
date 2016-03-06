@@ -1,0 +1,41 @@
+<?
+
+try {
+	$dm = $this->dm ? $this->dm : $this->ObjectHelper()->getDocumentManager();
+	$widget->setDocumentManager($dm);
+
+	$attributes = $widget->getAttributes(1);
+	$articles = $widget->getArticles($this->lang);
+}
+catch(Exception $e) {
+	$articles = [];
+}
+
+
+?>
+
+<div class="articlelist">
+	<ul
+		id="article_<?=$widget->getId()?>"
+		class="widget unstyled articlelist"
+		data-token="<?=$widget->getToken()?>"
+		data-type="article_list"
+		data-id="<?=$widget->getId()?>"
+		data-document="<?=$document->getId()?>"
+		data-path="<?=$widget->getAnker()?>"
+		itemscope
+		itemtype="http://schema.org/Article"
+		>
+
+		<? foreach($articles as $article):
+		$doc = $article->getParent();
+		$attributes = $article->getAttributes(1);
+		$headline = $attributes['headline'][$this->lang];
+		?>
+		<li class="margin-bottom-10"><a href="/<?=$this->lang?><?=$doc->getPath($this->lang)?>"><?=$headline?> <i class="fa fa-chevron-right"></i></a></li>
+		<? endforeach ?>
+
+
+	</ul>
+</div>
+

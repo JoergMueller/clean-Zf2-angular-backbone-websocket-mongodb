@@ -1,0 +1,714 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: HHoG\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-07-05 22:17-0700\n"
+"PO-Revision-Date: 2016-01-16 12:05+0100\n"
+"Last-Translator: Jörg Müller <joerg.mueller@metacope.com>\n"
+"Language-Team: Metacope <devteam@metacope.com>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: translate\n"
+"X-Poedit-Basepath: .\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+msgid "Home"
+msgstr "Startseite"
+
+msgid "Mr."
+msgstr "Herr"
+
+msgid "Mrs."
+msgstr "Frau"
+
+msgid "Salutation"
+msgstr "Anrede"
+
+msgid "Firstname"
+msgstr "Vorname"
+
+msgid "Business"
+msgstr "Unternehmen"
+
+msgid "Department"
+msgstr "Abteilung"
+
+msgid "Dep."
+msgstr "Abt."
+
+msgid "Position"
+msgstr "Position"
+
+msgid "Image"
+msgstr "Bild"
+
+#: ../view/layout/layout.phtml:50
+msgid "All rights reserved."
+msgstr "Alle Rechte vorbehalten."
+
+#: ../view/application/index/index.phtml:24
+msgid "Ping us on IRC"
+msgstr "Schreiben Sie uns im IRC an"
+
+#: ../view/error/index.phtml:1
+msgid "An error occurred"
+msgstr "Ein Fehler ist aufgetreten"
+
+#: ../view/error/index.phtml:8
+msgid "Additional information"
+msgstr "Zusätzliche Information"
+
+#: ../view/error/index.phtml:11 ../view/error/index.phtml:35
+msgid "File"
+msgstr "Datei"
+
+msgid "Date Publish Start"
+msgstr "Datum zum start der Publizierung"
+
+msgid "Date Publish Stop"
+msgstr "Datum zum ende der Publizierung"
+
+msgid "Datestart"
+msgstr "Startdatum"
+
+msgid "Datestop"
+msgstr "Enddatum"
+
+msgid "Items"
+msgstr "Layer"
+
+#: ../view/error/index.phtml:15 ../view/error/index.phtml:39
+msgid "Message"
+msgstr "Meldung"
+
+#: ../view/error/index.phtml:19 ../view/error/index.phtml:43
+#: ../view/error/404.phtml:55
+msgid "Stack trace"
+msgstr "Stapelüberwachung"
+
+#: ../view/error/index.phtml:29
+msgid "Previous exceptions"
+msgstr "Vorherige Ausnahme"
+
+#: ../view/error/index.phtml:58
+msgid "No Exception available"
+msgstr "Es ist keine Ausnahme verfügbar"
+
+#: ../view/error/404.phtml:1
+msgid "A 404 error occurred"
+msgstr "Es trat ein 404 Fehler auf"
+
+#: ../view/error/404.phtml:10
+msgid "The requested controller was unable to dispatch the request."
+msgstr ""
+"Der angeforderte Controller war nicht in der Lage die Anfrage zu verarbeiten."
+
+#: ../view/error/404.phtml:13
+msgid ""
+"The requested controller could not be mapped to an existing controller class."
+msgstr ""
+"Der angeforderte Controller konnte keiner Controller Klasse zugeordnet "
+"werden."
+
+#: ../view/error/404.phtml:16
+msgid "The requested controller was not dispatchable."
+msgstr "Der angeforderte Controller ist nicht aufrufbar."
+
+#: ../view/error/404.phtml:19
+msgid "The requested URL could not be matched by routing."
+msgstr "Für die angeforderte URL konnte keine Übereinstimmung gefunden werden."
+
+#: ../view/error/404.phtml:22
+msgid "We cannot determine at this time why a 404 was generated."
+msgstr ""
+"Zu diesem Zeitpunkt ist es uns nicht möglich zu bestimmen, warum ein 404 "
+"Fehler aufgetreten ist."
+
+#: ../view/error/404.phtml:34
+msgid "Controller"
+msgstr "Controller"
+
+#: ../view/error/404.phtml:41
+#, php-format
+msgid "resolves to %s"
+msgstr "wird aufgelöst in %s"
+
+#: ../view/error/404.phtml:51
+msgid "Exception"
+msgstr "Ausnahme"
+
+msgid "select or create a folder first"
+msgstr "wählen SIe einen Ordner aus oder erstellen Sie einen"
+
+msgid "Help"
+msgstr "Hilfe"
+
+msgid "Login or Nickname"
+msgstr "Ihre Login-Email oder Ihr Benutzername"
+
+msgid "Username"
+msgstr "Benutzername"
+
+msgid "Login"
+msgstr "Anmelden"
+
+msgid "Logout"
+msgstr "Abmelden"
+
+msgid "remember login"
+msgstr "angemeldet bleiben"
+
+msgid "or"
+msgstr "oder"
+
+msgid "Password"
+msgstr "Passwort"
+
+msgid "Password forgotten"
+msgstr "Passwort vergessen"
+
+msgid "We have sent you an e-mail"
+msgstr "Wir haben Ihnen eine E-Mail gesendet"
+
+msgid "Search"
+msgstr "Suche"
+
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgid "edit entry"
+msgstr "Eintrag bearbeiten"
+
+msgid "copy entry"
+msgstr "Eintrag kopieren"
+
+msgid "remove entry"
+msgstr "Eintrag entfernen"
+
+msgid "Save"
+msgstr "Speichern"
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+msgid "Send"
+msgstr "Absenden"
+
+msgid "read more"
+msgstr "mehr lesen"
+
+msgid "commentable"
+msgstr "Kommentarfunktion"
+
+msgid "Date"
+msgstr "Datum"
+
+msgid "Tags"
+msgstr "Themen"
+
+msgid "Content"
+msgstr "Inhalt"
+
+msgid "Tasks"
+msgstr "Aufgaben"
+
+msgid "Statistic"
+msgstr "Statistik"
+
+msgid "Member"
+msgstr "Teilnehmer"
+
+msgid "from"
+msgstr "von"
+
+msgid "until"
+msgstr "bis"
+
+msgid "Date from"
+msgstr "Datum von"
+
+msgid "Date until"
+msgstr "Datum bis"
+
+msgid "not found"
+msgstr "nicht gefunden"
+
+msgid "copied"
+msgstr "kopiert"
+
+msgid "Blocked"
+msgstr "Blockiert"
+
+msgid "Discard"
+msgstr "verwerfen"
+
+msgid "Username and/or Password wrong"
+msgstr "Benutzername und/oder Passwort falsch"
+
+msgid "valid language for this widget"
+msgstr "Sprachen für dieses Widget"
+
+msgid "valid language for this document"
+msgstr "Sprachen für dieses Dokument"
+
+msgid "Limit of displayed items"
+msgstr "Anzahl der anzuzeigenden Elemente"
+
+msgid "Offset of displayed items"
+msgstr "Offset der anzuzeigenden Elemente"
+
+msgid "Tagging of displayed items"
+msgstr "Tagging der anzuzeigenden Elemente"
+
+msgid "Anker of displayed items"
+msgstr "Anker der anzuzeigenden Elemente"
+
+msgid "currently are no posts to display"
+msgstr "derzeit sind keine Beiträge vorhanden"
+
+msgid "City"
+msgstr "Stadt"
+
+msgid "Street Nr"
+msgstr "Strasse und Nr"
+
+msgid "Zipcode"
+msgstr "Postleitzahl"
+
+msgid "Phone"
+msgstr "Telefon"
+
+msgid "Thank you. Login success."
+msgstr "Danke. Ihre Anmeldung war erfolgreich."
+
+msgid "You are here"
+msgstr "Sie befinden sich hier"
+
+msgid "Password reset"
+msgstr "Passwort zurücksetzen"
+
+msgid "write your comment"
+msgstr "schreiben Sie einen Kommentar"
+
+msgid "Your Name"
+msgstr "Ihr Name"
+
+msgid "Your E-Mail"
+msgstr "Ihre E-Mail"
+
+msgid "Your Message"
+msgstr "Ihre Nachricht"
+
+msgid "never published"
+msgstr "wird nicht publiziert"
+
+msgid "newsletter-info"
+msgstr "Ihre Daten werde nicht an “dritte” weitergegeben."
+
+msgid "sign-in"
+msgstr "eintragen"
+
+msgid "submit"
+msgstr "absenden"
+
+msgid "Submit"
+msgstr "Absenden"
+
+msgid "sign-out"
+msgstr "austragen"
+
+msgid "No Message found."
+msgstr "Ups. Wir konnten keinen Inhalt Ihres Kommentars finden."
+
+msgid "E-Mail wrong?"
+msgstr "Ist Ihre E-Mail korrekt?"
+
+msgid "No Name found."
+msgstr "Kein Name angegeben?"
+
+msgid "Your last message is too short ago."
+msgstr "Ihre letzte Message ist zu kurz her."
+
+msgid "newsletter-entry"
+msgstr "Newsletteranmeldung. Ihre Daten werden nicht an dritte weitergeben."
+
+msgid "sorry your mail count not validate"
+msgstr ", entschuldigen Sie Ihre E-Mail konnte nicht validiert werden"
+
+msgid "success signed-in"
+msgstr "erfolgreich eingetragen"
+
+msgid "success updated"
+msgstr "erfolgreich bearbeitet"
+
+msgid "success removed"
+msgstr "erfolgreich ausgetragen"
+
+msgid "create user"
+msgstr "Benutzer anlegen"
+
+msgid "edit user"
+msgstr "Benutzer bearbeiten"
+
+msgid "User"
+msgstr "Benutzer"
+
+msgid "Usermanagement"
+msgstr "Benutzerverwaltung"
+
+msgid "Phone mob."
+msgstr "Telefon mob."
+
+msgid "leave empty if this is a parent"
+msgstr "leer lassen, wenn dieser Eintrag keinem untergeordnet ist"
+
+msgid "leave empty if no changes"
+msgstr "leer lassen, wenn es nicht verändert werden soll"
+
+msgid "Has Socialmedia"
+msgstr "besitzt eine Socialmediaintegration"
+
+msgid "ongoing content"
+msgstr "aktueller online Inhalt"
+
+msgid "expiring content"
+msgstr "auslaufende Inhalte"
+
+msgid "upcoming content"
+msgstr "anstehende Inhalte"
+
+msgid "create content"
+msgstr "Inhalt erstellen"
+
+msgid "edit content"
+msgstr "Inhalt bearbeiten"
+
+msgid "remove content"
+msgstr "Inhalt entfernen"
+
+msgid "really remove"
+msgstr "wirklich entfernen"
+
+msgid "Headline"
+msgstr "Überschrift"
+
+msgid "Subline"
+msgstr "Anlauftext"
+
+msgid "created"
+msgstr "erstellt"
+
+msgid "updated"
+msgstr "geändert"
+
+msgid "create task"
+msgstr "Aufgabe erstellen"
+
+msgid "edit task"
+msgstr "Aufgabe bearbeiten"
+
+msgid "remove task"
+msgstr "Aufgabe entfernen"
+
+msgid "Notice"
+msgstr "Notizen"
+
+msgid "Contact"
+msgstr "Kontakt"
+
+msgid "Sheet"
+msgstr "Datenblatt"
+
+msgid "Opening"
+msgstr "Öffnungszeiten"
+
+msgid "Article"
+msgstr "Artikel"
+
+msgid "Basic"
+msgstr "Basisdaten"
+
+msgid "Calendar"
+msgstr "Kalender"
+
+msgid "Widget supported Languages"
+msgstr "Sprachen in denen dieses Widget angezeigt werden soll"
+
+msgid "widget_tags"
+msgstr "Tags"
+
+msgid "widget_search_path"
+msgstr "Pfad zu den Artikeln unterhalb eines Dokuments ( URL zum Dokument )"
+
+msgid "widget_count"
+msgstr "Anzahl der anzuzeigenden Elemente"
+
+msgid "widget_infinityscroll"
+msgstr "autom. nachladen weitere Element beim erreichen des Seitenendes"
+
+msgid "widget_search_tags"
+msgstr "Suche nach Elementen, die mit diesen Tags verschlagwortet sind"
+
+msgid "URL to File, Image or Game"
+msgstr "URL zu einer Datei, Bild oder Gewinnspiel"
+
+msgid "Here is the code to embed into your page"
+msgstr "Hier der Code zum einbetten in Ihre Seite"
+
+msgid "Deliveries"
+msgstr "Aufrufe"
+
+msgid "total"
+msgstr "gesamt"
+
+msgid "Request"
+msgstr "Anfordern"
+
+msgid "Release"
+msgstr "Freigabe"
+
+msgid "comma separated"
+msgstr "kommagetrennt"
+
+msgid "article_has_meta"
+msgstr "Artikel Infoleiste anzeigen"
+
+msgid "widget_in_editmode"
+msgstr ""
+"Das Widget befindet sich im Bearbeitungsmodus. Sie können hier sehen wer und "
+"seit wann daran arbeitet.\n"
+"[i]Tipp:[/i] Sie können eine Freigabe anfordern."
+
+msgid "imagescale_popover_content"
+msgstr ""
+"[i]Bsp.: 200w100[/i]\n"
+"- 200 = breite in px\n"
+"- w = skalierungsoption\n"
+"- 100 = höhe in px\n"
+"\n"
+"[i]mögliche Parameter sind:[/i]\n"
+"w = width/ skalieren nach Breite\n"
+"h = height/ skalieren nach Höhe\n"
+"s = scale/ proportional skalieren\n"
+"c = cropping / ausschneiden von der Mitte\n"
+"sc = skalieren danach zentriert ausschneiden ( scaling and cropping )\n"
+"\n"
+"[i]Info:[/i] bei den Optionen w/h werden die weiteren parameter ignoriert. D."
+"h. bei der Option w wird auf Breite skaliert die Angabe der Höhe ist dann "
+"unerheblich und andersrum."
+
+msgid "user_structur_info"
+msgstr ""
+"Die Struktur der Benutzer, spiegelt auch den Workflow der Benachrichtigungen "
+"und Freigaben wieder. Bsp.: Es existiert ein Benutzer vom Typ Editor und "
+"unterhalb dieses Benutzers befinden sich \"x\" Benutzeraccounts vom Typ "
+"Moderatoren,so bekommt der Editor Benachrichtigungen zum Freigabeprozeß "
+"aller im unterstellten Moderatoren. \n"
+"\n"
+"[b]Eine Struktur könnte so aussehen:[/b]\n"
+"\n"
+"- Administrator\n"
+"-- Leiter\n"
+"--- Editor ( Redakteur / Qualitätssicherung )\n"
+"---- Moderator\n"
+"---- Moderator\n"
+"-- Leiter 2\n"
+"--- Moderator\n"
+"--- Moderator"
+
+msgid "media_image_info"
+msgstr ""
+"Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy "
+"eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam "
+"voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet "
+"clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit "
+"amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam "
+"nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed "
+"diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet "
+"clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+
+msgid "site_class_popover_content"
+msgstr ""
+"Hier könne Sie dem Dokument eine eigene CSS-Klasse vergeben.\n"
+"[i]Tipp:[/i] Bei der Klasse 'divider', wird dem Eintrag\n"
+"in der Navigation 'Listenform' ein Listentrenner vorangestellt."
+
+msgid "site_structur_popover_content"
+msgstr ""
+"Der Strukturname eines Dokumentes wird in den verschiedenen "
+"Navigationsformen angezeigt. Er kann auch unterschiedlich zum Dokument Titel "
+"sein."
+
+msgid "client_structur_info"
+msgstr ".."
+
+msgid "site_url_popover_content"
+msgstr ""
+"[i]Tipp[/i]: wenn sie das Eingabefeld der URL leeren bzw. leer lassen, wird "
+"diese neu anhand Ihres Einhängepunktes in der Struktur generiert."
+
+msgid "site_position_popover_publishedOn"
+msgstr ""
+"Hier können Sie den Startzeitpunkt wählen, ab dem ein Dokument Gültigkeit "
+"hat. Publiziert ab dem ..."
+
+msgid "publishstart_popover_content"
+msgstr ""
+"Hier können Sie den Startzeitpunkt wählen, ab dem ein Widget Gültigkeit hat. "
+"Publiziert ab dem ...\n"
+"\n"
+"[i]Tipp:[/i]\n"
+"Interessant für Artikel im Pressebereich die erst ab einem bestimmten Datum "
+"gezeigt werden dürfen."
+
+msgid "publishend_popover_content"
+msgstr ""
+"Hier können Sie den Endzeitpunkt wählen, ab dem ein Widget [b]KEINE[/b]-"
+"Gültigkeit mehr hat. Publiziert bis zum ...\n"
+"\n"
+"[i]Tipp:[/i] wenn Sie dieses Feld leer lassen hat dieses Widget eine "
+"unbestimmte Laufzeit.\n"
+"[i]Interessant:[/i] Für Artikel zu Events die nur bis zu einem bestimmten "
+"Datum Gültigkeit haben"
+
+msgid "georeverse_popover_content"
+msgstr ""
+"[i]Tipp:[/i] bestimmen Sie hier die geographische Zuordnung. Geben Sie eine "
+"konkrete Adresse oder nur eine Region Bsp.: ( 63477, Maintal oder Odenwald )"
+
+msgid "tags_popover_content"
+msgstr ""
+"[i]Tipp:[/i] verschlagworten Sie Ihr Widget, so kann es zu verschiedenen "
+"Modulen genutzt werden. Bsp: ( Tagcloud, das könnte Sie auch "
+"interessieren ... )"
+
+msgid "bytags_popover_content"
+msgstr ""
+"Geben Sie hier die Tags an, welche den Kontent des Widgets bestimmen.\n"
+"( optional )"
+
+msgid "content_popover_content"
+msgstr ""
+"[i]Tipp:[/i] Sie wollen ein Bild innerhalb Ihres Textes platzieren?\n"
+"Ziehen Sie dazu einfach per Drag and Drop ein Bild von Ihrem Rechner in das "
+"Textfeld. Das Bild wird ebendso in der Bilderverwaltung angezeigt.\n"
+"\n"
+"Bitte denken Sie daran Ihrem Bild anschließend Titel, Alt und Copyright "
+"sowie Tags zu vergeben um es auffindbar zu halten."
+
+msgid "site_position_popover_content"
+msgstr ""
+"Mit der Angabe der Position können Sie die Reihenfolge in einer Navigation "
+"beeinflussen."
+
+msgid "site_visible_popover_content"
+msgstr ""
+"0 = damit wird die Seite auf unsichtbar gesetzt\n"
+"1 = damit wird die Seite auf sichtbar gesetzt "
+
+msgid "site_icon_popover_content"
+msgstr ""
+"Hier können Sie eine Bootstrap oder Font-Awesome Klasse angeben und das Icon "
+"wird dem Strukturnamen vorangestellt."
+
+msgid "site_bgimage_popover_content"
+msgstr ""
+"Möchten Sie für diese Seite ein ganz spezielles Background-Image setzen, so "
+"kann das ganz einfach über diese Option hergestellt werden."
+
+msgid "site_geocoords_popover_content"
+msgstr ""
+"Wenn Ihre Seite Geo-Lokalisieren wollen geben Sie hier eine Region oder "
+"Adresse an und klicken Sie auf das \"Auge\". Dann wird versucht die GEO-"
+"Koordinaten zu ermitteln. Der Vorteil ist, das Google GEO-Referenzierte "
+"Seite stärker gewichtet.\n"
+"\n"
+"[i]Tipp:[/i] So können auch Seiten/Inhalte nicht nur thematisch sondern auch "
+"geografisch zugeordnet/verknüpft werden."
+
+msgid "hasmeta_popover_content"
+msgstr ""
+"Die Infoleiste des Artikels zeigt das Datum der Erstellung, den Autor, ob "
+"und wieviele Kommentare es gibt sollte die Kommentarfunktion aktiviert sein."
+
+msgid "target_popover_content"
+msgstr ""
+"Geben Sie hier die URL zur Zielseite an. Diese kann extern oder intern sein "
+"aber achten Sie darauf den Besucher nicht gleich wieder wegzuführen."
+
+msgid "content_intro_order"
+msgstr ""
+"Hier können Sie unsere Broschüren direkt und bequem über das Internet "
+"bestellen. Einfach die gewünschten Broschüren in den Warenkorb legen und "
+"sich ein individuelles Informationspaket für Ihren Urlaub in Hessen "
+"zusammenstellen! Sie zahlen lediglich ein kleines Entgelt für die Versand- "
+"und Verpackungskosten. Auch bieten wir Ihnen kostenpflichtige Broschüren "
+"verschiedener Partner an. Dies ist beim einzelnen Artikel als Preis vermerkt."
+
+msgid "site_reference_popover_content"
+msgstr ""
+"Geben Sie hier die Referenzurl an unter der das Dokument gefunden werden "
+"soll."
+
+msgid "Gender / Salutation"
+msgstr "geschlecht / Anrede"
+
+msgid "select Mr"
+msgstr "männlich / Herr"
+
+msgid "select Mrs"
+msgstr "weiblich / Frau"
+
+msgid "create toplevel user"
+msgstr "Toplevel Benutzer erstellen"
+
+msgid "create toplevel document"
+msgstr "Toplevel Seite erstellen"
+
+msgid "Image is perfect for Background-Slider"
+msgstr "Das Bild ist als Hintergrundbild geeignet"
+
+msgid "Copyright Expire"
+msgstr "Die Nutzungs/Eigentumsrechte haben ein Verfallsdatum"
+
+msgid "Structname"
+msgstr "Strukturname"
+
+msgid "Path"
+msgstr "Url"
+
+msgid "Visible"
+msgstr "Sichtbar"
+
+msgid "rebuild template"
+msgstr "Template-Cache für diese Seite neu generieren"
+
+msgid "Where the Journey Begins"
+msgstr "Wo die Reise beginnt"
+
+msgid "Discover your next great adventure"
+msgstr "Entdecken Sie Ihr nächstes großes Abenteuer"
+
+msgid "Featured Destinations"
+msgstr "Beliebte Reiseziele"
+
+msgid "become an explorer"
+msgstr "werden Sie zum Entdecker"
+
+msgid "Be more than just another traveler"
+msgstr "Seien Sie mehr als nur ein weiterer Tourist"
+
+msgid "Find Your Next Destination..."
+msgstr "Finden Sie Ihr nächstes Ziel..."
+
+msgid "Sign in"
+msgstr "Anmeldung"
+
+msgid "News Articles & Blogs"
+msgstr "Neue Artikel & Blogeinträge"
+
+msgid "Find More"
+msgstr "mehr..."

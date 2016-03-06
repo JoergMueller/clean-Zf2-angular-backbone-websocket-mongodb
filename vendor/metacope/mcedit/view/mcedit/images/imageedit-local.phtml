@@ -1,0 +1,45 @@
+
+<div id="imgHolder" class="shadow-inset margin-bottom-10" style="min-height:120px;">
+
+ <img
+ 		id="img_<?=$image->getToken()?>"
+ 		src="/assetimage_<?=$image->getId()?>_618scsc500.jpg"
+ 		width="618">
+</div>
+<div>
+    <a data-preset="lomo">lomo</a>
+    <a data-preset="clarity">clarity</a>
+    <a data-preset="sinCity"></a>
+    <a data-preset="sunrise"></a>
+    <a data-preset="crossProcess"></a>
+    <a data-preset="orangePeel"></a>
+    <a data-preset="love"></a>
+    <a data-preset="grungy"></a>
+    <a data-preset="jarques"></a>
+    <a data-preset="pinhole"></a>
+    <a data-preset="oldBoot"></a>
+    <a data-preset="glowingSun"></a>
+    <a data-preset="hazyDays"></a>
+    <a data-preset="herMajesty"></a>
+    <a data-preset="nostalgia"></a>
+    <a data-preset="hemingway"></a>
+    <a data-preset="concentrate"></a>
+</div>
+
+
+<script>
+
+var imgId='#img_<?=$image->getToken()?>';
+mc.caman = {};
+mc.caman.grey = function() {
+	Caman(imgId, function () {
+		this.greyscale().render();
+	});
+};
+mc.caman.invert = function() {
+	Caman(imgId, function () {
+		this.invert().render();
+	});
+};
+
+</script>

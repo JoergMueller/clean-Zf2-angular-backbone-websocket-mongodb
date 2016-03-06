@@ -1,0 +1,31 @@
+
+<?
+if(isset($widget)) {
+	$widgetId = $widget->getId();
+}
+
+$image = $widget->hasAttribute('image', $this->lang);
+?>
+
+<article
+	id="featured-destination-<?=$widgetId?>"
+	class="card widget"
+	data-type="featured_destination"
+	data-id="<?=$widgetId?>"
+	data-token="<?=$widget->getToken()?>"
+	data-document="<?=$document->getId()?>"
+	data-path="<?=$widgetId?>"
+	>
+	<a href="/<?=$this->lang?><?=$widget->hasAttribute('target', $this->lang)?>" class="featured-image" style="<?if($image):?>background-image: url(/assetimage_<?=$widget->hasAttribute('image', $this->lang)?>_280scsc210.jpg)<?endif?>">
+		<div class="featured-img-inner"></div>
+	</a>
+	<div class="card-details">
+		<h4 class="card-title"><a href="/<?=$this->lang?><?=$widget->hasAttribute('target', $this->lang)?>"><?=$widget->hasAttribute('headline', $this->lang)?></a></h4>
+		<div class="meta-details clearfix">
+			<ul class="hierarchy">
+				<li class="symbol"><i class="fa fa-map-marker"></i></li>
+				<li><a href="/<?=$this->lang?><?=$widget->hasAttribute('target', $this->lang)?>"><?=$widget->hasAttribute('geoinfo', $this->lang)?></a></li>
+			</ul>
+		</div>
+	</div>
+</article>

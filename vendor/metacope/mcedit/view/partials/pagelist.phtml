@@ -1,0 +1,10 @@
+
+<?
+if(!$document) return;
+$subchildren = $document->getChildren();
+?>
+<ul class="mainSubnav unstyled">
+	<?foreach($subchildren as $subchild):?>
+	<li><a href="<?=$this->lang?><?=$subchild->getPath($this->lang)?>"> <i class="fa fa-chevron-right"></i> <?=$subchild->getStructname($this->lang)?></a></li>
+	<?endforeach?>
+</ul>

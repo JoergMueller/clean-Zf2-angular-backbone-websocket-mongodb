@@ -1,0 +1,70 @@
+<?
+$attributes = $widget->getAttributes();
+?>
+
+<article
+	id="featured-accordioncard-<?=$widgetId?>"
+	class="card accordion-card widget"
+	data-type="featured_accordioncard"
+	data-id="<?=$widgetId?>"
+	data-token="<?=$widget->getToken()?>"
+	data-document="<?=$document->getId()?>"
+	data-path="<?=$widgetId?>"
+	>
+	<header>
+		<h3 class="section-title"><?=$widget->hasAttribute('headline', $this->lang)?></h3>
+		<p><?=$widget->hasAttribute('subline', $this->lang)?></p>
+	</header>
+	<div class="accordion-panel">
+		<div class="panel-group" id="accordion-<?=$widgetId?>" role="tablist" aria-multiselectable="true">
+			
+			<?if(isset($attributes['items']) && sizeof($attributes['items'])>0):?>
+			<?$ix=0;foreach($attributes['items'] as $item):?>
+			<!-- Guide Panel -->
+			<div class="panel panel-default" style="background-image: url('<?=$item['image']?>');">
+				<div id="collapseOne<?=$widgetId?><?=$ix?>" class="panel-collapse collapse <?if($ix==0):?>in<?endif?>" role="tabpanel" aria-labelledby="headingOne">
+					<div class="panel-body">
+						<div class="read-more">Details <i class="fa fa-arrow-right"></i></div>
+						<a href="<?=$item['target'][$this->lang]?>">
+							<div class="spacer"></div>
+						</a>
+					</div>
+				</div>
+				<a data-toggle="collapse" data-parent="#accordion-<?=$widgetId?>" href="#collapseOne<?=$widgetId?><?=$ix?>" aria-expanded="true" aria-controls="collapseOne-<?=$widgetId?>">
+					<div class="panel-heading" role="tab" id="headingOne-<?=$widgetId?>">
+						<div class="panel-icon">
+							<i class="fa fa-map-marker"></i>
+						</div>
+						<h4 class="panel-title"><?=$item['headline'][$this->lang]?></h4>
+						<ul class="hierarchy">
+							<li><?=$item['subline'][$this->lang]?></li>
+						</ul>
+					</div>
+				</a>
+			</div>
+			<?$ix++;endforeach?>
+			<?endif?>
+
+		</div>
+	</div>
+	<footer><a href="#"><?=$this->translate('Find More')?> &nbsp; <i class="fa fa-arrow-right"></i></a></footer>
+</article>
+<!-- /.accordion-card -->
+
+<script>
+(function(){
+
+	// accordions - always have 1 panel open
+	// ------------------------------------------------------------------------
+	if ( $('.panel-heading').length ) {
+
+		$('.panel-heading').on('click',function(e){
+			if($(this).parents('.panel').children('.panel-collapse').hasClass('in')){
+				e.preventDefault();
+				e.stopPropagation();
+			}
+		});
+	}
+
+})()
+</script>

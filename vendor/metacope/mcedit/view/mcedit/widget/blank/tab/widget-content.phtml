@@ -1,0 +1,9 @@
+
+<?php
+$escaper = new Zend\Escaper\Escaper('utf-8');
+?>
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('Content')?>:
+		<textarea class="form-control h250 wp100" type="text" name="attributes[content][<?=$this->lang?>]" placeholder=""><?=$widget->hasAttribute('content', $this->lang)?></textarea></label>
+</div>

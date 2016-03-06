@@ -1,0 +1,17 @@
+
+<section
+	id="featured-box-<?=$widget->getId()?>"
+	class="widget"
+	data-type="featured_box"
+	data-id="<?=$widget->getId()?>"
+	data-token="<?=$widget->getToken()?>"
+	data-document="<?=$document->getId()?>"
+	data-path="<?=$widget->getId()?>"
+	>
+<div class="custom-heading">
+	<h2><?=$widget->hasAttribute('headline', $this->lang)?></h2>
+</div><!-- .custom-heading end -->
+
+<?=$widget->hasAttribute('content', $this->lang)?>
+
+</section>

@@ -1,0 +1,42 @@
+{
+    "name": "zendframework/skeleton-application",
+    "description": "metacope bb-baumaschinen",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "bb-baumaschinen",
+        "metacope"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Metacope\\Mcedit\\": "vendor/metacope/mcedit",
+            "Metacope\\Mcevent\\": "vendor/metacope/mcevent"
+        }
+    },
+    "homepage": "http://framework.zend.com/",
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.5",
+        "zendframework/zendframework": "~2.5",
+        "zendframework/zftool": "dev-master",
+        "zendframework/zend-developer-tools": "dev-master",
+        "bjyoungblood/bjy-profiler": "dev-master",
+        "doctrine/annotations": "dev-master",
+        "doctrine/doctrine-module": "~0.8@dev",
+        "doctrine/doctrine-mongo-odm-module": "dev-master",
+        "doctrine/data-fixtures": "dev-master",
+        "zfcampus/zf-doctrine-querybuilder": "dev-master",
+        "darkmatus/zf2-bbcodeintegration": "dev-master",
+        "lukaszr/matrixcode": "dev-master",
+        "adminweb/qrcode-zf2-module": "dev-master",
+        "psr/log": "dev-master",
+        "symfony/event-dispatcher": "dev-master",
+        "symfony/process": "dev-master",
+        "jmikola/geojson": "dev-master",
+        "ocramius/proxy-manager": "dev-master",
+        "ocramius/generated-hydrator": "dev-master",
+        "twitter/bootstrap": "dev-master",
+        "neilime/zf2-twb-bundle": "2.*@stable",
+        "ccampbell/chromephp": "dev-master",
+        "ocramius/zf-phpcr-odm": "dev-master"
+    }
+}

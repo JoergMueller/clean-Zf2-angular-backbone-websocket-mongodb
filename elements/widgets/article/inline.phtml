@@ -1,0 +1,107 @@
+
+<?
+$attributes = $widget->getAttributes(1);
+$widgetId = $widget->getId();
+?>
+
+<article
+	id="article-inline-<?=$widgetId?>"
+	class="widget articleinline"
+	data-token="<?=$widget->getToken()?>"
+	data-type="article_inline"
+	data-id="<?=$widgetId?>"
+	data-document="<?=$document->getId()?>"
+	data-path="<?=$widgetId?>"
+	itemscope
+	itemtype="http://schema.org/Article"
+	>
+
+	<div class="articleWrapper margin-top-50">
+
+	<?$in = $widget->hasAttribute('headline', $this->lang);
+	if(true == $in):?>
+	<h2 class="headline margin-top-0" itemprop="headline"><?=$this->bbcode($in)?></h2>
+	<div class="clearfix"><!--  --></div>
+	<?php endif; ?>
+
+	<?$in = $widget->hasAttribute('subline', $this->lang);
+	if(true == $in):?>
+	<h4 class="subline margin-top-0" itemprop="alternativeHeadline"><?=$this->bbcode($in)?></h4>
+	<div class="clearfix"><!--  --></div>
+	<?php endif; ?>
+
+	<?$in = $widget->hasAttribute('intro', $this->lang);
+	if(true == $in):?>
+	<quote class=""><?=$in?></quote>
+	<div class="clearfix"><!--  --></div>
+	<?php endif; ?>
+
+	<?$in = $widget->hasAttribute('body', $this->lang);
+	if(true == $in):?>
+	<?=$in?>
+	<?endif?>
+
+	
+	<?if($in = $widget->hasAttribute('footer', $this->lang)):?>
+	<blockquote class="margin-clear">
+	
+		<?=$in?>
+		
+		<?if($in = $widget->hasAttribute('signature', $this->lang)):?>
+		<footer><cite title="Source Title"><?=$in?></cite></footer>
+		<?endif?>
+	</blockquote>
+	<?endif?>
+
+	</div>
+
+	<div class="clearfix"></div>
+
+</article>
+
+
+
+<?
+$headline = $widget->hasAttribute('headline', $this->lang);
+$subline = $widget->hasAttribute('subline', $this->lang);
+$body = $widget->hasAttribute('body', $this->lang);
+?>
+
+<?if((strlen(trim($headline))
+	|| strlen(trim($subline)))
+	&& strlen(trim($body))):?>
+
+<?
+// if(!$headline && strpos($body, 'h3') !== false) {
+// 	$headline = strip_tags(preg_replace("#<h3>(.*)<\/h3>#siU", '\1', $body));
+// }
+?>
+
+
+
+<script type="application/ld+json">
+{
+	"@context": "http://schema.org",
+	"@type": "Article",
+	"headline": "<?=strip_tags($headline)?>",
+	"alternativeHeadline": "<?=strip_tags($subline)?>",
+	"image": [],
+	"datePublished": "<?=$widget->getDateStart()->format('Y-m-d H:i:s.u T')?>",
+	"description": "",
+	"articleBody": "<?=strip_tags($body)?>",
+	<?if($widget->hasGeoCoords()):?>
+	"location" : {
+	"@type" : "Place",
+	"name" : "<?=$widget->getGeoreverse()?>",
+		"geo": {
+			"@type": "GeoCoordinates",
+			"latitude": "<?=$widget->getCoordinates()->getLat()?>",
+			"longitude": "<?=$widget->getCoordinates()->getLng()?>"
+	}
+	}
+	<?endif?>
+
+}
+</script>
+
+<?endif?>

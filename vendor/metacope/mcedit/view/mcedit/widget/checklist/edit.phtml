@@ -1,0 +1,82 @@
+
+<?php
+$dm = $this->dm ? $this->dm : $this->ObjectHelper()->getDocumentManager();
+
+if(!$this->document) {
+	$this->document = $widget->getParent();
+}
+
+$attributes = $widget->getAttributes();
+$datestart = $widget->getDatestart();
+$datestop = $widget->getDatestop();
+$datestart = $datestart instanceof \DateTime ? $datestart->format('d.m.Y') : null;
+$datestop = $datestop instanceof \DateTime ? $datestop->format('d.m.Y') : null;
+
+$imagecount = 0;
+
+$action = $widget->getToken()
+		? 'id/'.$widget->getId() . '/token/' . $widget->getToken()
+		: 'create/1/id/' . $this->document->getId() . '?_=' . time();
+?>
+
+<div class="row-fluid editorOverlay hp90 ohidden w1200">
+
+	<form id="widgetForm" class="jqform" method="post" action="/mc/widget/set/<?=$action?>"
+		data-widget="<?=$widget->getId()?>"
+		data-type="<?=$widget->getType()?>"
+		data-path="<?=$widget->getAnker()?>">
+
+	<input type="hidden" name="id" value="<?=$widget->getId()?>" />
+
+	<ul class="nav nav-tabs" id="revoslider-tab">
+		<li><a href="#widget-content" data-toggle="tab"><?=$this->translate('Content'); ?></a></li>
+		<li><a href="#widget-meta" data-toggle="tab"><?=$this->translate('Settings'); ?></a></li>
+		<li><a href="#widget-geo" data-toggle="tab"><?=$this->translate('GEO-Coords'); ?></a></li>
+	</ul>
+
+	<div class="tab-content margin-bottom-10 h650 oyscroll">
+
+		<div class="tab-pane" id="widget-content">
+		<?php include 'tab/widget-content.phtml'; ?>
+		</div>
+		<div class="tab-pane" id="widget-meta">
+		<?php include 'tab/widget-meta.phtml'; ?>
+		</div>
+		<div class="tab-pane" id="widget-geo">
+		<?php include 'tab/widget-geo.phtml'; ?>
+		</div>
+
+	</div>
+
+	<div class="clearfix"><!--  --></div>
+
+	<button class="btn btn-primary pull-right margin-right-8" data-type="submit"><?=$this->translate('Save'); ?></button>
+
+
+	</form>
+
+</div>
+
+<script>
+
+(function(){
+
+	$('a[data-toggle="tab"]').on('shown.bs.tab', function() {
+		EvM.notify('mc.postDispatch', {'cleanWysihtml5':true});
+		$.fancybox.reposition();
+	});
+	$('a[data-toggle="tab"]:first').trigger('click');
+	EvM.notify("mc.jqform", {'selector':'#widgetForm',
+			'callback': function(response) {
+				EvM.notify('mc.jsonresponse', response);
+				if(response.hasShowModal != undefined) {
+					$(response.hasShowModal.selector+'Label').empty().append(response.hasShowModal.label);
+					$(response.hasShowModal.selector+'Content').empty().append(response.hasShowModal.content);
+					showModal(response.hasShowModal.selector);
+                }
+			}});
+	$('[data-role="tagsinput"]').tagsinput();
+	EvM.notify('mc.scroll', {'selector':'.oyscroll'});
+})();
+
+</script>

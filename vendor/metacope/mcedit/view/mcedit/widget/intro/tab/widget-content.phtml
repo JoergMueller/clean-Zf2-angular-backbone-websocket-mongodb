@@ -1,0 +1,31 @@
+
+<?php
+
+$escaper = new Zend\Escaper\Escaper('utf-8');
+
+?>
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('Headline')?>:
+		<input class="form-control" type="text" name="attributes[headline]" value="<?=$widget->hasAttribute("headline", $this->lang)?>" placeholder="" /></label>
+</div>
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('Body')?>:
+		<textarea class="form-control h200 whtml wp100" type="text" name="attributes[text]" placeholder=""><?=$widget->hasAttribute("text", $this->lang)?></textarea></label>
+</div>
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('Image URL or Database-ID')?>:<br>
+	<div class="input-group">
+		<input id="timage<?=$widget->getId()?>" class="form-control validate[required] imgInput" type="text" name="attributes[image]" value="<?=$widget->hasAttribute('image', $this->lang)?>" placeholder="<?=$this->translate('Image URL or Database-ID')?>" />
+		<span class="input-group-btn">
+	    	<button class="btn btn-default bs-image" type="button" data-seeker-target="timage<?=$widget->getId()?>"><i class="fa fa-image"></i></button>
+	  	</span>
+	</div></label>
+</div>
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('Imagecaption')?>:
+		<input class="form-control" type="text" name="attributes[imagecaption]" value="<?=$widget->hasAttribute("imagecaption", $this->lang)?>" placeholder="<?=$this->translate('Imagecaption')?>" /></label>
+</div>

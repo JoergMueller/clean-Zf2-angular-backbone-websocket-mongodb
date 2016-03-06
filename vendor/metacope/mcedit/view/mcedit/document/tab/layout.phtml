@@ -1,0 +1,8 @@
+
+
+<?
+$layout = $this->documentform->get('layout');
+$this->documentform->get('layout')->setValue($layout->getValue($this->docLang));
+?>
+
+<?=$this->formRow($this->documentform->get('layout'))?>

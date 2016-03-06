@@ -1,0 +1,59 @@
+
+( Kompaktbagger )
+
+Oberbegriff	Gruppe	Kategorie I	Kategorie II	Hersteller	Modell	Betriebsgewicht mit Schutzdach (kg)	Betriebsgewicht mit Kabine und Heizung (kg)	Heckbauweise	Einfahrbare Raupen	Breite min./max. (mm)	Höhe (mm)	Raupenbreite (mm)	Motor 	Kraftstoff / Kühlung	Max. Leistung bei U/min (kW)	Anzahl Zylinder / Hubraum (cm³)	Hubraum (l)	Kraftstofftank (l)	Gesamtförderleistung (l/min)	Systementlastungsdruck für Zusatzhydraulik (bar)	Zusatzhydraulik-Ölfluss (l/min)	Max. Grabtiefe Std.-Löffelstiel / langer Löffelstiel (mm) 	Max. Ausschütthöhe Std.-Löffelstiel / langer Löffelstiel (mm) 	Max. Reichweite auf Bodenhöhe Std.-Löffelstiel / langer Löffelstiel (mm) 	Max. Grabkraft Std.-Löffelstiel / langer Löffelstiel (N)	Grabkraft Löffel (N)	Zugkraft (N)	Fahrgeschwindigkeit - niedrige Stufe (km/h)	Fahrgeschwindigkeit - hohe Stufe (km/h)	Auslegerschwenkung - links (°)	Auslegerschwenkung - rechts (°)	Schwenkgeschwindigkeit (U/min)	Standardausstattung	Sonderausstattung 
+
+
+
+
+( Kompaktlader, Kompaktraupen )
+
+
+Oberbegriff	Gruppe	Kategorie	Hersteller	Modell	Betriebsgewicht (kg)	Länge mit Standardschaufel (mm)	Breite mit Standardschaufel (mm)	Höhe (mm)	Höhe bis Schaufelzapfen (mm)	Bodenkontaktlänge (mm)	Radstand (mm)	Schaufelvolumen (l)	Fahrbare Nutzlast (kg)	Kipplast (kg)	Leistung Standardhydraulik (l/min)	Leistung Hochleistungshydraulik (l/min)	Systemdruck an Schnellkupplungen (MPa)	Fahrgeschwindigkeit Standard (km/h)	Fahrgeschwindigkeit 2. Fahrstufe (km/h)	Bodendruck (kPa)	Hubweg	Motor 	Art	Kraftstoff / Kühlung	Max. Leistung bei U/min (kW / PS)	Drehmoment bei U/min (Nm)	Anzahl Zylinder / Hubraum (cm³)	Kraftstofftank (l)	Pedal- und Hebelsteuerung	ACS-Steuersystem	SJC-Steuersystem	Standardausstattung	Sonderausstattung (werksinstalliert)	Sonderausstattung (nachrüstbar)																																																																													
+
+
+
+
+( Mobilbagger )
+
+
+Oberbegriff	Gruppe	Kategorie I	Hersteller	Modell	Betriebsgewicht (kg)	Transportbreite (mm)	Transportlänge (mm)	Transporthöhe Ausleger (mm)	Höhe über Kabine (mm)	Max. Grabtiefe (mm)	Max. Grabreichweite (mm)	Max. Grabhöhe (mm)	Reißkraft Löffel (t)	Reißkraft Löffelstiel (t)	Traktion (t)	Fahrgeschwindigkeit (km/h)	Max. Schwenkgeschwindigkeit (U/min)	Motor 	Abgasnorm	Kraftstoff / Kühlung	Max. Leistung bei U/min (kW)	Anzahl Zylinder 	Hauptpumpen 	Gesamtförderleistung (l/min)	Kraftstofftank (l)	Kühlung (l)	Motoröl (l)	Hydrauliköltank (l)	AdBlue-Tank (l)	Standardausstattung	Sonderausstattung 
+
+
+
+( Rotationnsteleskopen )
+
+
+Oberbegriff
+Gruppe
+Kategorie 
+Hersteller
+Modell
+Betriebsgewicht (kg)
+Breite über Standardreifen (mm)
+Länge ohne Anbaugerät (mm)
+Höhe (mm)
+Max. Hubkraft (kg)
+Max. Hubhöhe - auf Stabilisatoren (mm)
+Max. Hubhöhe - auf Reifen (mm)
+Hubkraft bei max. Höhe - auf Stabilisatoren (kg)
+Hubkraft bei max. Höhe - auf Reifen (kg)
+Hubkraft bei max. Reichweite - auf Stabilisatoren (kg)
+Hubkraft bei max. Reichweite - auf Reifen (kg)
+Max. Reichweite - auf Stabilisatoren (mm)
+Max. Reichweite - auf Reifen (mm)
+Fabrikat
+Abgasnorm
+Kraftstoff / Kühlung
+Leistung (kW / PS)
+Zylinder
+Standard-Bereifung
+Arbeitsgeschwindigkeit (km/h)
+Fahrgeschwindigkeit (km/h)
+Getriebe
+Hauptantrieb
+Pumpentyp
+Teleskop einfahren bei max. Reichweite (s)
+Teleskop ausfahren bis max. Reichweite (s)
+Standardausstattung
+Sonderausstattung 

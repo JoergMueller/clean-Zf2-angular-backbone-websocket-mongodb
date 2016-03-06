@@ -1,0 +1,21 @@
+
+<?
+$filter = new \Zend\Filter\Word\SeparatorToDash('/');
+$key = $this->lang . $filter->filter($this->document->getPath($this->lang));
+$filename = getcwd() . '/data/cache/' . $key . '.phtml';
+
+if(!file_exists($filename)) {
+	ob_start();
+	print $this->document->getLayout($this->lang);
+	$content = ob_get_clean();
+
+	file_put_contents($filename, $content);
+}
+
+print "\n\n<!-- BEGIN"  . $filename . "-->\n\n";
+
+include $filename;
+
+print "\n\n<!-- END"  . $filename . "-->\n\n";
+
+?>

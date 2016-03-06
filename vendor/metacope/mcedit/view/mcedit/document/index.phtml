@@ -1,0 +1,194 @@
+
+
+<style>
+
+.effectOver {
+	border: 1px dotted green;
+	width: 100% !important;
+}
+[draggable] {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  /* Required to make elements draggable in old WebKit */
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+}
+
+
+
+</style>
+
+
+<div class="container padding-0 mh500">
+
+	<div class="row hp100">
+
+		<div class="col-md-4">
+
+			<?=$this->partial('partials/editor/searchfield', array('target'=>'document'))?>
+
+			<div id="document-tree" class="tree wp100 hp100 ohidden oyscroll margin-top-10">
+				<ul id="holder_0" class="holder hp100 liststyle-none first oxhidden" style="display: none;"></ul>
+			</div>
+
+		</div>
+
+
+		<div class="col-md-8">
+
+			<div id="document-form" class="hp100 ohidden"></div>
+
+			<div class="clearfix"><!--  --></div>
+
+		</div>
+
+
+	</div>
+
+</div>
+
+<script type="text/html" id="tmpl_treeinlay">
+<% for(var i=0; i < entries.length; i++ ){ %>
+<li id="<%=entries[i].id%>" class="dragdrop margin-bottom-5" draggable="true">
+	<div class="btn-group wp100 treeholder <%=(entries[i].visible==0?' btn-warning':' btn-success')%>">
+
+		<button class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></button>
+		<a id="btn_<%=entries[i].id%>" class="btn btn-xs<%=(entries[i].visible==0?' btn-warning':' btn-success')%> name structname" href="/mc/document/set/id/<%=entries[i].id%>" data-target="#document-form" data-id="<%=entries[i].id%>" data-token="<%=entries[i].token%>"><%=entries[i].structname.de%></a>
+
+		<ul class="dropdown-menu" role="menu">
+			<li><a class="siteAction" href="#" data-action="load" data-id="<%=entries[i].id%>">Unterseiten</a></li>
+			<li class="divider"><!-- --></li>
+			<li><a class="siteAction" href="#" data-action="create" data-id="<%=entries[i].id%>">Unterseite anlegen</a></li>
+			<li><a class="siteAction" href="#" data-action="visible" data-id="<%=entries[i].id%>">Diese Seite online/offline</a></li>
+			<li><a class="siteAction" href="#" data-action="remove" data-id="<%=entries[i].id%>">Diese Seite löschen</a></li>
+		</ul>
+	</div>
+	<ul id="holder_<%=entries[i].id%>" class="holder liststyle-none margin-top-5" style="display:none"></ul>
+</li>
+<% } %>
+</script>
+<script>
+
+Tree = (function(){
+
+	var defaults = {'lang':'<?=$lang?>'};
+
+	function init( options ) {
+		defaults = $.extend(defaults, options || {});
+	}
+
+	function loadTree(id) {
+
+		var _selector = '#holder_'+ id;
+		$.get('/mc/ajax/dtree/id/'+id, {}, function(_response) {
+			$(_selector).append(tmpl('tmpl_treeinlay', {'entries':_response.documents,'_selector':_selector}));
+			actionHandler(_selector);
+
+			$(_selector).slideToggle('slow', function(){
+				$(_selector).toggleClass('open');
+				if(_selector == '#holder_0') $(_selector + ' a.siteAction:first, ' + _selector + ' a.structname:first').trigger('click');
+			});
+		}, 'json');
+
+
+
+	}
+
+	function actionHandler(_selector) {
+			$(_selector + " a.structname").on("click", function(e){
+				e.preventDefault();
+				$($(this).data('target')).empty().append($spinner).load($(this).attr('href')+'/token/'+$(this).attr('data-token'));
+				//loadForm($(this).attr('href')+'?token='+$(this).attr('data-token'), $(this));
+			});
+			EvM.notify('mc.scroll', {'selector':'.oyscroll'});
+			$(_selector + " a.siteAction").on("click", function(e){
+				e.preventDefault();
+				switch($(this).attr('data-action')) {
+					case 'load':
+						$holder = $('#holder_'+$(this).attr('data-id'));
+						if($holder.has('li').length>0) $holder.slideToggle();
+						else loadTree($(this).attr('data-id'));
+						break;
+					case 'remove':
+						if(!confirm("wirlich löschen?")) return;
+						var self=this;
+						$.get('/mc/document/remove/id/'+$(this).attr('data-id'), {}, function(data){
+							if(data.visible == 0) {
+								$('#btn_'+data._id.$id).removeClass('btn-success').addClass('btn-warning');
+							}
+							else if(data.visible == 1) {
+								$('#btn_'+data._id.$id).removeClass('btn-warning').addClass('btn-success');
+							}
+							$('#'+$(self).attr('data-id')).remove();
+						}, 'json');
+						break;
+					case 'create':
+						$dataId=$(this).attr('data-id');
+						$.get('/mc/document/set/id/'+$dataId, {'create':true}, function(data){
+							loadTree($dataId);
+						}, 'json');
+						$('#holder_'+$(this).attr('data-id')).empty().hide();
+						break;
+					case 'visible':
+						$.get('/mc/document/visible/id/'+$(this).attr('data-id'), {}, function(data){
+							if(data.document.visible == 0) {
+								$('#btn_'+data.document.id).removeClass('btn-success').addClass('btn-warning');
+							}
+							else if(data.document.visible == 1) {
+								$('#btn_'+data.document.id).removeClass('btn-warning').addClass('btn-success');
+							}
+						}, 'json');
+						break;
+					default:
+						break;
+				}
+			});
+			EvM.notify('mc.editor.dragdrop', {});
+	}
+
+	function  reloadTree(id, doc) {
+		var _selector = '#holder_'+ id;
+		$.get('/mc/ajax/dtree/id/'+id, {}, function(_response) {
+			$(_selector).append(tmpl('tmpl_treeinlay', {'entries':_response.documents,'_selector':_selector}));
+			actionHandler(_selector);
+			$('#btn_'+doc.id).trigger('click');
+			if(id===0) $('a.structname:first').trigger('click');
+		}, 'json');
+	}
+
+	function loadForm(_uri, o) {
+		$(o.data('target')).empty().append($spinner);
+		$.get(_uri, {}, function(data){
+			$(o.data('target')).empty().append(data);
+			LangSwitch.init({'handler':o});
+			setTimeout(function(){
+				// EvM.notify('mc.scroll', {'selector':'.oyscroll'});
+				// EvM.notify("mc.postDispatch");
+				$(window).trigger('resize');
+				$.fancybox.resize();
+			}, 900)
+		});
+	}
+
+	return {
+		'init': init,
+		'loadTree': loadTree,
+		'reloadTree': reloadTree,
+		'loadForm': loadForm,
+		'trigger': actionHandler
+	};
+})();
+Tree.init();
+Tree.loadTree(0);
+
+
+
+
+(function(){
+	EvM.notify('mc.scroll', {'selector':'.oyscroll'});
+	EvM.notify("mc.postDispatch");
+	$(window).trigger('resize');
+})();
+</script>

@@ -1,0 +1,97 @@
+
+<?php
+$dm = $this->dm ? $this->dm : $this->ObjectHelper()->getDocumentManager();
+
+if(!$this->document) {
+	$this->document = $widget->getParent();
+}
+$this->document->setDocumentManager($dm);
+$childIds = $this->document->getChildIds();
+
+$attributes = $widget->getAttributes();
+$datestart = $widget->getDatestart();
+$datestop = $widget->getDatestop();
+$datestart = $datestart instanceof \DateTime ? $datestart->format('d.m.Y') : null;
+$datestop = $datestop instanceof \DateTime ? $datestop->format('d.m.Y') : null;
+
+$imagecount = 0;
+
+$action = $widget->getToken()
+		? 'id/'.$widget->getId() . '?token=' . $widget->getToken()
+		: 'create/1/id/' . $this->document->getId() . '?_=' . time();
+?>
+
+<div class="row-fluid editorOverlay hp-80">
+
+	<form id="widgetForm" class="jqform" method="post" action="/mcedit/widget/set/<?=$action?>"
+		data-widget="<?=$widget->getId()?>"
+		data-type="<?=$widget->getType()?>"
+		data-path="<?=$widget->getAnker()?>">
+
+	<input type="hidden" name="id" value="<?=$widget->getId()?>" />
+
+	<ul class="nav nav-tabs" id="article-tab">
+		<li class="active"><a href="#widget-content" data-toggle="tab"><?=$this->translate('Content'); ?></a></li>
+		<li><a href="#widget-meta" data-toggle="tab"><?=$this->translate('Settings'); ?></a></li>
+		<li><a href="#widget-geo" data-toggle="tab"><?=$this->translate('GEO-Coords'); ?></a></li>
+	</ul>
+
+	<div class="tab-content margin-bottom-10 margin-top-10 h770 oyscroll">
+
+		<div class="tab-pane active" id="widget-content">
+		<?php include 'tab/widget-content.phtml'; ?>
+		</div>
+		<div class="tab-pane" id="widget-meta">
+		<?php include 'tab/widget-meta.phtml'; ?>
+		</div>
+		<div class="tab-pane" id="widget-geo">
+		<?php include 'tab/widget-geo.phtml'; ?>
+		</div>
+
+	</div>
+
+	<div class="clearfix"><!--  --></div>
+
+	<button class="btn btn-default margin-right-8 pull-right"> <i class="fa fa-check" data-spinner="replace"></i> <?=$this->translate("Save")?></button>
+
+
+	</form>
+
+</div>
+
+<script>
+
+(function(){
+	EvM.notify('mc.wysihtml', {'selector':'form#widgetForm textarea','wysihtml5ParserRules':wysihtml5ParserRules});
+
+	$('a[data-toggle="tab"]').on('shown.bs.tab', function() {
+		$.fancybox.reposition();
+		EvM.notify('mc.scroll',{'selector':'.tab-content.oyscroll'});
+		$('[data-toggle="popover"]').popover({'html':true});
+	});
+	$('a[data-toggle="tab"]:first').trigger('click');
+	EvM.notify("mc.jqform", {'selector':'#widgetForm',
+		'precall': function(elem, opt) {
+			_.map($('[data-spinner]').toArray(),App.spinner.bind('start'));
+			return true;
+		},
+		'callback': function(response) {
+			_.map($('.spinner').toArray(),App.spinner.bind('done'));
+			js_scope=angular.element(document.getElementById('_rootWrap')).scope();
+			EvM.notify('mc.jsonresponse', response);
+			if(response.hasShowModal != undefined) {
+				$(response.hasShowModal.selector+'Label').empty().append(response.hasShowModal.label);
+				$(response.hasShowModal.selector+'Content').empty().append(response.hasShowModal.content);
+				showModal(response.hasShowModal.selector);
+            }
+		}});
+    $('a.bs-image').unbind();
+    $('a.bs-image').on('click', function(){
+        $('#seekerLabel').html('Suchen Sie sich ein Bild aus');
+        $('#seekerContent').addClass('h770 oyscroll').load('/mcedit/images/seeker?t=' + $(this).closest('label').find('textarea').data('seeker-target'));
+        showModal('#seeker');
+    });
+    $('[data-role="tagsinput"]').tagsinput();
+})();
+
+</script>

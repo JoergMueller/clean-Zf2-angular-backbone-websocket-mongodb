@@ -1,0 +1,122 @@
+
+<?php
+use Metacope\Mcedit\Model\Image;
+
+$folders = $dm->createQueryBuilder('Metacope\Mcedit\Model\Image')
+				->distinct('folder')
+				->getQuery()
+				->execute();
+?>
+
+<link rel="stylesheet" href="/css/basic.css">
+<link rel="stylesheet" href="/css/dropzone.css">
+<script src="/js/dropzone.js"></script>
+
+
+<div class="row-fluid">
+	<div class="input-group">
+		<span class="input-group-btn">
+			<button class="btn btn-default" type="button" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-folder-open-o"></i> <span class="caret"></span></button>
+			<ul id="folder-list" class="dropdown-menu" role="menu">
+				<?php foreach($folders as $folder): ?>
+				<li><a href="#"><i class="fa fa-folder-open-o"></i> <?=$folder?></a></li>
+				<?php endforeach; ?>
+			</ul>
+
+
+		</span>
+		<input id="folder" type="text" class="form-control" name="folder" value="<?=isset($image)?$image->getFolder():false;?>" placeholder="Folder ...">
+	</div><!-- /input-group -->
+</div>
+
+<br>
+
+<form id="my-dropzone" action="/mc/image/upload" class="dropzone"></form>
+
+
+  <div id="template" class="file-row">
+    <!-- This is used as the file preview template -->
+    <div>
+        <span class="preview"><img data-dz-thumbnail /></span>
+    </div>
+    <div>
+        <p class="name" data-dz-name></p>
+        <strong class="error text-danger" data-dz-errormessage></strong>
+    </div>
+    <div>
+        <p class="size" data-dz-size></p>
+        <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+        </div>
+    </div>
+    <div>
+      <button class="btn btn-primary start">
+          <i class="glyphicon glyphicon-upload"></i>
+          <span>Start</span>
+      </button>
+      <button data-dz-remove class="btn btn-warning cancel">
+          <i class="glyphicon glyphicon-ban-circle"></i>
+          <span>Cancel</span>
+      </button>
+      <button data-dz-remove class="btn btn-danger delete">
+        <i class="glyphicon glyphicon-trash"></i>
+        <span>Delete</span>
+      </button>
+    </div>
+  </div>
+
+
+<script>
+
+var previewNode = document.querySelector("#template");
+previewNode.id = "";
+var previewTemplate = previewNode.parentNode.innerHTML;
+previewNode.parentNode.removeChild(previewNode);
+
+var dz = Dropzone.forElement("div#my-dropzone", {
+  url: "/mc/image/upload", // Set the url
+  paramName: "file",
+  thumbnailWidth: 80,
+  thumbnailHeight: 80,
+  parallelUploads: 20,
+  previewTemplate: previewTemplate,
+  autoQueue: false, // Make sure the files aren't queued until manually added
+  previewsContainer: "#previews", // Define the container to display the previews
+  multiple: true,
+  uploadMultiple: true
+});
+dz.on("error", function(file, message) { alert(message); });
+
+dz.on("addedfile", function(file) {
+  // Hookup the start button
+  file.previewElement.querySelector(".start").onclick = function() { myDropzone.enqueueFile(file); };
+});
+
+// Update the total progress bar
+dz.on("totaluploadprogress", function(progress) {
+  document.querySelector("#total-progress .progress-bar").style.width = progress + "%";
+});
+
+dz.on("sending", function(file) {
+  // Show the total progress bar when upload starts
+  document.querySelector("#total-progress").style.opacity = "1";
+  // And disable the start button
+  file.previewElement.querySelector(".start").setAttribute("disabled", "disabled");
+});
+
+// Hide the total progress bar when nothing's uploading anymore
+dz.on("queuecomplete", function(progress) {
+  document.querySelector("#total-progress").style.opacity = "0";
+});
+document.querySelector("#actions .start").onclick = function() {
+  dz.enqueueFiles(dz.getFilesWithStatus(Dropzone.ADDED));
+};
+document.querySelector("#actions .cancel").onclick = function() {
+  dz.removeAllFiles(true);
+};
+
+document.querySelector("#folder-list a").onclick =  function() {
+	document.querySelector("#folder").setAttribute('value', App.stripTags($(this).html()).replace(/^\s+|\s+$/,''));
+};
+
+</script>

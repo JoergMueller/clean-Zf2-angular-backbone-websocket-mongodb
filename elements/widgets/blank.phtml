@@ -1,0 +1,14 @@
+
+
+<div
+	id="blank_<?=$widget->getId()?>"
+	class="widget"
+	data-token="<?=$widget->getToken()?>"
+	data-type="blank"
+	data-id="<?=$widget->getId()?>"
+	data-document="<?=$document->getId()?>"
+	data-path="<?=$widget->getAnker()?>"
+	data-title="<?=$widget->hasAttribute('headline', $this->lang)?>"
+	>
+	<?=$widget->hasAttribute('content', $this->lang)?>
+	</div>

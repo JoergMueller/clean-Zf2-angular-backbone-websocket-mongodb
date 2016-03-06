@@ -1,0 +1,192 @@
+
+<?php
+
+$action = '/mc/document/set';
+
+if(isset($this->params['id']) && strlen(trim(($this->params['id'])))) {
+	$action .= '/id/' . $this->params['id'];
+}
+
+if(isset($this->document) && $this->document->getToken()) {
+	$action .= '/token/' . $this->document->getToken();
+}
+$action .= '/lang/' . $this->docLang;
+$this->documentform->setAttribute('action', $action);
+
+$this->documentform->get('submit')->setAttribute('class','btn btn-primary pull-right inline');
+$this->documentform->prepare();
+?>
+
+
+<div id="wC">
+<?=$this->form(null,\TwbBundle\Form\View\Helper\TwbBundleForm::LAYOUT_HORIZONTAL)->openTag($this->documentform);?>
+
+	<?=$this->formRow($this->documentform->get('id'))?>
+	<?=$this->formRow($this->documentform->get('token'))?>
+
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#basic" data-target="#basic" data-toggle="tab">Basic</a></li>
+		<li><a href="#seo" data-target="#seo" data-toggle="tab">SEO</a></li>
+		<!--
+		<li><a href="#map" data-target="#map" data-toggle="tab">Map</a></li>
+		-->
+		<li><a href="#layout" data-target="#layout" data-toggle="tab">Layout</a></li>
+		<!--
+		<li><a href="#publish" data-target="#publish" data-toggle="tab"><?=$this->translate('Publishing')?></a></li>
+		-->
+	</ul>
+
+	<div class="tab-content h870 ohidden oyscroll">
+
+		<p class="inverse margin-top-15" style="margin-bottom: 10px !important;">
+			<b>Token</b>: <?=$this->document->getToken()?> <b>Name</b>: <?=$this->document->getStructname($this->docLang)?>
+		</p>
+
+
+		<div class="btn-group margin-bottom-10" data-toggle="buttons">
+			<?php foreach(array_keys($this->config['locales']['list']) as $_lang):
+			$active = $_lang == $this->docLang ? ' active' : false;
+			?>
+			<label data-lang="<?=$_lang?>" class="btn btn-default btn-lang<?=$active?>">
+				<input class="check_lang" type="radio" name="check_lang" value="<?=$_lang?>" <?=$active?'checked':false?>> <?=strtoupper($_lang)?></label>
+			<?php endforeach; ?>
+		</div>
+
+		<div class="tab-pane h750 active" id="basic">
+			<?include 'tab/setting.phtml';?>
+		</div>
+
+		<div class="tab-pane h750" id="seo">
+			<?include 'tab/seo.phtml';?>
+		</div>
+
+		<div class="tab-pane h750" id="layout">
+			<?include 'tab/layout.phtml';?>
+		</div>
+
+
+	</div>
+
+	<div class="form-group margin-0 margin-top-10 text-right">
+		<button class="btn btn-success btn-md" type="submit"> <i class="fa fa-check fa-fw" data-spinner="replace"></i> <?=$this->translate('save')?></button>
+	</div>
+
+<?=$this->form()->closeTag()?>
+</div>
+
+
+
+
+<script>
+
+var LangSwitch = (function(){
+
+	defaults = {
+		'uri': '/mc/document/set',
+		'target': '#document-form'
+	};
+
+	function init(options) {
+		defaults = $.extend(defaults, options || {});
+		if(defaults.handler != undefined)
+			defaults.uri = defaults.handler.attr('href') + '?token=' + defaults.handler.data('token') + '&lang=';
+		prepare();
+	}
+
+	function prepare() {
+
+		if(defaults.handler == undefined) {
+			$(defaults.target).append($('<p/>', {
+				'id': 'handler',
+				'class': 'hidden'
+			}));
+			$('#handler').attr('data-token', $('#token').val());
+			$('#handler').attr('data-target', defaults.target);
+			$('#handler').attr('data-id', $('#id').val());
+			defaults.handler = $('#handler');
+		}
+
+		$('label.btn-lang').on("click", function(e) {
+			defaults.uri += '/id/' + $('#id').val();
+			defaults.uri += '/token/' + $('#token').val();
+			defaults.uri += '/lang/' + $(this).data('lang');
+
+			LangSwitch.loadForm(defaults.uri, defaults.handler, $(this).data('lang'));
+		});
+	}
+
+	function loadForm(_uri, o, lang) {
+		$(defaults.target).empty().append($spinner);
+		$.get(_uri, {}, function(data){
+			$(defaults.target).empty().append(data);
+			$('#imgAttributeForm').attr('action', $('#imgAttributeForm').attr('action') + '/lang/'+lang)
+		});
+	}
+
+	return {
+		'init': init,
+		'loadForm': loadForm
+	}
+})();
+
+
+(function(){
+
+	LangSwitch.init();
+
+    $('#wC').on('click', '.bs-image', function(){
+        $('#seekerLabel').html('Suchen Sie sich ein Bild aus');
+        $('#seekerContent').addClass('h770 oyscroll').load('/mc/images/seeker?targetId=' + $(this).data('seeker-target'));
+        showModal('#seeker',{});
+    });
+
+	var jqform_options = {
+			'selector': 'form.jqform',
+			'precall': function(elem, opt) {
+				_.map($('[data-spinner]').toArray(),App.spinner.bind('start'));
+				return true;
+			},
+			'callback': function(response) {
+				_.map($('.spinner').toArray(),App.spinner.bind('done'));
+				$('#documentForm .tab-pane.active').fadeTo(100);
+				if(response.document != undefined) {
+					$('#btn_' + response.document.id).empty().append(response.document.structname['<?=$this->lang?>']);
+					if(response.document.visible == 0) {
+						$('#btn_' + response.document.id).removeClass('btn-success').addClass('btn-warning');
+					}
+					else
+						$('#btn_' + response.document.id).removeClass('btn-warning').addClass('btn-success');
+					delete response.document;
+				}
+				EvM.notify('mc.jsonresponse', response);
+				if(!_.isUndefined(response.hasShowModal)) {
+					$(response.hasShowModal.selector+'Label').empty().append(response.hasShowModal.label);
+					$(response.hasShowModal.selector+'Content').empty().append(response.hasShowModal.content);
+					showModal(response.hasShowModal.selector);
+                }
+			}
+		}
+	EvM.notify('mc.jqform', jqform_options);
+
+	$('#submitBtn').on("click", function(e) {
+		e.preventDefault();
+		$('#documentForm .tab-pane.active').fadeTo(20);
+		$(this).closest('form').submit();
+		return false;
+	});
+
+	$('[data-toggle="tab"]').on('shown.bs.tab', function() {
+		$('form').unbind();
+		// EvM.notify('mc.scroll', {'selector':'.tab-content'});
+		$('#documentForm .tab-pane.active input:first ').select();
+		EvM.notify('mc.jqform', jqform_options);
+	});
+	$('[data-toggle="tab"]:first').trigger('click');
+	$('.tab-pane.active input:first ').select();
+	$('[data-toggle="popover"]').popover({html:true});
+	$.fancybox.reposition();
+
+	EvM.notify('mc.scroll', {'selector':'.oyscroll'});
+
+})();
+</script>

@@ -1,0 +1,132 @@
+
+<?php
+if($target == 'image') {
+	$this->dm = $this->ObjectHelper()->getDocumentManager();
+	$folders = $this->dm->createQueryBuilder("\Metacope\Mcedit\Model\Image")->distinct('folder')->getQuery()->execute();
+}
+?>
+
+	<div id="editorSearchField" class="input-group">
+		<span class="input-group-btn">
+			<button class="btn btn-default" type="button" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-cogs"></i></button>
+			<button class="btn btn-default" type="submit">Go!</button>
+
+			<ul class="dropdown-menu" role="menu">
+				<?if($target == 'document'):?>
+				<li><a href="/mcedit/<?=$target?>/set?create=true" data-toggle="jl" data-target="#<?=$target?>-form"><?=$this->translate('create toplevel '.$target)?></a></li>
+				<?elseif($target == 'user'):?>
+				<li><a href="/mcedit/<?=$target?>/set?create=true" data-toggle="jl" data-target="#<?=$target?>-form"><?=$this->translate('create toplevel '.$target)?></a></li>
+				<?elseif($target == 'client'):?>
+				<li><a href="/mcedit/<?=$target?>/create" data-toggle="jl" data-target="#<?=$target?>-form"><?=$this->translate('create toplevel '.$target)?></a></li>
+				<?else:?>
+				<li><a href="javascript:;" onclick="getthumbs()"><i class="fa fa-refresh"></i> Reload Thumbnails</a></li>
+				<li class="divider"></li>
+				<li><a href="/mcedit/images/remove" data-toggle="jl" data-target="#imagelistholder" data-value-selector="#imagelistholder input:checked"><i class="fa fa-minus-circle"></i> Remove</a></li>
+				<li class="divider"></li>
+				<?php foreach($folders as $folder): ?>
+				<li><a href="javascript:;" onclick="getthumbs({'folder':'<?=$folder?>','limit':100,'clear':true})"><i class="fa fa-folder-o"></i> <?=$folder?></a></li>
+				<?php endforeach; ?>
+				<?php endif; ?>
+				<li class="divider"></li>
+				<li><a href="#">...</a></li>
+			</ul>
+
+
+		</span>
+		<input type="text" class="form-control" data-toggle="livesearch" name="term" placeholder="Search for..." autocomplete="off">
+	</div><!-- /input-group -->
+
+	<?if($target == 'image'):?>
+	<input type="text" class="form-control" name="externalurl" placeholder="or Image-URL" autocomplete="off">
+	<?endif;?>
+
+
+<script>
+(function(){
+	$('[data-toggle="jl"]').on('click', function(e){
+		e.preventDefault();
+		var params='';
+		if($(this).attr('data-value-selector'))
+			params= '?' + $('input:checked').serialize();
+		if($(this).data('target')) $($(this).data('target')).empty().append($spinner);
+		$.get($(this).attr('href')+ params, {}, function(data){
+			<?if($target == 'document'):?>
+			$($(this).data('target')).empty();
+			$('#holder_0').empty();Tree.reloadTree(0, data);
+			<?elseif($target == 'user'):?>
+			$($(this).data('target')).empty();
+			$('#holder_0').empty();Tree.loadTree(0);
+			$('#btn_' + data.id).trigger('click');
+			<?elseif($target == 'client'):?>
+			$($(this).data('target')).empty();
+			$('#holder_0').empty();Tree.loadTree(0);
+			<?else:?>
+			if($(this).data('target')) $($(this).data('target')).empty().append(data);
+			<?endif?>
+		}, 'json');
+	});
+	EvM.notify('mc.searchfield', {'type':'<?=$target?>','target':'#editorSearchField'});
+})();
+
+var typfunc = typeof function(){},
+	typundef = typeof undefined,
+livesearch = (function(){
+	var defaults = {}
+
+	function init(options) {
+		var self=this;
+		defaults = $.extend(defaults, options || {}, {'elements':$('[data-toggle="livesearch"]')});
+		defaults.elements.each(function(){
+
+			if(typeof $(this).data('mc-ls-callback') != typfunc) {
+				$(this).data('mc-ls-callback', function(){
+
+					var _selector = '#holder_0';
+
+					<?if($target == 'image'):?>
+
+					getthumbs({'term':this.value});
+
+					<?elseif($target == 'document' || $target == 'user'):?>
+
+					switch('<?=$target?>') {
+
+						case 'user':
+							var $uri = '/mc/ajax/users/term/';
+							var callback = function(response) {
+								$(_selector).empty()
+									.append(tmpl('tmpl_treeinlay', {'entries':response,'_selector':_selector}));
+							}
+							break;
+						case 'document':
+							var $uri = '/mc/ajax/dsearch/term/';
+							var callback = function(response) {
+								$(_selector).empty()
+									.append(tmpl('tmpl_treeinlay', {'entries':response.documents,'_selector':_selector}));
+							}
+							break;
+					}
+					$.get($uri + this.value, {'term':this.value}, callback,'get');
+
+					<?else:?><?endif?>
+
+				}.bind(this));
+			}
+
+			$(this).data('mc-ls-timer', 0);
+			$(this).on('keyup', function(evt){
+				clearTimeout ($(this).data('mc-ls-timer'));
+				$(this).data('mc-ls-timer', setTimeout($(this).data('mc-ls-callback'), 700));
+			});
+		});
+	}
+
+	return {
+		'init': init,
+		'defaults': defaults
+	}
+
+})();
+livesearch.init();
+
+</script>

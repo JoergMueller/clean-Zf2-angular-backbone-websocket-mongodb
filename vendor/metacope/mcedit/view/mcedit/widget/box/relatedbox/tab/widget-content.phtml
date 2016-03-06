@@ -1,0 +1,25 @@
+
+<?php
+
+$escaper = new Zend\Escaper\Escaper('utf-8');
+
+$attributes = $widget->getAttributes();
+$searchtags = isset($attributes['searchtags'])
+			? $attributes['searchtags']
+			: array();
+
+$limit = isset($attributes['limit'])
+			? $attributes['limit']
+			: 3;
+?>
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('Tags')?>: <small>Artikel die auf diese Tags matchen</small>
+		<input id="" class="form-control" type="text" name="attributes[searchtags]" value="<?=implode(',', $searchtags)?>" placeholder="" data-role="tagsinput"></label>
+</div>
+
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('Limit')?>: <small>Limit</small>
+		<input id="" class="form-control" type="number" name="attributes[limit]" value="<?=$limit?>" placeholder="" data-role=""></label>
+</div>

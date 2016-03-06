@@ -1,0 +1,36 @@
+
+
+<?
+$searchpath = $attributes->offsetExists('searchpath')
+			? $attributes->offsetGet('searchpath')
+			: '';
+$searchtags = $attributes->offsetExists('searchtags')
+			? $attributes->offsetGet('searchtags')
+			: array();
+$count      = $attributes->offsetExists('count')
+			? $attributes->offsetGet('count')
+			: 10;
+$infinity   = $attributes->offsetExists('infinity')
+			? $attributes->offsetGet('infinity')
+			: 0;
+?>
+
+<div class="form-group">
+	<label class="block"> <?=$this->translate("widget_search_path")?>:
+	<input id="" class="form-control" type="text" name="attributes[searchpath]" value="<?=$searchpath?>" placeholder=""></label>
+</div>
+
+<div class="form-group">
+	<label class="block"> <?=$this->translate("widget_search_tags")?>:<br>
+	<input id="" class="form-control" type="text" name="attributes[searchtags]" value="<?=implode(',', $searchtags)?>" placeholder="" data-role="tagsinput"></label>
+</div>
+
+<div class="form-group">
+	<label class="block"> <?=$this->translate("widget_count")?>:
+	<input id="" class="form-control" type="text" name="attributes[count]" value="<?=$count?>" placeholder=""></label>
+</div>
+
+<div class="form-group">
+	<label class="block"> <?=$this->translate("widget_infinityscroll")?>: ( 0==No | 1==Yes )<br>
+	<input id="" class="form-control" type="text" name="attributes[infinity]" value="<?=$infinity?>" placeholder=""></label>
+</div>

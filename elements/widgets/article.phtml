@@ -1,0 +1,116 @@
+
+<?
+$attributes = $widget->getAttributes(1);
+?>
+
+<!--
+- if is necessary set description atttribute itemprop="description"
+- set images within attribute itemprop="image"
+-->
+
+<article
+	id="article_<?=$widget->getId()?>"
+	class="widget"
+	data-token="<?=$widget->getToken()?>"
+	data-type="article"
+	data-id="<?=$widget->getId()?>"
+	data-document="<?=$document->getId()?>"
+	data-path="<?=$widget->getAnker()?>"
+	data-title="<?=$widget->hasAttribute('headline', $this->lang)?>"
+	itemscope
+	itemtype="http://schema.org/Article"
+	>
+	<?if(isset($attributes['link'][$this->lang])&&strlen($attributes['link'][$this->lang])>0):?>
+	<a href="<?=$attributes['link'][$this->lang]?>" target="_self">
+	<?endif?>
+
+	<div class="articleWrapper">
+
+		<?$in = $widget->hasAttribute('headline', $this->lang);
+		if($in == true):?>
+		<h2 class="headline" itemprop="headline"><?=$this->bbcode($in)?></h2>
+		<div class="clearfix"><!--  --></div>
+		<?php endif; ?>
+
+		<?$in = $widget->hasAttribute('subline', $this->lang);
+		if($in == true):?>
+		<h4 class="subline" itemprop="alternativeHeadline"><?=$this->bbcode($in)?></h4>
+		<div class="clearfix"><!--  --></div>
+		<?php endif; ?>
+
+		<?php if(isset($attributes['hassocialmedia']) && $attributes['hassocialmedia'] == 1): ?>
+		<hr>
+		<a href="https://twitter.com/share" class="twitter-share-button" data-via="streammanager" data-hashtags="meta:cope">Tweet</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		<?php endif; ?>
+
+		<?$in = $widget->hasAttribute('intro', $this->lang);
+		if($in == true):?>
+		<quote class=""><?=$in?></quote>
+		<div class="clearfix"><!--  --></div>
+		<?php endif; ?>
+
+		<?$in = $widget->hasAttribute('body', $this->lang);
+		if($in == true):?>
+		<div class="body" itemprop="articleBody"><?=$in?></div>
+		<?php endif; ?>
+
+		<div class="clearfix"><!--  --></div>
+
+		<meta itemprop="datePublished" content="<?=$widget->getDateStart()->format('Y-m-d H:i:s.u T')?>"/>
+
+	</div>
+
+	<?if(isset($attributes['link'][$this->lang])&&strlen($attributes['link'][$this->lang])>0):?>
+	</a>
+	<?endif?>
+
+	<div class="clearfix"></div>
+
+
+</article>
+
+<?
+$headline = $widget->hasAttribute('headline', $this->lang);
+$subline = $widget->hasAttribute('subline', $this->lang);
+$body = $widget->hasAttribute('body', $this->lang);
+?>
+
+<?if((strlen(trim($headline))
+	|| strlen(trim($subline)))
+	&& strlen(trim($body))):?>
+
+<?
+if(!$headline && strpos($body, 'h3') !== false) {
+	$headline = strip_tags(preg_replace("#<h3>(.*)<\/h3>#siU", '\1', $body));
+}
+?>
+
+
+
+<script type="application/ld+json">
+{
+	"@context": "http://schema.org",
+	"@type": "Article",
+	"headline": "<?=strip_tags($headline)?>",
+	"alternativeHeadline": "<?=strip_tags($subline)?>",
+	"image": [],
+	"datePublished": "<?=$widget->getDateStart()->format('Y-m-d H:i:s.u T')?>",
+	"description": "",
+	"articleBody": "<?=strip_tags($body)?>",
+	<?if($widget->hasGeoCoords()):?>
+	"location" : {
+	"@type" : "Place",
+	"name" : "<?=$widget->getGeoreverse()?>",
+		"geo": {
+			"@type": "GeoCoordinates",
+			"latitude": "<?=$widget->getCoordinates()->getLat()?>",
+			"longitude": "<?=$widget->getCoordinates()->getLng()?>"
+	}
+	}
+	<?endif?>
+
+}
+</script>
+
+<?endif?>

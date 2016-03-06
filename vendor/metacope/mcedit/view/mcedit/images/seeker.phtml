@@ -1,0 +1,105 @@
+
+<?php
+$qb = $this->dm->createQueryBuilder("Metacope\Mcedit\Model\Image");
+$qb->distinct('folder');
+$folder = $qb->getQuery()->execute();
+?>
+<form id="seekerForm" class="">
+	<div class="row-fluid wp100">
+
+	<div id="seekerField" class="input-group wp100">
+		<span class="input-group-btn">
+			<button class="btn btn-default" type="button" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-folder-open-o"></i></button>
+			<button class="btn btn-default go" type="submit">Go!</button>
+
+			<ul class="dropdown-menu folderselect" role="menu">
+				<li disabled><a href="#">Find Images by Folder</a></li>
+				<li class="divider"></li>
+				<?php foreach($folder as $entry):
+				if(!strlen(trim($entry))) continue;
+				?>
+				<li>
+					<div class="checkbox padding-left-22">
+						<label for=""><input type="checkbox" name="folder[]" value="<?=$entry?>"> <?=$entry?></label>
+					</div></li>
+				<?php endforeach; ?>
+				<li class="divider"></li>
+				<li><a href="#">...</a></li>
+			</ul>
+
+
+		</span>
+		<input type="text" class="form-control" name="q" placeholder="Search for..." autocomplete="off">
+	</div><!-- /input-group -->
+	<div class="form-group input-group margin-top-15 wp100">
+		<span class="input-group-btn">
+			<button class="btn btn-default submit padding-22" type="submit">Set-URL!</button>
+		</span>
+		<input type="text" class="form-control" name="externalurl" placeholder="or Image-URL" autocomplete="off">
+	</div>
+	</div>
+</form>
+
+<p><!--  --></p>
+
+<div id="resultList"></div>
+
+
+<script>
+var target='<?=$this->targetId?>';
+(function(){
+	$('#seekerForm').on('submit', function(e) {
+		e.preventDefault();
+		$('#resultList').empty().append($spinner);
+
+		if($('input[name="externalurl"]')[0].value.length>0) {
+
+			var s1=/((.*)(\s([0-9]+)(x|w|h)([0-9]+)))$/;
+			var url=$('input[name="externalurl"]').val();
+			var dim=(url.replace(s1,'$4 $5 $6') || '150 x 150').split(' ');
+			var src=url.replace(s1,'$2');
+
+			var image_params = {
+				'src':  src,
+				'width': dim[0] + 'px',
+				'class': 'w'+dim[0]
+			};
+			if(dim[1] != 'w') {
+				if(dim[1] == 'h') { delete image_params['width']; image_params['height'] = dim[2] + 'px'; }
+				else if(dim[1] == 'x') { image_params['height'] = dim[2] + 'px'; }
+			}
+			var newImage = $('<img/>', image_params);
+			for(var i in image_params) newImage[0].setAttribute(i, image_params[i]);
+			$('#' + target).append(newImage);
+
+			if($('#' + target).data("wysihtml5")) {
+				//$(target).data("wysihtml5").editor.setValue($('<img/>', image_params));
+				$('#' + target).data("wysihtml5").editor.focus();
+				$('#' + target).data("wysihtml5").editor.composer.commands.exec("insertImage", image_params);
+			}
+			$('#seeker').modal('hide');
+		}
+		else {
+			$.get('/mc/ajax/isearch', $(this).serialize(), function(data){
+
+				$('#resultList').empty();
+				$list=[];
+				for(var i in data) {
+					$('#resultList').append($('<div />', {'class':'thumbnail pull-left margin-right-15'}).attr('data-id',data[i].id).append(
+							$('<img />', {'data-id':data[i].id,'data-original':'/assetimage_'+data[i].id+'_150s100.jpg','class':'lazy ohidden','width':150,'height':100,'src':'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='})).on('click', function(e){
+								console.log($('#' + target))
+								$('#' + target).val($(this).data('id'));
+								$('#seeker').modal('hide');
+							}));
+				}
+				new Blazy({'selector':'img.lazy','src':'data-original'});
+				$('#resultList').append($('<div />',{'class':'clearfix','text':''}));
+			}, 'json');
+		}
+		return false;
+	});
+	$('btn.go').on('click', function(e) { $(this).closest('form').submit(); });
+
+})();
+
+</script>

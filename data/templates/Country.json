@@ -1,0 +1,238 @@
+{"_id":{"$oid":"53d3eb0a0c65395e03d63ba4"},"iso":"PK","title_de":"Pakistan","title_en":"Pakistan"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63ba5"},"iso":"PL","title_de":"Polen","title_en":"Poland"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63ba6"},"iso":"PM","title_de":"St. Pierre und Miquelon","title_en":"Saint Pierre and Miquelon"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63ba7"},"iso":"PN","title_de":"Pitcairninseln","title_en":"Pitcairn"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63ba8"},"iso":"PR","title_de":"Puerto Rico","title_en":"Puerto Rico"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63ba9"},"iso":"PS","title_de":"Palästinensische Autonomiegebiete","title_en":"Palestinian Territory"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63baa"},"iso":"PT","title_de":"Portugal","title_en":"Portugal"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bab"},"iso":"PW","title_de":"Palau","title_en":"Palau"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bac"},"iso":"PY","title_de":"Paraguay","title_en":"Paraguay"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bad"},"iso":"QA","title_de":"Katar","title_en":"Qatar"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bae"},"iso":"RE","title_de":"Réunion","title_en":"Reunion"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63baf"},"iso":"RO","title_de":"Rumänien","title_en":"Romania"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bb0"},"iso":"RU","title_de":"Russische Föderation","title_en":"Russia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bb1"},"iso":"RW","title_de":"Ruanda","title_en":"Rwanda"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bb2"},"iso":"SA","title_de":"Saudi-Arabien","title_en":"Saudi Arabia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bb3"},"iso":"SB","title_de":"Salomonen","title_en":"Solomon Islands"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bb4"},"iso":"SC","title_de":"Seychellen","title_en":"Seychelles"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bb5"},"iso":"SD","title_de":"Sudan","title_en":"Sudan"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bb6"},"iso":"SE","title_de":"Schweden","title_en":"Sweden"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bb7"},"iso":"SG","title_de":"Singapur","title_en":"Singapore"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bb8"},"iso":"SH","title_de":"St. Helena","title_en":"Saint Helena"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bb9"},"iso":"SI","title_de":"Slowenien","title_en":"Slovenia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bba"},"iso":"SJ","title_de":"Svalbard und Jan Mayen","title_en":"Svalbard and Jan Mayen"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bbb"},"iso":"SK","title_de":"Slowakei","title_en":"Slovakia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bbc"},"iso":"SL","title_de":"Sierra Leone","title_en":"Sierra Leone"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bbd"},"iso":"SM","title_de":"San Marino","title_en":"San Marino"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bbe"},"iso":"SN","title_de":"Senegal","title_en":"Senegal"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bbf"},"iso":"SO","title_de":"Somalia","title_en":"Somalia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bc0"},"iso":"SR","title_de":"Suriname","title_en":"Suriname"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bc1"},"iso":"ST","title_de":"São Tomé und Príncipe","title_en":"Sao Tome and Principe"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bc2"},"iso":"SV","title_de":"El Salvador","title_en":"El Salvador"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bc3"},"iso":"SY","title_de":"Syrien","title_en":"Syria"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bc4"},"iso":"SZ","title_de":"Swasiland","title_en":"Swaziland"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bc5"},"iso":"TC","title_de":"Turks- und Caicosinseln","title_en":"Turks and Caicos Islands"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bc6"},"iso":"TD","title_de":"Tschad","title_en":"Chad"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bc8"},"iso":"TG","title_de":"Togo","title_en":"Togo"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bc9"},"iso":"TH","title_de":"Thailand","title_en":"Thailand"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bca"},"iso":"TJ","title_de":"Tadschikistan","title_en":"Tajikistan"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bcb"},"iso":"TK","title_de":"Tokelau","title_en":"Tokelau"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bcc"},"iso":"TL","title_de":"Timor-Leste","title_en":"East Timor"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bcd"},"iso":"TM","title_de":"Turkmenistan","title_en":"Turkmenistan"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bce"},"iso":"TN","title_de":"Tunesien","title_en":"Tunisia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bcf"},"iso":"TO","title_de":"Tonga","title_en":"Tonga"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bd0"},"iso":"TR","title_de":"Türkei","title_en":"Turkey"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bd1"},"iso":"TT","title_de":"Trinidad und Tobago","title_en":"Trinidad and Tobago"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bd2"},"iso":"TV","title_de":"Tuvalu","title_en":"Tuvalu"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bd3"},"iso":"TW","title_de":"Taiwan","title_en":"Taiwan"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bd4"},"iso":"TZ","title_de":"Tansania","title_en":"Tanzania"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bd5"},"iso":"UA","title_de":"Ukraine","title_en":"Ukraine"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bd6"},"iso":"UG","title_de":"Uganda","title_en":"Uganda"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bd8"},"iso":"US","title_de":"Vereinigte Staaten von Amerika","title_en":"United States"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bd9"},"iso":"UY","title_de":"Uruguay","title_en":"Uruguay"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bda"},"iso":"UZ","title_de":"Usbekistan","title_en":"Uzbekistan"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bdb"},"iso":"VA","title_de":"Vatikanstadt","title_en":"Vatican"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bdd"},"iso":"VE","title_de":"Venezuela","title_en":"Venezuela"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63be0"},"iso":"VN","title_de":"Vietnam","title_en":"Vietnam"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63be1"},"iso":"VU","title_de":"Vanuatu","title_en":"Vanuatu"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63be2"},"iso":"WF","title_de":"Wallis und Futuna","title_en":"Wallis and Futuna"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63be3"},"iso":"WS","title_de":"Samoa","title_en":"Samoa"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bde"},"iso":"VG","title_de":"Britische Jungferninseln","title_en":"British Virgin Islands"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bc7"},"iso":"TF","title_de":"Französische Süd- und Antarktisgebiete","title_en":"French Southern Territories"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bd7"},"iso":"UM","title_de":"Amerikanisch-Ozeanien","title_en":"United States Minor Outlying Islands"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bdc"},"iso":"VC","title_de":"St. Vincent und die Grenadinen","title_en":"Saint Vincent and the Grenadines"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63bdf"},"iso":"VI","title_de":"Amerikanische Jungferninseln","title_en":"U.S. Virgin Islands"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63af6"},"iso":"AD","title_de":"Andorra","title_en":"Andorra"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63af7"},"iso":"AE","title_de":"Vereinigte Arabische Emirate","title_en":"United Arab Emirates"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63af8"},"iso":"AF","title_de":"Afghanistan","title_en":"Afghanistan"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63af9"},"iso":"AG","title_de":"Antigua und Barbuda","title_en":"Antigua and Barbuda"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63afa"},"iso":"AI","title_de":"Anguilla","title_en":"Anguilla"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63afb"},"iso":"AL","title_de":"Albanien","title_en":"Albania"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63afc"},"iso":"AM","title_de":"Armenien","title_en":"Armenia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63afd"},"iso":"AN","title_de":"Niederländische Antillen","title_en":"Netherlands Antilles"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63afe"},"iso":"AO","title_de":"Angola","title_en":"Angola"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63aff"},"iso":"AQ","title_de":"Antarktis","title_en":"Antarctica"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b00"},"iso":"AR","title_de":"Argentinien","title_en":"Argentina"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b01"},"iso":"AS","title_de":"Amerikanisch-Samoa","title_en":"American Samoa"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b02"},"iso":"AT","title_de":"Österreich","title_en":"Austria"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b03"},"iso":"AU","title_de":"Australien","title_en":"Australia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b04"},"iso":"AW","title_de":"Aruba","title_en":"Aruba"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b05"},"iso":"AX","title_de":"Åland","title_en":"Aland Islands"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b06"},"iso":"AZ","title_de":"Aserbaidschan","title_en":"Azerbaijan"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b07"},"iso":"BA","title_de":"Bosnien und Herzegowina","title_en":"Bosnia and Herzegovina"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b08"},"iso":"BB","title_de":"Barbados","title_en":"Barbados"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b09"},"iso":"BD","title_de":"Bangladesch","title_en":"Bangladesh"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b0a"},"iso":"BE","title_de":"Belgien","title_en":"Belgium"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b0b"},"iso":"BF","title_de":"Burkina Faso","title_en":"Burkina Faso"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b0c"},"iso":"BG","title_de":"Bulgarien","title_en":"Bulgaria"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b0d"},"iso":"BH","title_de":"Bahrain","title_en":"Bahrain"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b0e"},"iso":"BI","title_de":"Burundi","title_en":"Burundi"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b0f"},"iso":"BJ","title_de":"Benin","title_en":"Benin"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b10"},"iso":"BM","title_de":"Bermuda","title_en":"Bermuda"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b11"},"iso":"BN","title_de":"Brunei Darussalam","title_en":"Brunei"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b12"},"iso":"BO","title_de":"Bolivien","title_en":"Bolivia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b13"},"iso":"BR","title_de":"Brasilien","title_en":"Brazil"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b14"},"iso":"BS","title_de":"Bahamas","title_en":"Bahamas"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b15"},"iso":"BT","title_de":"Bhutan","title_en":"Bhutan"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b16"},"iso":"BV","title_de":"Bouvetinsel","title_en":"Bouvet Island"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b17"},"iso":"BW","title_de":"Botswana","title_en":"Botswana"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b18"},"iso":"BY","title_de":"Belarus (Weißrussland)","title_en":"Belarus"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b19"},"iso":"BZ","title_de":"Belize","title_en":"Belize"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b1a"},"iso":"CA","title_de":"Kanada","title_en":"Canada"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b1b"},"iso":"CC","title_de":"Kokosinseln (Keelinginseln)","title_en":"Cocos (Keeling) Islands"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b1c"},"iso":"CD","title_de":"Kongo","title_en":"Congo (Kinshasa)"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b1d"},"iso":"CF","title_de":"Zentralafrikanische Republik","title_en":"Central African Republic"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b1e"},"iso":"CG","title_de":"Republik Kongo","title_en":"Congo (Brazzaville)"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b1f"},"iso":"CH","title_de":"Schweiz","title_en":"Switzerland"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b20"},"iso":"CI","title_de":"Elfenbeinküste","title_en":"Ivory Coast"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b21"},"iso":"CK","title_de":"Cookinseln","title_en":"Cook Islands"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b22"},"iso":"CL","title_de":"Chile","title_en":"Chile"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b23"},"iso":"CM","title_de":"Kamerun","title_en":"Cameroon"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b24"},"iso":"CN","title_de":"China, Volksrepublik","title_en":"China"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b25"},"iso":"CO","title_de":"Kolumbien","title_en":"Colombia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b26"},"iso":"CR","title_de":"Costa Rica","title_en":"Costa Rica"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b27"},"iso":"CS","title_de":"Serbien und Montenegro","title_en":"Serbia And Montenegro"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b28"},"iso":"CU","title_de":"Kuba","title_en":"Cuba"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b29"},"iso":"CV","title_de":"Kap Verde","title_en":"Cape Verde"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b2a"},"iso":"CX","title_de":"Weihnachtsinsel","title_en":"Christmas Island"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b2b"},"iso":"CY","title_de":"Zypern","title_en":"Cyprus"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b2c"},"iso":"CZ","title_de":"Tschechische Republik","title_en":"Czech Republic"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b2d"},"iso":"DE","title_de":"Deutschland","title_en":"Germany"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b2e"},"iso":"DJ","title_de":"Dschibuti","title_en":"Djibouti"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b2f"},"iso":"DK","title_de":"Dänemark","title_en":"Denmark"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b30"},"iso":"DM","title_de":"Dominica","title_en":"Dominica"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b31"},"iso":"DO","title_de":"Dominikanische Republik","title_en":"Dominican Republic"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b32"},"iso":"DZ","title_de":"Algerien","title_en":"Algeria"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b33"},"iso":"EC","title_de":"Ecuador","title_en":"Ecuador"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b34"},"iso":"EE","title_de":"Estland (Reval)","title_en":"Estonia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b35"},"iso":"EG","title_de":"Ägypten","title_en":"Egypt"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b36"},"iso":"EH","title_de":"Westsahara","title_en":"Western Sahara"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b37"},"iso":"ER","title_de":"Eritrea","title_en":"Eritrea"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b38"},"iso":"ES","title_de":"Spanien","title_en":"Spain"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b39"},"iso":"ET","title_de":"Äthiopien","title_en":"Ethiopia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b3a"},"iso":"FI","title_de":"Finnland","title_en":"Finland"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b3b"},"iso":"FJ","title_de":"Fidschi","title_en":"Fiji"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b3c"},"iso":"FK","title_de":"Falklandinseln (Malwinen)","title_en":"Falkland Islands"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b3d"},"iso":"FM","title_de":"Mikronesien","title_en":"Micronesia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b3e"},"iso":"FO","title_de":"Färöer","title_en":"Faroe Islands"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b3f"},"iso":"FR","title_de":"Frankreich","title_en":"France"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b40"},"iso":"GA","title_de":"Gabun","title_en":"Gabon"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b41"},"iso":"GB","title_de":"Großbritannien und Nordirland","title_en":"United Kingdom"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b42"},"iso":"GD","title_de":"Grenada","title_en":"Grenada"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b43"},"iso":"GE","title_de":"Georgien","title_en":"Georgia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b44"},"iso":"GF","title_de":"Französisch-Guayana","title_en":"French Guiana"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b45"},"iso":"GG","title_de":"Guernsey (Kanalinsel)","title_en":"Guernsey"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b46"},"iso":"GH","title_de":"Ghana","title_en":"Ghana"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b47"},"iso":"GI","title_de":"Gibraltar","title_en":"Gibraltar"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b48"},"iso":"GL","title_de":"Grönland","title_en":"Greenland"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b49"},"iso":"GM","title_de":"Gambia","title_en":"Gambia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b4a"},"iso":"GN","title_de":"Guinea","title_en":"Guinea"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b4b"},"iso":"GP","title_de":"Guadeloupe","title_en":"Guadeloupe"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b4c"},"iso":"GQ","title_de":"Äquatorialguinea","title_en":"Equatorial Guinea"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b4d"},"iso":"GR","title_de":"Griechenland","title_en":"Greece"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b4e"},"iso":"GS","title_de":"Südgeorgien und die Südl. Sandwichinseln","title_en":"South Georgia and the South Sandwich Islands"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b4f"},"iso":"GT","title_de":"Guatemala","title_en":"Guatemala"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b50"},"iso":"GU","title_de":"Guam","title_en":"Guam"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b51"},"iso":"GW","title_de":"Guinea-Bissau","title_en":"Guinea-Bissau"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b52"},"iso":"GY","title_de":"Guyana","title_en":"Guyana"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b53"},"iso":"HK","title_de":"Hongkong","title_en":"Hong Kong S.A.R., China"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b54"},"iso":"HM","title_de":"Heard- und McDonald-Inseln","title_en":"Heard Island and McDonald Islands"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b55"},"iso":"HN","title_de":"Honduras","title_en":"Honduras"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b56"},"iso":"HR","title_de":"Kroatien","title_en":"Croatia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b57"},"iso":"HT","title_de":"Haiti","title_en":"Haiti"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b58"},"iso":"HU","title_de":"Ungarn","title_en":"Hungary"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b59"},"iso":"ID","title_de":"Indonesien","title_en":"Indonesia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b5a"},"iso":"IE","title_de":"Irland","title_en":"Ireland"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b5b"},"iso":"IL","title_de":"Israel","title_en":"Israel"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b5c"},"iso":"IM","title_de":"Insel Man","title_en":"Isle of Man"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b5d"},"iso":"IN","title_de":"Indien","title_en":"India"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b5e"},"iso":"IO","title_de":"Britisches Territorium im Indischen Ozean","title_en":"British Indian Ocean Territory"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b5f"},"iso":"IQ","title_de":"Irak","title_en":"Iraq"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b60"},"iso":"IR","title_de":"Iran","title_en":"Iran"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b61"},"iso":"IS","title_de":"Island","title_en":"Iceland"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b62"},"iso":"IT","title_de":"Italien","title_en":"Italy"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b63"},"iso":"JE","title_de":"Jersey (Kanalinsel)","title_en":"Jersey"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b64"},"iso":"JM","title_de":"Jamaika","title_en":"Jamaica"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b65"},"iso":"JO","title_de":"Jordanien","title_en":"Jordan"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b66"},"iso":"JP","title_de":"Japan","title_en":"Japan"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b67"},"iso":"KE","title_de":"Kenia","title_en":"Kenya"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b68"},"iso":"KG","title_de":"Kirgisistan","title_en":"Kyrgyzstan"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b69"},"iso":"KH","title_de":"Kambodscha","title_en":"Cambodia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b6a"},"iso":"KI","title_de":"Kiribati","title_en":"Kiribati"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b6b"},"iso":"KM","title_de":"Komoren","title_en":"Comoros"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b6c"},"iso":"KN","title_de":"St. Kitts und Nevis","title_en":"Saint Kitts and Nevis"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b6d"},"iso":"KP","title_de":"Nordkorea","title_en":"North Korea"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b6e"},"iso":"KR","title_de":"Südkorea","title_en":"South Korea"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b6f"},"iso":"KW","title_de":"Kuwait","title_en":"Kuwait"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b70"},"iso":"KY","title_de":"Kaimaninseln","title_en":"Cayman Islands"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b71"},"iso":"KZ","title_de":"Kasachstan","title_en":"Kazakhstan"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b72"},"iso":"LA","title_de":"Laos","title_en":"Laos"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b73"},"iso":"LB","title_de":"Libanon","title_en":"Lebanon"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b74"},"iso":"LC","title_de":"St. Lucia","title_en":"Saint Lucia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b75"},"iso":"LI","title_de":"Liechtenstein","title_en":"Liechtenstein"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b76"},"iso":"LK","title_de":"Sri Lanka","title_en":"Sri Lanka"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b77"},"iso":"LR","title_de":"Liberia","title_en":"Liberia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b78"},"iso":"LS","title_de":"Lesotho","title_en":"Lesotho"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b79"},"iso":"LT","title_de":"Litauen","title_en":"Lithuania"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b7a"},"iso":"LU","title_de":"Luxemburg","title_en":"Luxembourg"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b7b"},"iso":"LV","title_de":"Lettland","title_en":"Latvia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b7c"},"iso":"LY","title_de":"Libyen","title_en":"Libya"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b7d"},"iso":"MA","title_de":"Marokko","title_en":"Morocco"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b7e"},"iso":"MC","title_de":"Monaco","title_en":"Monaco"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b7f"},"iso":"MD","title_de":"Moldawien","title_en":"Moldova"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b80"},"iso":"MG","title_de":"Madagaskar","title_en":"Madagascar"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b81"},"iso":"MH","title_de":"Marshallinseln","title_en":"Marshall Islands"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b82"},"iso":"MK","title_de":"Mazedonien","title_en":"Macedonia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b83"},"iso":"ML","title_de":"Mali","title_en":"Mali"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b84"},"iso":"MM","title_de":"Myanmar (Burma)","title_en":"Myanmar"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b85"},"iso":"MN","title_de":"Mongolei","title_en":"Mongolia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b86"},"iso":"MO","title_de":"Macao","title_en":"Macao S.A.R., China"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b87"},"iso":"MP","title_de":"Nördliche Marianen","title_en":"Northern Mariana Islands"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b88"},"iso":"MQ","title_de":"Martinique","title_en":"Martinique"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b89"},"iso":"MR","title_de":"Mauretanien","title_en":"Mauritania"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b8a"},"iso":"MS","title_de":"Montserrat","title_en":"Montserrat"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b8b"},"iso":"MT","title_de":"Malta","title_en":"Malta"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b8c"},"iso":"MU","title_de":"Mauritius","title_en":"Mauritius"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b8d"},"iso":"MV","title_de":"Malediven","title_en":"Maldives"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b8e"},"iso":"MW","title_de":"Malawi","title_en":"Malawi"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b8f"},"iso":"MX","title_de":"Mexiko","title_en":"Mexico"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b90"},"iso":"MY","title_de":"Malaysia","title_en":"Malaysia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b91"},"iso":"MZ","title_de":"Mosambik","title_en":"Mozambique"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b92"},"iso":"NA","title_de":"Namibia","title_en":"Namibia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b93"},"iso":"NC","title_de":"Neukaledonien","title_en":"New Caledonia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b94"},"iso":"NE","title_de":"Niger","title_en":"Niger"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b95"},"iso":"NF","title_de":"Norfolkinsel","title_en":"Norfolk Island"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b96"},"iso":"NG","title_de":"Nigeria","title_en":"Nigeria"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b97"},"iso":"NI","title_de":"Nicaragua","title_en":"Nicaragua"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b98"},"iso":"NL","title_de":"Niederlande","title_en":"Netherlands"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b99"},"iso":"NO","title_de":"Norwegen","title_en":"Norway"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b9a"},"iso":"NP","title_de":"Nepal","title_en":"Nepal"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b9b"},"iso":"NR","title_de":"Nauru","title_en":"Nauru"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b9c"},"iso":"NU","title_de":"Niue","title_en":"Niue"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b9d"},"iso":"NZ","title_de":"Neuseeland","title_en":"New Zealand"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b9e"},"iso":"OM","title_de":"Oman","title_en":"Oman"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63b9f"},"iso":"PA","title_de":"Panama","title_en":"Panama"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63ba0"},"iso":"PE","title_de":"Peru","title_en":"Peru"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63ba1"},"iso":"PF","title_de":"Französisch-Polynesien","title_en":"French Polynesia"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63ba2"},"iso":"PG","title_de":"Papua-Neuguinea","title_en":"Papua New Guinea"}
+{"_id":{"$oid":"53d3eb0a0c65395e03d63ba3"},"iso":"PH","title_de":"Philippinen","title_en":"Philippines"}

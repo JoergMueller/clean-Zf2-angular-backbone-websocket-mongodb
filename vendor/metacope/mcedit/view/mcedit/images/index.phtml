@@ -1,0 +1,118 @@
+<div class="container-fluid padding-0 hp90 w1200 ohidden">
+    <div class="row-fluid hp100 ohidden">
+        <div class="col-md-4 hp100 padding-0">
+            <?=$this->partial('partials/editor/searchfield', array('target'=>'image'))?>
+                <div id="imagelistholder" class="wp100 ohidden" data-limit="14">
+                    <div class="oyscroll margin-top-10 relb0 h885 oyscroll ohidden">
+                        <div id="imagelist" class="hp100"></div>
+                    </div>
+                </div>
+        </div>
+        <div id="document-form" class="col-md-8 padding-right-0 hp100 ohidden">
+            <ul id="ImageBackend" class="nav nav-tabs">
+                <li class="active"><a href="#meta" data-target="#meta" data-toggle="tab" data-load="/mc/images/meta/id/">Metainfo</a></li>
+                <li><a href="#cropper" data-target="#cropper" data-toggle="tab" data-load="/mc/images/cropper/id/">Cropper</a></li>
+                <li><a href="#imageupload" data-target="#imageupload" data-toggle="tab">Imageupload</a></li>
+            </ul>
+            <div class="tab-content relb0 h930 oyscroll ohidden">
+                <div role="tabpanel" class="tab-pane active hp100" id="meta">
+                </div>
+                <div role="tabpanel" class="tab-pane hp100" id="cropper">
+                </div>
+                <div role="tabpanel" class="tab-pane hp100" id="imageupload">
+                <?include __DIR__ . '/dropzone.phtml'?>
+                </div>
+
+            </div>
+            <div class="clearfix">
+                <!--  -->
+            </div>
+        </div>
+    </div>
+    <script type="text/html" id="tmpl_imgthumbs">
+        <% for(var i=0; i < entries.length; i++) { %>
+            <div class="pull-left margin-right-5 margin-bottom-5 thumbnail relative" data-id="<%=entries[i].id%>" data-token="<%=entries[i].token%>">
+                <input class="absolute lt-5" type="checkbox" name="ids[]" value="<%=entries[i].id%>" />
+                <img class="button lazy" data-original="/assetimage_<%=entries[i].id%>_160s100.jpg" width="150" data-id="<%=entries[i].id%>" data-token="<%=entries[i].token%>" data-name="<%=entries[i].name%>" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" /></div>
+            <% } %>
+    </script>
+    <script>
+    $('#meta').append($spinner);
+    $('#imagelistholder').append($spinner);
+
+    var $ps, $page = 1, $img;
+
+    function getthumbs(s) {
+        $('#imagelistholder').prepend($spinner);
+        $.get('/mc/ajax/thumbs', s || {
+            'term': '',
+            'limit': $('#imagelistholder').data('limit')
+        }, function(response) {
+            if (s == undefined || s.page == undefined || s.page == 1 || (s.clear != undefined && s.clear == true)) $('#imagelist').empty();
+            $list = [];
+            $('#loadNext').remove();
+
+            $(response).each(function() {
+                $('#imagelist').append(tmpl('tmpl_imgthumbs', {
+                    'entries': [this]
+                }));
+            });
+
+            new Blazy({
+                'selector': '#imagelist img.lazy',
+                'src': 'data-original'
+            });
+
+            $('.spinner').remove();
+            $('#imagelist').append($('<button/>', {
+                'class': 'btn btn-default btn-xs block wp100',
+                'id': 'loadNext',
+                'text': '... loading next',
+                'style': 'margin-bottom:40px;'
+            }).on('click', function(e) {
+                $page = $page + 1;
+                getthumbs({
+                    'page': $page
+                });
+            }));
+
+            $('#imagelist img').on("click", function(e) {
+                $img = $(this);
+                $('#meta').empty().append($spinner).load('/mc/images/meta/id/' + $img.data('id'));
+                $('#cropper').empty().append($spinner).load('/mc/images/cropper/id/' + $img.data('id'));
+                EvM.notify("mc.postDispatch");
+            });
+            $('.thumbnail>img:first').trigger('click');
+        }, 'json');
+    }
+
+        $(document).ready(function() {
+
+            getthumbs();
+
+            $('a[data-toggle="tab"]').on('show.bs.tab', function() {
+                var t=$(this);
+                if(!_.isUndefined(t.data('load'))) {
+                    $(t.attr('href')).empty().append($spinner).load(t.data('load') + $img.data('id'));
+                }
+
+            });
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function() {
+                $('[data-toggle="popover"]').popover({'html':true});
+                $('[data-toggle="tooltip"]').tooltip({'html':true});
+                $('[data-role="tagsinput"]').tagsinput();
+                EvM.notify('mc.scroll', {'selector': '.oyscroll'});
+                EvM.notify('mc.jqform', jqform_options);
+                EvM.notify("mc.postDispatch");
+
+            });
+
+            $('#btnSubmit').on('click', function(e) {
+                e.preventDefault();
+                form = $('#imgAttributeForm');
+                form.submit();
+                return false;
+            });
+
+        });
+    </script>

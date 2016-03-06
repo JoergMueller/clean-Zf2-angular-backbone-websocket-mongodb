@@ -1,0 +1,13 @@
+# project
+
+data/cache
+data/dump
+data/logs
+
+webservice/node_modules
+public/plugins/*
+
+
+# osx noise
+.DS_Store
+

@@ -1,0 +1,157 @@
+
+<div class="container-fluid padding-0 hp90 w1200 ohidden">
+
+	<div class="row-fluid hp100 wp100">
+
+		<div class="col-md-4 hp100 ohidden padding-0">
+
+			<?=$this->partial('partials/editor/searchfield', array('target'=>'user'))?>
+
+			<div id="user-tree" class="tree wp100 relb0 h880 oyscroll margin-top-10">
+				<ul id="holder_0" class="holder hp100" style="display: none;"></ul>
+			</div>
+
+		</div>
+
+
+		<div class="col-md-8 padding-right-0 hp100 ohidden">
+
+			<div id="user-form" class="hp100 margin-0"></div>
+
+		</div>
+	</div>
+
+</div>
+
+<script type="text/html" id="tmpl_utreeinlay">
+<% for(var i=0; i < entries.length; i++ ){ %>
+<li id="<%=entries[i].id%>" class="dragdrop">
+	<div class="btn-group wp100">
+
+		<button class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+		<a id="btn_<%=entries[i].id%>" class="btn btn-xs<%=(entries[i].visible==0?' btn-warning':' btn-success')%> name structname" href="/mc/user/set/token/<%=entries[i].token%>" data-token="<%=entries[i].token%>" data-id="<%=entries[i].id%>" data-target="#user-form"><%=entries[i].nickname%></a>
+
+		<ul class="dropdown-menu" role="menu">
+			<li><a class="siteAction" href="#" data-action="load" data-id="<%=entries[i].id%>">Mitarbeiter</a></li>
+			<li><a class="siteAction" href="#" data-action="create" data-id="<%=entries[i].id%>">Mitarbeiter anlegen</a></li>
+			<li><a class="siteAction" href="#" data-action="visible" data-id="<%=entries[i].id%>" data-token="<%=entries[i].token%>">Dieser Benutzer online/offline</a></li>
+			<li><a class="siteAction" href="#" data-action="remove" data-id="<%=entries[i].id%>" data-token="<%=entries[i].token%>">Diesen Benutzer löschen</a></li>
+		</ul>
+	</div>
+	<ul id="holder_<%=entries[i].id%>" class="holder" style="display:none"></ul>
+</li>
+<% } %>
+</script>
+<script>
+
+Tree = (function(){
+
+	var defaults = {'lang':'<?=$this->lang?>'};
+
+	function init( options ) {
+		defaults = $.extend(defaults, options || {});
+	}
+
+	function loadTree(id, response) {
+
+		var _selector = defaults._selector = '#holder_'+ id;
+
+		if(response == undefined) {
+			$.get('/mc/ajax/user-tree/id/'+id, {'id':id}, function(_response){
+				prepare(_selector, _response);
+			},'json');
+		}
+		else
+			prepare(_selector, response);
+
+		var prepare = function(_selector, _response) {
+			$(_selector).append(tmpl('tmpl_utreeinlay', {'entries':_response.users,'_selector':_selector}));
+			if(id==0) $('a.structname:first').trigger('click');
+
+			$(_selector + " a.structname").on("click", function(e){
+				e.preventDefault();
+				loadForm($(this).attr('href'), $(this));
+			});
+			$(_selector + " a.siteAction").on("click", function(e){
+				e.preventDefault();
+				switch($(this).attr('data-action')) {
+					case 'load':
+						$holder = $('#holder_'+$(this).attr('data-id'));
+						if($holder.has('li').length>0) $holder.slideToggle();
+						else loadTree($(this).attr('data-id'));
+						$(_selector + " a.structname:first").trigger('click');
+						break;
+					case 'remove':
+						if(!confirm("wirlich löschen?")) return;
+						var self=this;
+						$.get('/mc/user/remove/id/'+$(this).attr('data-id'), {'id':$(this).attr('data-id')}, function(data){
+							if(data.user.visible == 0) {
+								$('#btn_'+data.user.id).removeClass('btn-success').addClass('btn-warning');
+							}
+							else if(data.user.visible == 1) {
+								$('#btn_'+data.user.id).removeClass('btn-warning').addClass('btn-success');
+							}
+							$('#'+$(self).attr('data-id')).remove();
+						}, 'json');
+						break;
+					case 'create':
+						$('#holder_'+$(this).attr('data-id')).empty().hide();
+						var $token = ($(this).data('token') || '').length>1 ? '/token/' + ($(this).data('token') || '') : null;
+						$.get('/mc/user/set/id/'+$(this).attr('data-id'), function(data){
+							loadTree($(this).attr('data-id'));
+						}, 'json');
+						break;
+					case 'visible':
+						$.get('/mc/user/visible/id/'+$(this).attr('data-id')+'/token/'+$(this).attr('data-token'), function(data) {
+							if(data.user.visible == 0) {
+								$('#btn_'+data.user.id).removeClass('btn-success').addClass('btn-warning');
+							}
+							else if(data.user.visible == 1) {
+								$('#btn_'+data.user.id).removeClass('btn-warning').addClass('btn-success');
+							}
+							delete data.user;
+							console.log(data);
+							EvM.notify('jsonresponse', data);
+						}, 'json');
+						break;
+					default:
+						break;
+				}
+			});
+		}
+
+		var postDispatch = function(id) {
+			var _selector = id == undefined ? '#holder_'+ id : defaults._selector;
+			$(_selector).slideToggle('slow', function(){
+				$(this).toggleClass('open');
+				if(_selector == '#holder_0') $(_selector + ' a.siteAction:first, ' + _selector + ' button.structname:first').trigger('click');
+			});
+		}
+		return postDispatch;
+	}
+
+	function loadForm(_uri, o) {
+		$(o.data('target')).empty().append($spinner);
+		$.get(_uri, {}, function(data){
+			$(o.data('target')).empty().append(data);
+		});
+	}
+
+	return {
+		'init': init,
+		'loadTree': loadTree,
+		'loadForm': loadForm
+	};
+})();
+Tree.init();
+var pd=Tree.loadTree(0)(0);
+_.defer(function(){
+	$('.structname:first').trigger('click');
+});
+
+
+(function(){
+	EvM.notify('mc.scroll', {'selector':'.oyscroll'});
+})();
+
+</script>

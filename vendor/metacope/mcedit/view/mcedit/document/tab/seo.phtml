@@ -1,0 +1,20 @@
+
+<?
+
+$felement = $this->documentform->get('sheet[keywords]');
+if(is_array($felement->getValue()))
+	$felement->setValue(implode(',', $felement->getValue()));
+
+?>
+
+<?=$this->formRow($this->documentform->get('sheet[title]'))?>
+
+<?=$this->formRow($this->documentform->get('sheet[description]'))?>
+
+<?=$this->formRow($this->documentform->get('sheet[keywords]'))?>
+
+<?=$this->formRow($this->documentform->get('sheet[indexfollow]'))?>
+
+<hr>
+
+<?=$this->formRow($this->documentform->get('georeverse'))?>

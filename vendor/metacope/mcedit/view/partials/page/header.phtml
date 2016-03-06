@@ -1,0 +1,270 @@
+
+<?
+$this->dm = $this->dm ? $this->dm : $this->ObjectHelper()->getDocumentManager();
+$parent = $this->dm->getRepository("Metacope\Mcedit\Model\DocumentModel")->findOneBy(['structname.de'=>'Root']);
+$firstLevel = $parent->getChildList([], $this->dm);
+
+$cache = $this->ObjectHelper()->getCache();
+$key = 'navigation-'. $this->lang . '-' . md5(date('Y-m-d'));
+$navigation = $cache->getItem($key, $success);
+
+
+if(true == $success) {
+
+print $navigation;
+
+} elseif(false == $success) {
+
+ob_start();
+?>
+
+            <!-- .header.header-style01 start -->
+            <header id="header"  class="header-style01">
+                <!-- .container start -->
+                <div class="container">
+                    <!-- .main-nav start -->
+                    <div class="main-nav">
+                        <!-- .row start -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <nav class="navbar navbar-default nav-left" role="navigation">
+
+                                    <!-- .navbar-header start -->
+                                    <div class="navbar-header">
+                                        <div class="logo">
+                                            <a href="/<?=$this->lang?>">
+                                                <img src="/theme/img/logo.png" alt="soon"/>
+                                            </a>
+                                        </div><!-- .logo end -->
+                                    </div><!-- .navbar-header start -->
+
+                                    <!-- MAIN NAVIGATION -->
+                                    <div class="collapse navbar-collapse">
+                                        <ul class="nav navbar-nav">
+                                        
+                                            <?foreach($firstLevel as $flevel):
+                                            $secondeLevel = $flevel->getChildList([], $this->dm);
+                                            ?>
+                                            <li class="<?if($secondeLevel->count()>0):?>dropdown<?endif?> menu-item">
+                                                <a href="/<?=$this->lang?><?=$flevel->getPath($this->lang)?>" <?if($secondeLevel->count()>0):?>data-toggle="dropdown"  class="dropdown-toggle"<?endif?>><?=$flevel->getStructname($this->lang)?></a>
+                                                <?if($secondeLevel->count() > 0):?>
+                                                <ul class="dropdown-menu">
+                                                    <?foreach($secondeLevel as $slevel):
+                                                    $thirdLevel = $slevel->getChildList([], $this->dm);
+                                                    ?>
+                                                    <li class="<?if($thirdLevel->count()>0):?>dropdown dropdown-submenu<?endif?>">
+                                                        <a href="/<?=$this->lang?><?=$slevel->getPath($this->lang)?>" <?if($thirdLevel->count()>0):?>data-toggle="dropdown" class="dropdown-toggle"<?endif?>><?=$slevel->getStructname($this->lang)?></a>
+
+                                                        <?if($thirdLevel->count() > 0):?>
+                                                        <ul class="dropdown-menu">
+                                                            <?foreach($thirdLevel as $tlevel):?>
+                                                            <li><a href="/<?=$this->lang?><?=$tlevel->getPath($this->lang)?>"><?=$tlevel->getStructname($this->lang)?></a></li>
+                                                            <?endforeach?>
+                                                        </ul><!-- .dropdown-menu end -->
+                                                        <?endif?>
+                                                    </li>
+                                                    <?endforeach?>
+                                                    
+                                                </ul><!-- .dropdown-menu end -->
+                                                <?endif?>
+                                            </li><!-- .dropdown end -->
+                                            <?endforeach?>
+
+                                        <!-- RESPONSIVE MENU -->
+                                        <div id="dl-menu" class="dl-menuwrapper">
+                                            <button class="dl-trigger">Menü öffnen</button>
+
+                                            <ul class="dl-menu">
+                                                <li>
+                                                    <a href="index.html">Baumaschinen</a>
+                                                    <ul class="dl-submenu">
+                                                        <li>
+                                                            <a href="">Bagger</a>
+                                                            <ul class="dl-submenu">
+                                                                <li><a href="#">Kompakt- und Kurzheckbagger</a></li>
+                                                                <li><a href="#">Mobilbagger</a></li>
+                                                                <li><a href="#">Bagger ab 14 Tonnen</a></li>
+                                                            </ul><!-- .dl-submenu end -->
+                                                        </li>
+                                                        <li>
+                                                            <a href="">Lader</a>
+                                                            <ul class="dl-submenu">
+                                                                <li><a href="#">Kompaktlader</a></li>
+                                                                <li><a href="#">Kompakt-Allradlader</a></li>
+                                                                <li><a href="#">Kompaktraupen</a></li>
+                                                                <li><a href="#">Allradlader</a></li>
+                                                                <li><a href="#">Tele-Allradlader</a></li>
+                                                                <li><a href="#">Knicklader</a></li>
+                                                                <li><a href="#">Schwenklader</a></li>
+                                                                <li><a href="#">Radlader</a></li>
+                                                            </ul><!-- .dl-submenu end -->
+                                                        </li>
+                                                        <li>
+                                                             <a href="">Teleskopen</a>
+                                                            <ul class="dl-submenu">
+                                                                <li><a href="#">Starre Teleskopen</a></li>
+                                                                <li><a href="#">Rotations-Teleskopen</a></li>
+                                                            </ul><!-- .dl-submenu end -->
+                                                        </li>
+                                                        <li>
+                                                             <a href="">Verdichtung</a>
+                                                            <ul class="dl-submenu">
+                                                                <li><a href="#">Stampfer</a></li>
+                                                                <li><a href="#">Vorwärtslaufende Rüttelplatten</a></li>
+                                                                <li><a href="#">Reversierbare Rüttelplatten</a></li>
+                                                                <li><a href="#">Mehrzweckverdichter</a></li>
+                                                                <li><a href="#">Handgeführte Walzen</a></li>
+                                                                <li><a href="#">Tandem- und Kombiwalzen</a></li>
+                                                                <li><a href="#">Walzenzüge</a></li>
+                                                            </ul><!-- .dl-submenu end -->
+                                                        </li>
+                                                        <li>
+                                                             <a href="">Luft, Licht und Strom</a>
+                                                            <ul class="dl-submenu">
+                                                                <li><a href="#">Lichtmaste und -ballons</a></li>
+                                                                <li><a href="#">Generatoren</a></li>
+                                                                <li><a href="#">Kompressoren</a></li>
+                                                            </ul><!-- .dl-submenu end -->
+                                                        </li>
+                                                        
+                                                        <li><a href="#">Muldenkipper</a></li>
+                                                    
+                                                        <li><a href="#">Anbaugeräte</a></li>
+                                                    
+                                                        <li><a href="#">Anhänger</a></li>
+                                                    </ul><!-- dl-submenu end -->
+                                                </li>
+                                                
+                                                <li>
+                                                    <a href="index.html">Gebrauchtmaschinen</a>
+                                                    <ul class="dl-submenu">
+                                                        <li>
+                                                            <a href="">Bagger</a>
+                                                            <ul class="dl-submenu">
+                                                                <li><a href="#">Kompakt- und Kurzheckbagger</a></li>
+                                                                <li><a href="#">Mobilbagger</a></li>
+                                                                <li><a href="#">Bagger ab 14 Tonnen</a></li>
+                                                            </ul><!-- .dl-submenu end -->
+                                                        </li>
+                                                        <li>
+                                                            <a href="">Lader</a>
+                                                            <ul class="dl-submenu">
+                                                                <li><a href="#">Kompaktlader</a></li>
+                                                                <li><a href="#">Kompakt-Allradlader</a></li>
+                                                                <li><a href="#">Kompaktraupen</a></li>
+                                                                <li><a href="#">Allradlader</a></li>
+                                                                <li><a href="#">Tele-Allradlader</a></li>
+                                                                <li><a href="#">Knicklader</a></li>
+                                                                <li><a href="#">Schwenklader</a></li>
+                                                                <li><a href="#">Radlader</a></li>
+                                                            </ul><!-- .dl-submenu end -->
+                                                        </li>
+                                                        <li>
+                                                             <a href="">Teleskopen</a>
+                                                            <ul class="dl-submenu">
+                                                                <li><a href="#">Starre Teleskopen</a></li>
+                                                                <li><a href="#">Rotations-Teleskopen</a></li>
+                                                            </ul><!-- .dl-submenu end -->
+                                                        </li>
+                                                        <li>
+                                                             <a href="">Verdichtung</a>
+                                                            <ul class="dl-submenu">
+                                                                <li><a href="#">Stampfer</a></li>
+                                                                <li><a href="#">Vorwärtslaufende Rüttelplatten</a></li>
+                                                                <li><a href="#">Reversierbare Rüttelplatten</a></li>
+                                                                <li><a href="#">Mehrzweckverdichter</a></li>
+                                                                <li><a href="#">Handgeführte Walzen</a></li>
+                                                                <li><a href="#">Tandem- und Kombiwalzen</a></li>
+                                                                <li><a href="#">Walzenzüge</a></li>
+                                                            </ul><!-- .dl-submenu end -->
+                                                        </li>
+                                                        <li>
+                                                             <a href="">Luft, Licht und Strom</a>
+                                                            <ul class="dl-submenu">
+                                                                <li><a href="#">Lichtmaste und -ballons</a></li>
+                                                                <li><a href="#">Generatoren</a></li>
+                                                                <li><a href="#">Kompressoren</a></li>
+                                                            </ul><!-- .dl-submenu end -->
+                                                        </li>
+                                                        
+                                                        <li><a href="#">Muldenkipper</a></li>
+                                                    
+                                                        <li><a href="#">Anbaugeräte</a></li>
+                                                    
+                                                        <li><a href="#">Sonstiges</a></li>
+                                                    </ul><!-- dl-submenu end -->
+                                                </li>
+                                                            
+                                                <li>
+                                                    <a href="#">Mieten</a>
+                                                    <ul class="dl-submenu">
+                                                        <li><a href="#">Vermietung</a></li>
+                                                        <li><a href="#">Mietstationen</a></li>
+                                                        <li><a href="#">Miete von A-Z</a></li>
+                                                        <li><a href="#">Mietkatalog-Download</a></li>
+                                                    </ul><!-- dl-submenu end -->
+                                                </li>
+
+                                                <li>
+                                                    <a href="#">Service</a>
+                                                    <ul class="dl-submenu">
+                                                        <li><a href="#">Aktuelles</a></li>
+                                                        <li>
+                                                            <a href="#">Maschinen in Aktion</a>
+                                                            <ul class="dl-submenu">
+                                                                <li><a href="#">Entkernung</a></li>
+                                                                <li><a href="#">Balkonentfernung</a></li>
+                                                                <li><a href="#">Leitungsbau</a></li>
+                                                                <li><a href="#">Biogasanlage</a></li>
+                                                                <li><a href="#">GKM Mannheim</a></li>
+                                                                <li><a href="#">Steinbruch Mendig</a></li>
+                                                                <li><a href="#">Forstmulcher</a></li>
+                                                                <li><a href="#">Abbruch im Tunnel</a></li>
+                                                                <li><a href="#">Lörhof Center</a></li>
+                                                            </ul><!-- .dl-submenu end -->
+                                                        </li>
+                                                        <li><a href="#">Ersatzteile</a></li>
+                                                        <li><a href="#">Generalüberholung</a></li>
+                                                        <li><a href="#">Service-Pakete</a></li>
+                                                        <li><a href="#">Finanzierung</a></li>
+                                                    </ul><!-- dl-submenu end -->
+                                                </li>
+
+                                                <li>
+                                                    <a href="#">Unternehmen</a>
+                                                    <ul class="dl-submenu">
+                                                        <li><a href="#">Zahlen und Fakten</a></li>
+                                                        <li><a href="#">Standorte</a></li>
+                                                        <li><a href="historie.html">Historie</a></li>
+                                                        <li><a href="#">Jobs und Karriere</a></li>
+                                                        <li><a href="#">Ausbildung</a></li>
+                                                    </ul><!-- .dl-submenu end -->
+                                                </li>
+
+                                                <li><a href="#">Kontakt</a></li>
+
+                                            </ul><!-- .dl-menu end -->
+                                        </div><!-- #dl-menu end -->
+
+                                        <!-- #search start -->
+                                        <div id="search">
+                                            <form action="#" method="get">
+                                                <input class="search-submit" type="submit" />
+                                                <input id="m_search" name="s" type="text" placeholder="Type and hit enter..." />                        
+                                            </form>
+                                        </div><!-- #search end -->
+                                    </div><!-- MAIN NAVIGATION END -->
+                                </nav><!-- .navbar.navbar-default end -->
+                            </div><!-- .col-md-12 end -->
+                        </div><!-- .row end -->
+                    </div><!-- .main-nav end -->
+                </div><!-- .container end -->
+            </header><!-- .header.header-style01 -->
+
+<?
+$navigation = ob_get_clean();
+$cache->setItem($key, $navigation);
+print $navigation;
+
+}
+?>

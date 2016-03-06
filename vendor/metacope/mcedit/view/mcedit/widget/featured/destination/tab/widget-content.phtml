@@ -1,0 +1,30 @@
+
+<?php
+$escaper = new Zend\Escaper\Escaper('utf-8');
+?>
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('Headline')?>: <small>( maxlength: 20 )</small>
+		<input class="form-control" type="text" name="headline" value="<?=$widget->hasAttribute('headline', $this->lang)?>" placeholder="<?=$this->translate('headline')?>" /></label>
+</div>
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('GEO-Info')?>: <small>( bsp.: Hessen )</small>
+		<input class="form-control" type="text" name="geoinfo" value="<?=$widget->hasAttribute('geoinfo', $this->lang)?>" placeholder="<?=$this->translate('GEO-Info')?>" /></label>
+</div>
+
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('Target')?>: <small></small>
+		<input class="form-control" type="text" name="target" value="<?=$widget->hasAttribute('target', $this->lang)?>" placeholder="<?=$this->translate('Target')?>" /></label>
+</div>
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('Image URL or Database-ID')?>:<br>
+	<div class="input-group">
+		<input id="timage<?=$widget->getId()?>" class="form-control validate[required] imgInput" type="text" name="image" value="<?=$widget->hasAttribute('image', $this->lang)?>" placeholder="<?=$this->translate('Image URL or Database-ID')?>" />
+		<span class="input-group-btn">
+	    	<button class="btn btn-default bs-image" type="button" data-seeker-target="timage<?=$widget->getId()?>"><i class="fa fa-image"></i></button>
+	  	</span>
+	</div></label>
+</div>

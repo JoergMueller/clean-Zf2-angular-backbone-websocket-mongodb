@@ -1,0 +1,45 @@
+
+<?php
+
+$escaper = new Zend\Escaper\Escaper('utf-8');
+
+$headline = $widget->hasAttribute('headline', $this->lang);
+
+$subline = isset($attributes['subline'][$this->lang])
+			? $attributes['subline'][$this->lang]
+			: '';
+$intro = isset($attributes['intro'][$this->lang])
+		? $attributes['intro'][$this->lang]
+		: '';
+$body = isset($attributes['body'][$this->lang])
+		? $attributes['body'][$this->lang]
+		: '';
+$link = isset($attributes['link'][$this->lang])
+			? $attributes['link'][$this->lang]
+			: '';
+?>
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('Headline')?>:
+		<input class="form-control" type="text" name="attributes[headline][<?=$this->lang?>]" value="<?=$headline?>" placeholder="" /></label>
+</div>
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('Subline')?>:
+		<input class="form-control" type="text" name="attributes[subline][<?=$this->lang?>]" value="<?=$subline?>" placeholder="" /></label>
+</div>
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('Intro')?>:
+		<textarea class="form-control h150 whtml wp100" type="text" name="attributes[intro][<?=$this->lang?>]" placeholder="" data-seeker-target=""><?=$intro?></textarea></label>
+</div>
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('Body')?>:
+		<textarea class="form-control h200 whtml wp100" type="text" name="attributes[body][<?=$this->lang?>]" placeholder="" data-seeker-target=""><?=$body?></textarea></label>
+</div>
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('Link')?>:
+		<input class="form-control" type="text" name="attributes[link][<?=$this->lang?>]" value="<?=$link?>" placeholder="<?=$this->translate('Link: wenn der gesamte Artikel verlinkt werden soll')?>" /></label>
+</div>

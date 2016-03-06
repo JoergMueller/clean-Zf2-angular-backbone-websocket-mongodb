@@ -1,0 +1,12 @@
+<h1>metacope:mcedit:developer:user</h1>
+
+
+<?
+$this->userForm->setAttribute('action', '/mc/developer/user');
+$this->userForm->prepare();
+?>
+
+
+<?=$this->form()->openTag($this->userForm);?>
+<?=$this->formCollection($this->userForm);?>
+<?=$this->form()->closeTag()?>

@@ -1,0 +1,13 @@
+
+<?php
+$georverse = $widget->getGeoreverse();
+?>
+<div class="form-group">
+	<label class="block"> <i class="fa fa-info-circle fa-fw"
+					data-toggle="popover"
+					data-trigger="hover"
+					title="<?=$this->bbcode($this->translate('Help'))?>"
+					data-original-title="<?=$this->bbcode($this->translate('Help'))?>"
+					data-content="<?=$this->bbcode($this->translate('georeverse_popover_content'))?>"></i> <?=$this->translate('Georeverse')?>:
+		<input class="form-control" type="text" name="georeverse" value="<?=$georverse?>" placeholder="" /></label>
+</div>

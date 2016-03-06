@@ -1,0 +1,183 @@
+
+<?php
+
+$roles = $this->config['roles']['user'];
+$continue = false;
+
+$myrole='';
+if($this->auth->hasIdentity())
+	$myrole = $this->identity()->getRole();
+?>
+<div class="row-fluid hp100 wp100">
+
+	<div class="col-md-12 padding-0 hp100">
+
+		<form id="userForm" class="jqform hp100 margin-0" method="post" action="/mc/user/set/token/<?=$user->getToken()?>">
+
+		<input type="hidden" name="id" value="<?=$user->getId()?>">
+		<input type="hidden" name="token" value="<?=$user->getToken()?>">
+
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#basic" data-target="#basic" data-toggle="tab">Basic</a></li>
+			<li><a href="#template" data-target="#sheet" data-toggle="tab">Sheet</a></li>
+			<li><a href="#info" data-target="#teaminfo" data-toggle="tab">Info</a></li>
+		</ul>
+
+		<div class="tab-content margin-bottom-10 h900 oyscroll">
+
+
+		<p class="inverse margin-bottom-15">Token: <?=$user->getToken()?> Name: <?=$user->getFullName()?></p>
+
+			<div class="tab-pane active" id="basic">
+
+				<div class="form-group">
+					<label class="block"><?=$this->translate('E-Mail')?>:
+						<input class="form-control validate[required,custom[email]]" type="email" name="email" value="<?=$user->getEmail()?>" placeholder="" /></label>
+				</div>
+
+				<div class="form-group">
+					<label class="block"><?=$this->translate('Nickname')?>:
+						<input class="form-control validate[required]" type="text" name="nickname" value="<?=$user->getNickname()?>" placeholder="" /></label>
+				</div>
+
+				<div class="form-group">
+					<label class="block"><?=$this->translate('Password')?>:
+						<input class="form-control" type="password" name="password" value="" placeholder="" />
+						<small><?=$this->translate('leave empty if no changes')?></small></label>
+				</div>
+
+				<hr>
+
+				<div class="form-group">
+					<label class="block"><?=$this->translate('Permissions / Group')?>:
+					<select class="form-control" name="role">
+						<?php foreach($roles as $role => $bit):
+						if($continue == true) continue;
+						$selected = $user->getRole() == $role ? ' selected="selected"' : false;
+						?>
+						<option value="<?=$role?>"<?=$selected?>><?=$this->translate(ucfirst($role))?></option>
+						<?php
+						if($role == $myrole) $continue=true;
+						endforeach; ?>
+					</select>
+					</label>
+				</div>
+
+			</div>
+
+			<div class="tab-pane" id="sheet">
+
+				<div class="form-group">
+					<label class="block"><?=$this->translate('Gender / Salutation')?>:
+					<select class="form-control" name="gender">
+						<option value="mr"<?=$user->getSheet()->getGender()=='mr'?' selected="selected"':false?>><?=$this->translate('select Mr')?></option>
+						<option value="mrs"<?=$user->getSheet()->getGender()=='mrs'?' selected="selected"':false?>><?=$this->translate('select Mrs')?></option>
+					</select>
+					</label>
+				</div>
+
+				<div class="form-group">
+					<label class="block"><?=$this->translate('Firstname')?>:
+						<input class="form-control validate[required]" type="text" name="firstname" value="<?=$user->getSheet()->getFirstname()?>" placeholder="" /></label>
+				</div>
+
+				<div class="form-group">
+					<label class="block"><?=$this->translate('Name')?>:
+						<input class="form-control validate[required]" type="text" name="name" value="<?=$user->getSheet()->getName()?>" placeholder="" /></label>
+				</div>
+
+				<div class="form-group">
+					<label class="block"><span class="wp30 pull-left margin-right-20 inline-block"><?=$this->translate('Zipcode')?>:</span><span class="wp79 inline-block"><?=$this->translate('City')?>:</span><br>
+						<input class="form-control validate[required] wp30 pull-left margin-right-20 inline-block" type="text" name="zipcode" value="<?=$user->getSheet()->getZipcode()?>" placeholder="" />
+						<input class="form-control validate[required] wp66 inline-block" type="text" name="city" value="<?=$user->getSheet()->getCity()?>" placeholder="" /></label>
+				</div>
+
+				<div class="form-group">
+					<label class="block"><?=$this->translate('Streetnr')?>:
+						<input class="form-control validate[required]" type="text" name="streetnr" value="<?=$user->getSheet()->getStreetnr()?>" placeholder="" /></label>
+				</div>
+
+				<div class="form-group">
+					<label class="block"><?=$this->translate('Phone')?>:
+						<input class="form-control" type="text" name="phone" value="" placeholder="<?=$user->getSheet()->getPhone()?>" /></label>
+				</div>
+
+				<div class="form-group">
+					<label class="block"><?=$this->translate('Mobile Phone')?>:
+						<input class="form-control" type="text" name="mobile" value="<?=$user->getSheet()->getMobile()?>" placeholder="" /></label>
+				</div>
+
+				<div class="form-group">
+					<label class="block"><?=$this->translate('Fax')?>:
+						<input class="form-control" type="text" name="fax" value="<?=$user->getSheet()->getFax()?>" placeholder="" /></label>
+				</div>
+
+			</div>
+
+			<div class="tab-pane" id="teaminfo">
+				<div class="form-group">
+					<label class="block"><?=$this->translate('Info')?>:
+						<textarea class="form-control whtm h300" name="teaminfo" placeholder=""><?=$user->getSheet()->getTeaminfo()?></textarea></label>
+				</div>
+
+			</div>
+
+			<div class="clearfix"><!--  --></div>
+		</div>
+		<div class="form-group">
+			<button class="btn btn-default margin-right-8 pull-right"> <i class="fa fa-check" data-spinner="replace"></i> <?=$this->translate("Save")?></button>
+		</div>
+
+		</form>
+		<div class="clearfix"><!--  --></div>
+	</div>
+
+</div>
+
+<script>
+(function(){
+	EvM.notify('mc.jqform', {
+		'selector': '#userForm',
+		'precall': function(elem, opt) {
+			_.map($('[data-spinner]').toArray(),App.spinner.bind('start'));
+			return true;
+		},
+		'callback': function(response) {
+			_.map($('.spinner').toArray(),App.spinner.bind('done'));
+			js_scope=angular.element(document.getElementById('_rootWrap')).scope();
+			if(response.user != undefined) {
+				if(response.user.visible == 0) $('#btn_'+response.user.id).switchClass('btn-success','btn-warning');
+				if(response.user.visible == 1) $('#btn_'+response.user.id).switchClass('btn-warning','btn-success');
+				delete response.user;
+			}
+			EvM.notify('mc.jsonresponse', response);
+			if(response.hasShowModal != undefined) {
+				$(response.hasShowModal.selector+'Label').empty().append(response.hasShowModal.label);
+				$(response.hasShowModal.selector+'Content').empty().append(response.hasShowModal.content);
+				showModal(response.hasShowModal.selector);
+            }
+		}
+	});
+
+	$('a[data-toggle="tab"]').on('shown.bs.tab', function() {
+		EvM.notify('mc.postDispatch', {});
+		EvM.notify('mc.scroll', {'selector':'.oyscroll'});
+	});
+	$('a[data-toggle="tab"]:first').trigger('click');
+	$('#user-form [data-toggle="popover"]').popover({html:true});
+	$('.whtm').wysihtml5({'font-styles':false,'html':true,parserRules:  wysihtml5ParserRules});
+})();
+
+(function(){
+	EvM.notify('mc.scroll', {'selector':'.oyscroll'});
+
+    $('a.bs-image').unbind();
+    $('a.bs-image').on('click', function(){
+        $('#seekerLabel').html('Suchen Sie sich ein Bild aus');
+        $('#seekerContent').addClass('h770 oyscroll').load('/mcedit/images/seeker?t=' + $(this).closest('label').find('textarea').data('seeker-target'));
+        showModal('#seeker');
+    });
+    $('[data-role="tagsinput"]').tagsinput();
+})();
+
+</script>

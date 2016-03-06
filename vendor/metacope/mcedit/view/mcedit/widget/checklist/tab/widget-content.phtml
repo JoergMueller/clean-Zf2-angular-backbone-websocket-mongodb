@@ -1,0 +1,72 @@
+
+<?
+$attributes = $widget->getAttributes();
+$slides = $attributes->offsetExists('slides') ? $attributes->offsetGet('slides') : array();
+
+?>
+
+<div id="sliderSlides" class="sliderSlides">
+	<a class="btn btn-default btn-xs pull-right addItem" href="javascript:;"><i class="fa fa-plus-square"></i> <?=$this->translate('add item')?></a>
+
+	<div class="clearfix"><!-- --></div>
+
+	<div class="from-group">
+
+	</div>
+
+
+	<?if(isset($attributes['listitem']) && sizeof($attributes['listitem'])>0):?>
+	<?foreach($attributes['listitem'] as $index => $item):?>
+	<div class="inner">
+		<div id="oneItem<?=$index?>" class="oneItem">
+			<div class="form-group">
+				<div class="input-group">
+				      <span class="input-group-addon">
+				        <i class="fa fa-check-circle"></i> &nbsp;<input type="checkbox" name="attributes[icon][]" value="fa fa-check-circle" aria-label="...">
+				      </span>
+				      <input type="text" class="form-control" name="attributes[listitem][]" value="<?=$item?>" aria-label="...">
+				</div><!-- /input-group -->
+			</div>
+		</div>
+	</div>
+	<?endforeach?>
+	<?endif?>
+
+	<div class="clearfix"><!-- --></div>
+
+</div>
+
+<script type="text/html" id="tmpl_listitem">
+<div class="inner">
+	<div class="form-group">
+		<div class="input-group">
+		      <span class="input-group-addon">
+		        <i class="fa fa-check-circle"></i> &nbsp;<input type="checkbox" name="attributes[icon][]" value="fa fa-check-circle" aria-label="...">
+		      </span>
+		      <input type="text" class="form-control" name="attributes[listitem][]" value="<?=$item?>" aria-label="...">
+		</div><!-- /input-group -->
+	</div>
+</div>
+</script>
+
+<script>
+
+(function(){
+	$('.imgInput').each(function(){
+		var id=App.getId();
+		$(this).attr('id', id).parent('#sliderSlides').find('button').attr('data-target', id);
+	});
+
+	$('#sliderSlides').on("click", 'button.remove', function(){
+		if(confirm('<?=$this->translate("Sind Sie sich sicher ?")?>') == true)
+		$($(this).data('parent')).remove();
+	});
+
+	$('#sliderSlides').on("click", 'a.addItem', function(){
+		$('#sliderSlides').append(tmpl('tmpl_listitem',{'id':App.getId()}));
+		$.fancybox.reposition()
+	});
+
+})();
+
+</script>

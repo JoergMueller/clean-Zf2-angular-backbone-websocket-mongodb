@@ -1,0 +1,5 @@
+#!/bin/sh
+
+sass --trace public/css/sass/app.scss public/css/app.css --style compressed
+sass --trace public/css/sass/custom.scss public/css/custom.css --style compressed
+sass --trace public/css/sass/edit.scss public/css/edit.css --style compressed

@@ -1,0 +1,77 @@
+
+<?
+$parent = isset($subdocument) && !empty($subdocument) ? $subdocument : $document;
+$parent->setDocumentManager($this->dm);
+$firstLevel = $parent->getChildList([], $this->dm, $this->auth);
+$getRouteInfo = $this->ObjectHelper()->getRouteInfo();
+$this->lang = $lang = $getRouteInfo['lang'];
+
+$vertical_navigation = array();
+$cache = $this->ObjectHelper()->getCache();
+$sub_navigation_key = 'sub-navigation-'. $this->lang . '-' . $parent->getId();
+$sub_vertical_navigation_key = $sub_navigation_key . '-themen';
+$navigation = $cache->getItem($sub_navigation_key, $success);
+
+
+if(true == $success) {
+
+// $vertical_navigation = $cache->getItem($sub_vertical_navigation_key, $success2);
+print $navigation;
+
+} elseif(false == $success) {
+
+ob_start();
+?>
+
+<!-- Sub Nav Links -->
+<nav class="navbar-collapse collapse" id="navbar-sub">
+	<ul class="nav navbar-nav navbar-left">
+		<?foreach($firstLevel as $flevel):
+		$secondeLevel = $flevel->getChildList([], $this->dm, $this->auth);
+		?>
+
+		<?if($secondeLevel->count()>0):?>
+		<li class="dropdown show-on-hover">
+			<a href="/<?=$this->lang?><?=$flevel->getPath($this->lang)?>" class="dropdown-toggle" data-toggle="dropdown"><?=$flevel->getStructname($this->lang)?> <span class="caret"></span></a>
+			<ul class="dropdown-menu" role="menu">
+				<?foreach($secondeLevel as $slevel):
+				$vertical_navigation[] = (array) $slevel->toArray();
+				?>
+				<li><a href="/<?=$this->lang?><?=$slevel->getPath($this->lang)?>"><?=$slevel->getStructname($this->lang)?></a></li>
+				<?endforeach?>
+			</ul>
+		</li>
+		<?else:?>
+		<li><a href="/<?=$this->lang?><?=$flevel->getPath($this->lang)?>"><?=$flevel->getStructname($this->lang)?></a></li>
+		<?endif?>
+
+		<?endforeach?>
+
+	</ul>
+	<ul class="nav navbar-nav navbar-right">
+		<li><a href="#"><i class="fa fa-fw fa-heart-o"></i></a></li>
+		<li class="dropdown show-on-hover">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-share-alt"></i></a>
+			<ul class="dropdown-menu" role="menu">
+				<li><a href="#"><i class="fa fa-fw fa-facebook-official"></i> Facebook</a></li>
+				<li><a href="#"><i class="fa fa-fw fa-twitter"></i> Twitter</a></li>
+				<li><a href="#"><i class="fa fa-fw fa-google-plus"></i> Google +</a></li>
+				<li><a href="#"><i class="fa fa-fw fa-pinterest"></i> Pinterest</a></li>
+				<li><a href="#"><i class="fa fa-fw fa-instagram"></i> Instagram</a></li>
+				<li><a href="#"><i class="fa fa-fw fa-envelope"></i> Email</a></li>
+			</ul>
+		</li>
+		<li><a href="#" data-toggle="tooltip" title="Download in PDF format."><i class="fa fa-fw fa-file-pdf-o"></i></a></li>
+		<li><a href="#" data-toggle="tooltip" title="Print and take with you!"><i class="fa fa-fw fa-print"></i></a></li>
+	</ul>
+</nav>
+
+<?
+$navigation = ob_get_clean();
+
+$cache->setItem($sub_navigation_key, $navigation);
+// $cache->setItem($sub_vertical_navigation_key, (array) $vertical_navigation);
+print $navigation;
+
+}
+?>

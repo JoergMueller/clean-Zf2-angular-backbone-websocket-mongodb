@@ -1,0 +1,145 @@
+
+<div class="container-fluid h990 w1000 ohidden">
+
+	<div class="row-fluid hp100 wp100">
+
+
+		<div class="col-md-4 tree padding-0 hp100">
+
+			<?=$this->partial('partials/editor/searchfield', array('target'=>'client'))?>
+
+			<div id="client-tree" class="hp100  margin-top-10 oyscroll">
+				<ul id="holder_0" class="holder hp100 oxhidden" style="display:none;"></ul>
+			</div>
+
+		</div>
+
+
+		<div class="col-md-8 padding-right-0 hp100">
+
+			<div id="client-form" class=" hp100"></div>
+
+		</div>
+
+
+	</div>
+
+</div>
+
+<script type="text/html" id="tmpl_clienttreeinlay">
+<% for(var i=0; i < entries.length; i++ ){ %>
+<li id="<%=entries[i].id%>" class="dragdrop">
+	<div class="btn-group wp100">
+
+		<button class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span></button>
+		<button id="btn_<%=entries[i].id%>" class="btn btn-xs<%=(entries[i].visible==0?' btn-warning':' btn-success')%> name structname" data-id="<%=entries[i].id%>"><%=entries[i].name%></button>
+
+		<ul class="dropdown-menu" role="menu">
+			<li><a class="siteAction" href="#" data-action="load" data-id="<%=entries[i].id%>">Subaccounts</a></li>
+			<li class="divider"><!-- --></li>
+			<li><a class="siteAction" href="#" data-action="create" data-id="<%=entries[i].id%>">Subaccount anlegen</a></li>
+			<li><a class="siteAction" href="#" data-action="visible" data-id="<%=entries[i].id%>">Diesen Client online/offline</a></li>
+			<li><a class="siteAction" href="#" data-action="remove" data-id="<%=entries[i].id%>">Diesen Client löschen</a></li>
+		</ul>
+	</div>
+	<ul id="holder_<%=entries[i].id%>" class="holder" style="display:none"></ul>
+</li>
+<% } %>
+</script>
+<script>
+
+Tree = (function(){
+
+	var defaults = {'lang':'<?=$this->lang?>'};
+
+	function init( options ) {
+		defaults = $.extend(defaults, options || {});
+	}
+
+	function loadTree(id) {
+
+		var _selector = '#holder_'+ id;
+		$.get('/mc/ajax/client-tree/id/'+id, {}, function(_response){
+			$(_selector).append(tmpl('tmpl_clienttreeinlay', {'entries':_response.clients,'_selector':_selector}));
+
+			$(_selector + " button.structname").on("click", function(e){
+				e.preventDefault();
+				loadForm($(this).attr('data-id'));
+			});
+			$(_selector + " a.siteAction").on("click", function(e){
+				e.preventDefault();
+				switch($(this).attr('data-action')) {
+					case 'load':
+						$holder = $('#holder_'+$(this).attr('data-id'));
+						if($holder.has('li').length>0) $holder.slideToggle();
+						else loadTree($(this).attr('data-id'));
+						break;
+					case 'remove':
+						if(!confirm("wirlich löschen?")) return;
+						var self=this;
+						$.get('/mc/client/remove/id/'+$(this).attr('data-id'), {'id':$(this).attr('data-id')}, function(data){
+							if(data.visible == 0) {
+								$('#btn_'+data.client.id).removeClass('btn-success').addClass('btn-warning');
+							}
+							else if(data.visible == 1) {
+								$('#btn_'+data.client.id).removeClass('btn-warning').addClass('btn-success');
+							}
+							$('#'+$(self).attr('data-id')).remove();
+						}, 'json');
+						break;
+					case 'create':
+						$.get('/mc/client/create/id/'+$(this).attr('data-id'), {'id':$(this).attr('data-id')}, function(data){
+							loadTree($(this).attr('data-id'));
+						}, 'json');
+						$('#holder_'+$(this).attr('data-id')).empty().hide();
+						break;
+					case 'visible':
+						$.get('/mc/client/visible/id/'+$(this).attr('data-id'), {'id':$(this).attr('data-id')}, function(data){
+							if(data.client.visible == 0) {
+								$('#btn_'+data.client.id).removeClass('btn-success').addClass('btn-warning');
+							}
+							else if(data.document.visible == 1) {
+								$('#btn_'+data.client.id).removeClass('btn-warning').addClass('btn-success');
+							}
+						}, 'json');
+						break;
+					default:
+						break;
+				}
+			});
+			// $('.dragdrop').draggable({
+			// 	snap:".dragdrop",
+			// 	snapMode:"inner",
+			// 	delay: 200
+			// });
+			// $(".dragdrop").droppable({
+			// 	hoverClass: 'drophover',
+			// 	greedy: true,
+			// 	drop:function(event,ui) {
+			// 		var tid=$(this).attr('id').replace(/^\D+_/,'');
+			// 		var cid=ui.draggable[0].id.replace(/^\D+_/,'');
+			// 		$.post('/mcedit/client/move-into/'+cid,{'cid':cid,'tid':tid},function(data){EvM.notify('mc.jsonresponse', data);$(ui.draggable[0]).hide();},'json');
+			// 	}
+			// });
+			$(_selector).slideToggle('slow', function(){
+				if(_selector == '#holder_0') $(_selector + ' a.siteAction:first, ' + _selector + ' button.structname:first').trigger('click');
+				else $(_selector).find('li:first button.structname').trigger('click');
+			});
+		}, 'json');
+
+	}
+
+	function loadForm(id) {
+		$('#client-form').load('/mc/client/edit/id/'+id);
+	}
+
+	return {
+		'init': init,
+		'loadTree': loadTree,
+		'loadForm': loadForm
+	};
+})();
+Tree.init();
+Tree.loadTree(0);
+
+</script>

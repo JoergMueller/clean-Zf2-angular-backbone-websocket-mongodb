@@ -1,0 +1,19 @@
+
+<div
+	id="intro_<?=$widget->getId()?>"
+	class="widget intro"
+	data-token="<?=$widget->getToken()?>"
+	data-type="intro"
+	data-id="<?=$widget->getId()?>"
+	data-document="<?=$document->getId()?>"
+	data-path="<?=$widget->getAnker()?>"
+	>
+	<p class="lead"><?=$widget->hasAttribute("headline", $this->lang)?></p>
+	<div class="entry-content">
+		<div class="wp-caption alignright pull-right" style="width: 310px;">
+			<img alt="<?=$widget->hasAttribute("imagecaption", $this->lang)?>" class="size-large" height="200" src="<?=$widget->hasAttribute('image', $this->lang)?>" width="300">
+			<p class="wp-caption-text"><?=$widget->hasAttribute("imagecaption", $this->lang)?></p>
+		</div>
+		<?=$widget->hasAttribute("text", $this->lang)?>
+	</div>
+</div>

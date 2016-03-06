@@ -1,0 +1,53 @@
+
+<?php
+$form->setData($client->toArray());
+
+if($client->getCountry())
+	$form->get('country')->setValue($client->getCountry()->getId());
+
+?>
+
+<div class="form-group">
+	<label class="block"> <?=$this->translate('Name')?>:
+		<?=$this->formRow($form->get("name"))?></label>
+</div>
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('Firma')?>:
+	<?=$this->formRow($form->get("firm"))?></label>
+</div>
+
+<div class="form-group">
+	<label class="block"> <?=$this->translate('Street Nr')?>:
+	<?=$this->formRow($form->get("streetnr"))?></label>
+</div>
+
+<div class="form-group clearfix">
+	<label class="block"> <span class="wp30 margin-right-20 inline-block"><?=$this->translate('Zipcode')?></span> <span><?=$this->translate('City')?></span><br>
+	<?=$this->formRow($form->get("zipcode"))?>
+	<?=$this->formRow($form->get("city"))?></label>
+</div>
+
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('Phone')?>:
+	<?=$this->formRow($form->get("phone"))?></label>
+</div>
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('Fax')?>:
+	<?=$this->formRow($form->get("fax"))?></label>
+</div>
+
+<div class="form-group">
+	<label class="block"><?=$this->translate('E-Mail')?>:
+	<?=$this->formRow($form->get("mail"))?></label>
+</div>
+
+<hr>
+
+
+<div class="form-group">
+	<label class="block"> <?=$this->translate('Country')?>:
+	<?=$this->formRow($form->get("country"))?></label>
+</div>
