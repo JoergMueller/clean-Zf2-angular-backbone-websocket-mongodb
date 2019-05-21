@@ -14,7 +14,7 @@
     "express-session": "^1.13.0",
     "fs": "0.0.2",
     "jwt-simple": "^0.4.1",
-    "lodash": "^3.10.1",
+    "lodash": "@latest",
     "md5": "^2.0.0",
     "method-override": "^2.3.5",
     "moment": "^2.11.2",
